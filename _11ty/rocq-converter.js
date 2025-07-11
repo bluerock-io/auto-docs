@@ -20,6 +20,5 @@ export function rocqToMd(sentences) {
     }
   }
   flushCodeBlock();
-    console.log(markdown);
   return markdown.trim();
 }

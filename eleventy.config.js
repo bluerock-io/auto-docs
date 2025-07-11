@@ -6,6 +6,7 @@ import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 export default function (eleventyConfig) {
     eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addGlobalData("siteTitle", "BlueRock FM Docs");
   eleventyConfig.addTemplateFormats("v");
   eleventyConfig.addPreprocessor("markdown-rocq", "v", (data, content) => {
       const sentences = parseCoqContent(content);
@@ -15,6 +16,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addExtension("v", {
 		key: "md",
 	});
+
     // eleventyConfig.addExtension("v", {
     //     compile: async (inputContent)  => {
     //         const sentences = parseCoqContent(inputContent);
