@@ -1,0 +1,23 @@
+{
+  "name": "marked-11ty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node _11ty/coq-parser.test.js && node _11ty/rocq-converter.test.js",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
+    "bootstrap": "^5.3.3",
+    "markedjs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

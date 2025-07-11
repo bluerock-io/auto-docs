@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Eleventy
+_site/
+
+# Environment
+.envrc
+
+# OS
+.DS_Store
+Thumbs.db
