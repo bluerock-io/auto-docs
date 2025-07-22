@@ -17,6 +17,10 @@ export default function (eleventyConfig) {
 		key: "md",
 	});
 
+    eleventyConfig.addCollection("doc", function(collectionApi) {
+        return collectionApi.getFilteredByTag("doc");
+    });
+
     // eleventyConfig.addExtension("v", {
     //     compile: async (inputContent)  => {
     //         const sentences = parseCoqContent(inputContent);
