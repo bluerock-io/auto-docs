@@ -1,0 +1,18 @@
+---
+pagination:
+    data: collections.where
+    size: 1
+    alias: provides
+permalink: "/where/{{ provides | slugify }}/"
+layout: base.njk
+---
+
+<h1>Documents that provide "{{ provides }}"</h1>
+
+<ul>
+{% for item in collections.doc %}
+    {% if item.data.provides and provides in item.data.provides %}
+        <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
+    {% endif %}
+{% endfor %}
+</ul>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ siteTitle }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
             --bluerock-blue: #007bff; /* Example blue, replace with actual from bluerock.io */
@@ -16,6 +17,20 @@
         .navbar-brand,
         .nav-link {
             /* color: white !important; */
+        }
+        #searchInput {
+            border: none;
+            border-bottom: 1px solid #fff; /* White underline */
+            border-radius: 0;
+            box-shadow: none;
+            color: white;
+        }
+        #searchInput::placeholder {
+            color: rgba(255, 255, 255, 0.7); /* Lighter white for placeholder */
+        }
+        #searchInput:focus {
+            border-color: #fff;
+            box-shadow: none;
         }
         .sidebar {
             position: fixed;
@@ -33,6 +48,13 @@
             margin-left: 200px; /* Width of sidebar */
             padding-top: 76px; /* Height of navbar + some spacing */
         }
+        #searchResults {
+            position: absolute;
+            top: 56px; /* Height of navbar */
+            right: 15px; /* Adjust as needed */
+            width: 300px; /* Adjust as needed */
+            z-index: 1050; /* Above navbar */
+        }
     </style>
 <link
 			href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
@@ -49,7 +71,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-0 text-white"><i class="bi bi-search"></i></span>
+                            <input type="search" id="searchInput" class="form-control bg-transparent border-0 border-bottom text-white" placeholder="Search..." aria-label="Search">
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -61,7 +86,7 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
-                        {% for page in collections.all %}
+                        {% for page in collections.doc %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ page.url }}">
                                 {{ page.data.title or page.fileSlug }}
@@ -73,11 +98,63 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
-                {{ content | safe }}
+                {% block content %}
+                  {{ content | safe }}
+                {% endblock %}
             </main>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/node_modules/lunr/lunr.min.js"></script>
+    <script>
+        (async function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.createElement('div');
+            searchResults.id = 'searchResults';
+            searchResults.classList.add('list-group', 'mt-2');
+            document.body.appendChild(searchResults);
+
+            let idx;
+            let docs;
+
+            try {
+                const response = await fetch('/search.json');
+                docs = await response.json();
+
+                idx = lunr(function () {
+                    this.ref('url');
+                    this.field('title');
+                    this.field('content');
+
+                    docs.forEach(function (doc) {
+                        this.add(doc);
+                    }, this);
+                });
+            } catch (error) {
+                console.error('Error loading search index:', error);
+                return;
+            }
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value;
+                searchResults.innerHTML = '';
+
+                if (query.length > 2) {
+                    const results = idx.search(query);
+                    results.forEach(result => {
+                        const doc = docs.find(d => d.url === result.ref);
+                        if (doc) {
+                            const a = document.createElement('a');
+                            a.href = doc.url;
+                            a.classList.add('list-group-item', 'list-group-item-action');
+                            a.textContent = doc.title;
+                            searchResults.appendChild(a);
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
