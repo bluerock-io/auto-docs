@@ -21,6 +21,11 @@ export default function (eleventyConfig) {
         return collectionApi.getFilteredByTag("doc");
     });
 
+    eleventyConfig.addCollection("where", function(collectionApi) {
+        const allProvides = collectionApi.getAll().flatMap(item => item.data.provides || []);
+        return [...new Set(allProvides)];
+    });
+
     // eleventyConfig.addExtension("v", {
     //     compile: async (inputContent)  => {
     //         const sentences = parseCoqContent(inputContent);
