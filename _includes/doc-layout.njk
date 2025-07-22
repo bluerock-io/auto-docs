@@ -2,5 +2,6 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
+  <p><a href="/downloads/{{ page.fileSlug }}.v" download><i class="bi bi-download"></i>Rocq source</a></p>
 {{ content | safe }}
 {% endblock %}
