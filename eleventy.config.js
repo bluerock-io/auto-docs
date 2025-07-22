@@ -26,6 +26,8 @@ export default function (eleventyConfig) {
         return [...new Set(allProvides)];
     });
 
+    eleventyConfig.addPassthroughCopy({'node_modules/lunr/lunr.min.js': 'node_modules/lunr/lunr.min.js'});
+
     // eleventyConfig.addExtension("v", {
     //     compile: async (inputContent)  => {
     //         const sentences = parseCoqContent(inputContent);
