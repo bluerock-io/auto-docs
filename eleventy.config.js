@@ -17,7 +17,11 @@ export default function (eleventyConfig) {
 		key: "md",
 	});
 
-    eleventyConfig.addCollection("doc", function(collectionApi) {
+    eleventyConfig.addCollection("learn", function(collectionApi) {
+        return collectionApi.getFilteredByTag("learn");
+    });
+
+    eleventyConfig.addCollection("reference", function(collectionApi) {
         return collectionApi.getFilteredByTag("doc");
     });
 

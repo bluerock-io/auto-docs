@@ -1,0 +1,39 @@
+<ul class="nav">
+  <li>
+    <details open>
+      <summary>Get Started</summary>
+      <ul>
+        <li>What is Verification</li>
+        <li>Installation</li>
+      </ul>
+    </details>
+  </li>
+  <li>
+    <details open>
+      <summary>Learn</summary>
+      <ul class="nav flex-column">
+        {% for page in collections.learn %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ page.url }}">
+            {{ page.data.title or page.fileSlug }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </details>
+  </li>
+  <li>
+    <details open>
+      <summary>References</summary>
+      <ul class="nav flex-column">
+        {% for page in collections.reference %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ page.url }}">
+            {{ page.data.title or page.fileSlug }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </details>
+  </li>
+</ul>
