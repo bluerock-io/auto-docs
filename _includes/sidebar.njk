@@ -12,7 +12,7 @@
     <details open>
       <summary>Learn</summary>
       <ul class="nav flex-column">
-        {% for page in collections.doc %}
+        {% for page in collections.learn %}
         <li class="nav-item">
           <a class="nav-link" href="{{ page.url }}">
             {{ page.data.title or page.fileSlug }}
@@ -26,7 +26,7 @@
     <details open>
       <summary>References</summary>
       <ul class="nav flex-column">
-        {% for page in collections.ref %}
+        {% for page in collections.reference %}
         <li class="nav-item">
           <a class="nav-link" href="{{ page.url }}">
             {{ page.data.title or page.fileSlug }}
