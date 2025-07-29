@@ -1,3 +1,6 @@
+(*@HIDE@*)
+Require Import bluerock.auto.cpp.prelude.proof.
+(*@END-HIDE@*)
 (*@@
 # Verifying a simple program
 
