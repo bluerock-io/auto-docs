@@ -5,7 +5,7 @@ import { rocqToMd } from './_11ty/rocq-converter.js';
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 export default function (eleventyConfig) {
-    eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addGlobalData("siteTitle", "BlueRock FM Docs");
   eleventyConfig.addTemplateFormats("v");
   eleventyConfig.addPreprocessor("markdown-rocq", "v", (data, content) => {
