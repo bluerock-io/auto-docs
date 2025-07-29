@@ -10,8 +10,16 @@ export function rocqToMd(sentences) {
       codeBlock = '';
     }
   }
+  let hide = true;
   for (const sentence of sentences) {
-    if (sentence.startsWith('(*@@')) {
+    if (sentence === '(*@END-HIDE@*)') {
+      hide = false;
+      continue;
+    }
+    if (hide) continue;
+    if (sentence === '(*@HIDE@*)') {
+      hide = true;
+    } else if (sentence.startsWith('(*@@')) {
       flushCodeBlock();
       const content = sentence.substring(4, sentence.length - 2).trim();
       markdown += content + '\n';

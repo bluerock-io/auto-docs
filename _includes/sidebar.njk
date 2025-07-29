@@ -1,39 +1,48 @@
-<ul class="nav">
-  <li>
-    <details open>
-      <summary>Get Started</summary>
-      <ul>
-        <li>What is Verification</li>
-        <li>Installation</li>
-      </ul>
-    </details>
-  </li>
-  <li>
-    <details open>
-      <summary>Learn</summary>
-      <ul class="nav flex-column">
-        {% for page in collections.learn %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ page.url }}">
-            {{ page.data.title or page.fileSlug }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </details>
-  </li>
-  <li>
-    <details open>
-      <summary>References</summary>
-      <ul class="nav flex-column">
-        {% for page in collections.reference %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ page.url }}">
-            {{ page.data.title or page.fileSlug }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </details>
-  </li>
-</ul>
+<div class="flex-shrink-0 p-3 bg-white" style="min-width: 250pt;">
+  <ul class="list-unstyled ps-0" id="sidebar">
+    <li class="mb-1 px-4">
+      <a class="btn" href="/" class="link-dark">Home</a>
+    </li>
+    <li class="mb-1">
+      <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse" aria-expanded="true">
+        Get Started
+      </button>
+      <div class="collapse show" id="getting-started-collapse">
+        <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" class="link-dark rounded">What is Verification?</a></li>
+          <li><a href="#" class="link-dark rounded">Installation</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#learn-collapse" aria-expanded="true">
+        Learn
+      </button>
+      <div class="collapse show" id="learn-collapse">
+        <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% for page in collections.learn %}
+          <li>
+            <a class="nav-link" href="{{ page.url }}">{{ page.data.title or page.fileSlug }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#reference-collapse" aria-expanded="true">
+        References
+      </button>
+      <div class="collapse show" id="reference-collapse">
+        <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% for page in collections.reference %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ page.url }}">
+              {{ page.data.title or page.fileSlug }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
