@@ -1,6 +1,7 @@
 import { mvParser } from './_11ty/mv-parser.js';
 import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
+import slugify from "@sindresorhus/slugify"; /* same as 11ty */
 
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
@@ -28,6 +29,15 @@ export default function (eleventyConfig) {
     eleventyConfig.addCollection("where", function(collectionApi) {
         const allProvides = collectionApi.getAll().flatMap(item => item.data.provides || []);
         return [...new Set(allProvides)];
+    });
+
+    eleventyConfig.addFilter("terminology", (value) => {
+        // Extend this to add a link to a canonical article if one exists.
+        if (false) {
+            return `<a href="/where/${slugify(value)}">${value}</a>`;
+        } else {
+            return value;
+        }
     });
 
     eleventyConfig.addPassthroughCopy({'node_modules/lunr/lunr.min.js': 'node_modules/lunr/lunr.min.js'});
