@@ -10,6 +10,24 @@ We can start with a very simple program:
 void test() { }
 ```
 
+*)
+
+(*@HIDE@*)
+(** Lets us specify our C++ program "inline". *)
+Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+
+(** Define AST `sample_module` containing the code above. *)
+cpp.prog module prog cpp:{{
+  void test() { }
+}}.
+
+Section with_cpp.
+  Context `{Σ : cpp_logic}.
+  Context `{MOD : module ⊧ σ}.
+
+(*@END-HIDE@*)
+
+(*@@
 ## Writing a Spec
 
 We start with a specification.
@@ -23,7 +41,7 @@ The `emp` tells you that the function doesn't return any {{ "resource" | termino
 
 Now, we can set up the verification by posing a `Lemma`.
  *)
-Lemma test_ok : verify[source] "test()".
+Lemma test_ok : verify[module] "test()".
 Proof.
 (*@@
 This sets up a theorem for our function that states that the function satisfies the specification. In this case, this means that executing the function will not produce any {{ "undefined behavior" | terminology }}.
@@ -46,3 +64,7 @@ Congratulations! You've walked through your first proof.
 Consider verifying some more simple functions including:
 
  *)
+
+(*@HIDE@*)
+End with_cpp.
+(*@END-HIDE@*)
