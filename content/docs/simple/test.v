@@ -1,20 +1,46 @@
-(*@HIDE@*)
-Require Import bluerock.auto.cpp.prelude.proof.
-(*@END-HIDE@*)
 (*@@
-# Verifying a simple program
+# Verifying a simple function
 
-We can start with a very simple program:
+Our first proof will be about a very simple function:
 
 ```cpp
 void test() { }
 ```
 
-## Writing a Spec
+This is trivial, but it lets us teach the basics about verification.
 
-We start with a specification.
+## Setting up the verification
+
+Import the C++ verification environment:
+*)
+Require Import bluerock.auto.cpp.prelude.proof.
+
+(*@@ Import a command to specify our C++ program "inline". *)
+Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+
+(*@@
+
+Define AST `module` containing the code above: *)
+cpp.prog module prog cpp:{{
+  void test() { }
+}}.
+
+(*@@
+Some more setup is omitted for now.
  *)
-cpp.spec "test()" as test_spec with
+(*@HIDE@*)
+Section with_cpp.
+  Context `{Σ : cpp_logic}.
+  Context `{MOD : module ⊧ σ}.
+
+(*@END-HIDE@*)
+
+(*@@
+## Specifying the expected behavior
+
+We must first specify what the [test] function does.
+ *)
+cpp.spec "test()" from module as test_spec with
   (\post emp).
 (*@@
 The `emp` tells you that the function doesn't return any {{ "resource" | terminology }}, but we'll get into that more later.
@@ -23,7 +49,7 @@ The `emp` tells you that the function doesn't return any {{ "resource" | termino
 
 Now, we can set up the verification by posing a `Lemma`.
  *)
-Lemma test_ok : verify[source] "test()".
+Lemma test_ok : verify[module] "test()".
 Proof.
 (*@@
 This sets up a theorem for our function that states that the function satisfies the specification. In this case, this means that executing the function will not produce any {{ "undefined behavior" | terminology }}.
@@ -46,3 +72,7 @@ Congratulations! You've walked through your first proof.
 Consider verifying some more simple functions including:
 
  *)
+
+(*@HIDE@*)
+End with_cpp.
+(*@END-HIDE@*)
