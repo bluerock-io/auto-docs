@@ -41,7 +41,9 @@ export default function (eleventyConfig) {
     });
 
     eleventyConfig.addPassthroughCopy({'node_modules/lunr/lunr.min.js': 'node_modules/lunr/lunr.min.js'});
-    eleventyConfig.addPassthroughCopy({'content/**/*.v': 'downloads/'});
+    eleventyConfig.addPassthroughCopy('content/**/*.v', {
+        mode: "html-relative"
+    });
 
     // eleventyConfig.addExtension("v", {
     //     compile: async (inputContent)  => {
