@@ -20,8 +20,8 @@ Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
 (*@@
 
-Define AST `module` containing the code above: *)
-cpp.prog module prog cpp:{{
+Define AST `source` containing the code above: *)
+cpp.prog source prog cpp:{{
   void test() { }
 }}.
 
@@ -31,7 +31,7 @@ Some more setup is omitted for now.
 (*@HIDE@*)
 Section with_cpp.
   Context `{Σ : cpp_logic}.
-  Context `{MOD : module ⊧ σ}.
+  Context `{MOD : source ⊧ σ}.
 
 (*@END-HIDE@*)
 
@@ -40,7 +40,7 @@ Section with_cpp.
 
 We must first specify what the [test] function does.
  *)
-cpp.spec "test()" from module as test_spec with
+cpp.spec "test()" from source as test_spec with
   (\post emp).
 (*@@
 The `emp` tells you that the function doesn't return any {{ "resource" | terminology }}, but we'll get into that more later.
@@ -49,7 +49,7 @@ The `emp` tells you that the function doesn't return any {{ "resource" | termino
 
 Now, we can set up the verification by posing a `Lemma`.
  *)
-Lemma test_ok : verify[module] "test()".
+Lemma test_ok : verify[source] "test()".
 Proof.
 (*@@
 This sets up a theorem for our function that states that the function satisfies the specification. In this case, this means that executing the function will not produce any {{ "undefined behavior" | terminology }}.
