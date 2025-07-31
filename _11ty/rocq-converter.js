@@ -6,11 +6,14 @@ export function rocqToMd(sentences) {
   let codeBlock = '';
   function flushCodeBlock() {
     if (codeBlock.trim() !== '') {
-        markdown += '```coq\n' + codeBlock.replace(/^[\r\n]+/g, '').replace(/[\r\n]+$/g, '') + '\n```\n';
+        // Escape to protect from cpp:{{ ... }}.
+        // see https://liquidjs.com/tutorials/escaping.html#Liquid-Escape.
+        markdown += '{% raw %}\n```coq\n' + codeBlock.replace(/^[\r\n]+/g, '').replace(/[\r\n]+$/g, '') + '\n```{% endraw %}\n';
+
       codeBlock = '';
     }
   }
-  let hide = true;
+  let hide = false;
   for (const sentence of sentences) {
     if (sentence === '(*@END-HIDE@*)') {
       hide = false;
