@@ -55,7 +55,7 @@ Proof.
 This sets up a theorem for our function that states that the function satisfies the specification. In this case, this means that executing the function will not produce any {{ "undefined behavior" | terminology }}.
 
 Since this is a particularly simple function, the proof is also simple. This proceeds in two stages:
-1. We use `verify_spec` to begin the proof, effectively to reason about connection between the arguments (in this case there are none) to the arguments expressed in the specification.
+1. We use `verify_spec` to begin the proof: our goal becomes a goal about the concrete function body.
 2. Next we use the `go` tactic to "execute" the body of the function and prove the post-condition.
 
 Idiomatically, we chain these two tactics together using a `;` which leads us to the following proof script.
