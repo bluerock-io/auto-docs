@@ -1,8 +1,9 @@
-<div class="flex-shrink-0 p-3 bg-white" style="min-width: 250pt;">
+<div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
   <ul class="list-unstyled ps-0" id="sidebar">
     <li class="mb-1 px-4">
-      <a class="btn" href="/" class="link-dark">Home</a>
+      <a class="btn" href="/" class="link-dark"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
     </li>
+{#
     <li class="mb-1">
       <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse" aria-expanded="true">
         Get Started
@@ -14,15 +15,16 @@
         </ul>
       </div>
     </li>
+#}
     <li class="mb-1">
       <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#learn-collapse" aria-expanded="true">
         Learn
       </button>
       <div class="collapse show" id="learn-collapse">
         <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
-          {% for page in collections.learn %}
+          {% for elem in collections.learn %}
           <li>
-            <a class="nav-link" href="{{ page.url }}">{{ page.data.title or page.fileSlug }}</a>
+            <a class="nav-link" href="{{ elem.url }}"{% if page.url == elem.url %} aria-current="page"{% endif %}>{{ elem.data.title or elem.fileSlug }}</a>
           </li>
           {% endfor %}
         </ul>
@@ -36,7 +38,7 @@
         <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
           {% for page in collections.reference %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ page.url }}">
+            <a class="nav-link" href="{{ page.url }}"{% if page.url == elem.url %} aria-current="page"{% endif %}>
               {{ page.data.title or page.fileSlug }}
             </a>
           </li>
