@@ -13,3 +13,7 @@ _site/
 # OS
 .DS_Store
 Thumbs.db
+
+# Rocq
+.lia.cache
+.nia.cache
