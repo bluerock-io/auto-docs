@@ -1,5 +1,5 @@
 export function mvParser(contents) {
-  console.log("handling the file with: " + contents);
+  console.log('handling the file with: ' + contents);
   const frontMatterRegex = /^\(\*---\r?\n([\s\S]*?)\r?\n---\*\)/;
   const match = contents.match(frontMatterRegex);
 
@@ -11,7 +11,7 @@ export function mvParser(contents) {
   const content = contents.slice(match[0].length);
 
   const data = {};
-  frontMatterBlock.split(/\r?\n/).forEach(line => {
+  frontMatterBlock.split(/\r?\n/).forEach((line) => {
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length) {
       data[key.trim()] = valueParts.join(':').trim();
@@ -24,4 +24,3 @@ export function mvParser(contents) {
 
   return data;
 }
-

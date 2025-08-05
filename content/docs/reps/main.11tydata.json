@@ -1,6 +1,6 @@
 {
-    "title": "Describing Data",
-    "tags": ["learn"],
-    "requires": [],
-    "provides": ["reps"]
+  "title": "Describing Data",
+  "tags": ["learn"],
+  "requires": [],
+  "provides": ["reps"]
 }
