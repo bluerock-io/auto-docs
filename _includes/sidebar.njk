@@ -1,3 +1,22 @@
+{% macro menuitem(elem) %}
+<li class="mb-1">
+  {% if elem.children %}
+  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#learn-collapse" aria-expanded="true">
+    {{ elem.title }}
+  </button>
+  <div class="collapse show" id="learn-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
+      {% for xxx in elem.children %}
+      {{ menuitem(xxx) }}
+      {% endfor %}
+    </ul>
+  </div>
+  {% else %}
+  <a class="nav-link" href="{{ elem.url | inputPathToUrl }}" {% if page.url == elem.url %} aria-current="page"{% endif %}>{{ elem.title }}</a>
+  {% endif %}
+</li>
+{% endmacro %}
+
 <div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
   <ul class="list-unstyled ps-0" id="sidebar">
     <li class="mb-1 px-4">
@@ -16,6 +35,10 @@
       </div>
     </li>
 #}
+    {% for elem in sidebar %}
+    {{ menuitem(elem) }}
+    {% endfor %}
+{#
     <li class="mb-1">
       <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#learn-collapse" aria-expanded="true">
         Learn
@@ -46,5 +69,6 @@
         </ul>
       </div>
     </li>
+#}
   </ul>
 </div>

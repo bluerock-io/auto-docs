@@ -8,7 +8,9 @@ import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addDataExtension('yaml', (contents) => YAML.parse(contents));
+  eleventyConfig.addDataExtension('yaml', (contents) => {
+      return YAML.parse(contents);
+  });
 
   eleventyConfig.addGlobalData('siteTitle', 'BlueRock FM Docs');
   eleventyConfig.addTemplateFormats('v');
@@ -44,6 +46,10 @@ export default function (eleventyConfig) {
       return value;
     }
   });
+    eleventyConfig.addFilter('filename', (value) => {
+        return value.slice(value.lastIndexOf('/') + 1);
+    });
+
 
   eleventyConfig.addPassthroughCopy({
     'node_modules/lunr/lunr.min.js': 'node_modules/lunr/lunr.min.js',
