@@ -1,48 +1,41 @@
+(*@@ Here, we show some hints about `Rep`s that we can declare to get proofs unstuck.
+ First we setup our automation and use an example program: *)
 Require Import bluerock.auto.cpp.prelude.proof.
-
-(*@HIDE@*)
 
 (*@@ Import a command to specify our C++ program "inline". *)
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
+(*@@ Define AST `source` containing our example C++ program: *)
 cpp.prog source prog cpp:{{
-  class Lock {
-    public:
-    void lock();
-    void unlock();
+  struct Foo {
+    int n{0};
+    void method();
   };
 
 
   void test() {
-    Lock m;
-    // Lock m{};
-    m.lock();
-    m.unlock();
+    Foo m;
+    m.method();
   }
 }}.
 
-Notation T := "Lock"%cpp_name.
-
-Inductive model : Type := Mk { n : N }.
-Definition empty : model := {| n := 0%N |}.
-
+(*@@ Open a Rocq section, that abstracts over some assumptions. *)
 Section with_cpp.
   Context `{Σ : cpp_logic}.
   Context `{MOD : source ⊧ σ}.
 
-  Parameter R : cQp.t -> model -> Rep.
+  Parameter R : cQp.t -> N -> Rep.
 
-  cpp.spec (dtor T) as dtor_spec with
+  cpp.spec (default_ctor "Foo") as ctor_spec with
+    (\this this
+     \post this |-> R 1$m 0).
+
+  cpp.spec (dtor "Foo") as dtor_spec with
     (\this this
      \pre{m} this |-> R 1$m m
      \post emp).
 
-  cpp.spec "Lock::lock()" as lock_spec with
-    (\this this
-     \prepost{q m} this |-> R q m
-     \post emp).
-
-  cpp.spec "Lock::unlock()" as unlock_spec with
+  cpp.spec "Foo::method()" as lock_spec with
     (\this this
      \prepost{q m} this |-> R q m
      \post emp).
@@ -50,31 +43,19 @@ Section with_cpp.
   cpp.spec "test()" as test_spec with
     (\post emp).
 
-  cpp.spec (default_ctor T) as ctor_spec with
-    (\this this
-     \post this |-> R 1$m empty).
-
-
-  (* Search primR anyR. *)
   Lemma test_ok : verify[source] test_spec.
   Proof.
-    Set Warnings "-br-cannot-extract-hint-name".
     verify_spec; go.
-#[only(cfracsplittable)] derive R.
+    (*@@ TODO: explain here the goals we're stuck on, and the hints we need. *)
 
-    Fail progress work.
-#[global] Declare Instance mutex_rep_learnable : LearnEqF1 R.
-
+    #[global] Declare Instance R_learm : Cbn (Learn (any ==> learn_eq ==> learn_hints.fin) R).
+    progress work.
+    #[only(cfracsplittable)] derive R.
     progress work.
 
-#[only(type_ptr=T)] derive R.
-#[only(type_ptr="Lock")] derive R.
-    #[global] Declare Instance R_agree : Cbn (Learn (any ==> learn_eq ==> learn_hints.fin) R).
+    #[only(type_ptr="Foo")] derive R.
 
-(* #[only(typed("Lock")] derive R. *)
-#[global] Declare Instance mutex_rep_typed : Typed2 "std::__1::mutex" mutexR.
-#[only(fracsplittable)] derive mutex_token.
-
-      (* Show Proof. *)
+    progress work.
+    go.
   Qed.
 End with_cpp.
