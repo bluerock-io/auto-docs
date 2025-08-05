@@ -1,5 +1,5 @@
 {
-    "title": "Very First Verification",
-    "tags": ["learn"],
-    "provides": ["spec","proof"]
+  "title": "Very First Verification",
+  "tags": ["learn"],
+  "provides": ["spec", "proof"]
 }
