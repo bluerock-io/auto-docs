@@ -1,3 +1,4 @@
+import YAML from 'yaml';
 import { mvParser } from './_11ty/mv-parser.js';
 import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
@@ -7,6 +8,8 @@ import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addDataExtension('yaml', (contents) => YAML.parse(contents));
+
   eleventyConfig.addGlobalData('siteTitle', 'BlueRock FM Docs');
   eleventyConfig.addTemplateFormats('v');
   eleventyConfig.addPreprocessor('markdown-rocq', 'v', (data, content) => {

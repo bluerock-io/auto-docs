@@ -21,7 +21,8 @@
     "bootstrap": "^5.3.3",
     "lunr": "^2.3.9",
     "markedjs": "^0.0.1-security",
-    "nearley": "^2.20.1"
+    "nearley": "^2.20.1",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "prettier": "^3.6.2"
