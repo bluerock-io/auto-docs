@@ -9,3 +9,5 @@
       url: docs/primitive_reps/main.v
     - title: Stepping through Programs
       url: docs/debugging/main.v
+    - title: Hints about Representation Predicates
+      url: docs/rep_hints/main.v
