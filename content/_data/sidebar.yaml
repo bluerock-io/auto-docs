@@ -3,9 +3,9 @@
   children:
     - title: "Very First Verification"
       url: docs/simple/test.v
-    - title: Describing Data
-      url: docs/reps/main.v
+    - title: Basics about Program State
+      url: docs/state_basics/main.v
     - title: Primitive Data
-      url: docs/primitive-reps/main.v
-    - title: Exploring Programs in Logic
+      url: docs/primitive_reps/main.v
+    - title: Stepping through Programs
       url: docs/debugging/main.v
