@@ -47,7 +47,7 @@ Print intR.
 Print ulongR.
 Print ulonglongR.
 Print charR.
-Print wchar_tR.
+Print wcharR.
 
 (*@@
 ## `uninitR` -- Uninitialized Data
@@ -80,3 +80,5 @@ About anyR.
 (*@@
 
 *)
+
+End with_cpp.
