@@ -9,19 +9,19 @@ Consider the following program with a comment representing the program state at 
 
 ```cpp
 void test() {
-   // << emp
+   // emp
   int x = 0;
-   // << _local "x" |-> intR 1$m 0
+   // _local "x" |-> intR 1$m 0
   x++;
-   // << _local "x" |-> intR 1$m 1
+   // _local "x" |-> intR 1$m 1
 }
 ```
 
 In the first line, there are no variables, so the state is empty, so we write `emp`.
 
-After the first line runs, there is now a new "program location" allocated. That heap
-cell is the cell that stores the value of the variable `x`, it has type `int`, and
-the value stored in the cell is `0`. This state is captured by the second line:
+After the first line runs, there is now a new "program location" allocated. That program
+location is the cell that stores the value of the variable `x`. The location has type
+`int`, and the value stored in the cell is `0`. This state is captured by the second line:
 
 ```coq
 _local "x" |-> intR 1$m 0
@@ -58,10 +58,10 @@ Similarly to what we've seen, the state of `y` after this declaration is capture
 _local "y" |-> intR 1$m 10
 ```
 
-However, the full program state contains both of these program locations. To capture
+However, the full program state contains **both** of these program locations. To capture
 multiple **disjoint** program locations, we connect the two assertions using a `**` (or in unicode `∗`).
 The `**` is called the "separating conjunction" and is pronouned "star".
-Thus, the full state is captured by
+Thus, the full state after this declaration is captured by
 
 ```coq
 _local "x" |-> intR 1$m 1 ** _local "y" |-> intR 1$m 10
@@ -83,8 +83,10 @@ y++;
 ```
 
 To reason about this step, we only need to think about the "program cell" for `_local "y"`, i.e.
-the resource `_local "y" |-> intR 1$m 10`. The other resources, in this case `_local "x" |-> intR 1$m 1` act as a "frame"
-during the update and is therefore unchanged. Thus, after the update, the state looks like the following:
+the resource `_local "y" |-> intR 1$m 10`. We call this resource the "footprint" of the step.
+The other resources, in this case `_local "x" |-> intR 1$m 1` are called the "frame".
+In general, the footprint of a step __can__ change, while the frame __never__ changes.
+Thus, after the update, the state looks like the following:
 
 ```coq
 _local "x" |-> intR 1$m 1 ** _local "y" |-> intR 1$m 11
