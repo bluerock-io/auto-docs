@@ -58,27 +58,54 @@ For instance, variable `x` is not initialized in the following code.
 ```cpp
 void f() {
   int x;
+}
+```
 BRiCk provides the `Rep`-predicate `uninitR` to capture uninitialized program cells of a particular type.
-*)
+ *)
 About uninitR.
 (* uninitR : type -> cQp.t -> Rep *)
 (*@@
 Formally, `uinitR ty q` captures an uninitialized program location of type `ty`.
 However, because uninitialized data is often transitory, explicitly writing this predicate is quite rare.
 In practice, we often prefer `anyR` to capture a value that may or may not be initialized.
-*)
+ *)
 
 (*@@
 
-## `anyR`
+## `anyR` -- Possibly Uninitialized Data
 
 The `anyR` `Rep`-predicate captures a program location that is either initialized or not.
 The type of `anyR` is the same as `uninitR`.
-*)
+ *)
 About anyR.
 (* anyR : type -> cQp.t -> Rep *)
 (*@@
+The `anyR` ownership can be particularly useful when describing a program state at the beginning
+of a loop. For example, suppose that you have the following `do-while` loop.
+```cpp
+int x;
+do {
+  x = f();
+} while (x > 0);
+```
+Before we enter the loop the first time, we know that `x` is uninitialized, but on subsequent
+iterations of the loop, `x` might be initialized. To capture this pattern, we can use `anyR`
+to say that the loop will execute correctly regardless of whether `x` is initialized or not.
+ *)
 
+(*@@
+## Recap
+
+Here we learned about the three most common predicates for describing primitive data,
+
+1. `primR` for initialized data;
+2. `anyR` for data that may or may not be initialized; and
+3. `uninitR` for data that is known to be uninitialized.
+
+These predicates alone are sufficient for describing the behavior of many simple programs.
 *)
 
+
+(*@HIDE@*)
 End with_cpp.
+(*@END-HIDE@*)

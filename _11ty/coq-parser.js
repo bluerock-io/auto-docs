@@ -9,42 +9,33 @@ export function parseCoqContent(coqContent) {
 
   for (let i = 0; i < coqContent.length; i++) {
     if (coqContent.startsWith('(*', i)) {
-      if (commentDepth === 0 && currentSentence.trim() !== '') {
-        sentences.push(currentSentence.trim());
+      if (commentDepth === 0) {
+        if (currentSentence !== '')
+            sentences.push(currentSentence);
         currentSentence = '';
       }
       currentSentence += '(*';
       commentDepth++;
       i++; // Skip the next character
     } else if (coqContent.startsWith('*)', i)) {
+      i++; // Skip the next character
       currentSentence += '*)';
       commentDepth--;
       if (commentDepth === 0) {
-        sentences.push(currentSentence.trim());
+        sentences.push(currentSentence);
         currentSentence = '';
       }
-      i++; // Skip the next character
-    } else if (
-      commentDepth === 0 &&
-      coqContent[i] === '.' &&
-      (i == coqContent.length || coqContent[i + 1].match(/\s/))
-    ) {
+    } else if (commentDepth === 0 && coqContent[i] === '.') {
       currentSentence += '.';
       sentences.push(currentSentence);
-      if (i < coqContent.length) {
-        currentSentence = coqContent[i + 1];
-        i++;
-      } else {
-        currentSentence = '';
-      }
+      currentSentence = '';
     } else {
       currentSentence += coqContent[i];
     }
   }
 
-  if (currentSentence.trim() !== '') {
-    sentences.push(currentSentence.trim());
-  }
+  if (currentSentence !== '')
+    sentences.push(currentSentence);
 
   return sentences;
 }
