@@ -9,5 +9,7 @@
       url: docs/primitive_reps/main.v
     - title: Stepping through Programs
       url: docs/debugging/main.v
+    - title: Class Representation Predicates
+      url: docs/class_reps/main.v
     - title: Hints about Representation Predicates
       url: docs/rep_hints/main.v

@@ -1,11 +1,10 @@
 (*@@ Here, we show some hints about `Rep`s that we can declare to get proofs unstuck.
  First we setup our automation and use an example program: *)
 Require Import bluerock.auto.cpp.prelude.proof.
-
-(*@@ Import a command to specify our C++ program "inline". *)
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
-(*@@ Define AST `source` containing our example C++ program: *)
+(*@@ Define AST `source` containing our example C++ program.
+This is the same as in the [earlier tutorial](../../class_reps/main). *)
 cpp.prog source prog cpp:{{
   struct Foo {
     int n{0};
@@ -19,7 +18,6 @@ cpp.prog source prog cpp:{{
   }
 }}.
 
-(*@@ Open a Rocq section, that abstracts over some assumptions. *)
 Section with_cpp.
   Context `{Σ : cpp_logic}.
   Context `{MOD : source ⊧ σ}.
