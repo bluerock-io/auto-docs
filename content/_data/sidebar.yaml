@@ -11,5 +11,7 @@
       url: docs/debugging/main.v
     - title: Class Representation Predicates
       url: docs/class_reps/main.v
+    - title: Class Representation Predicates, alternative
+      url: docs/class_reps/alt.v
     - title: Hints about Representation Predicates
       url: docs/rep_hints/main.v
