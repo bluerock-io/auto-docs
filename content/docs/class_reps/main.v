@@ -21,13 +21,13 @@ Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
 (*@@ Here, we define AST `source` containing our example C++ program: *)
 cpp.prog source prog cpp:{{
-  struct Foo {
+  struct IntCell {
     int n{0};
-    void method();
+    void method() const {}
   };
 
   void test() {
-    Foo m;
+    IntCell m;
     m.method();
   }
 }}.
@@ -35,9 +35,9 @@ cpp.prog source prog cpp:{{
 (*@@
 ## The Model
 
-To formalize type `Foo`, we define a type `FooT` of _models_ of `Foo`. A value
-of type `FooT` describes the data inside an instance of `Foo`. *)
-Record FooT := MkT {
+To formalize type `IntCell`, we define a type `IntCellT` of _models_ of `IntCell`. A value
+of type `IntCellT` describes the data inside an instance of `IntCell`. *)
+Record IntCellT := MkT {
   foo_n : Z
 }.
 
@@ -58,58 +58,58 @@ Section with_cpp.
   In [state basics](../../state_basics/main) we saw how `intR` lets us represent the state
   of a variable of type `int`. That is, `intR` is the representation predicate for type `int`.
 
-  Next, we define the representation predicate for class `Foo`.
-  This will be a function `FooR : cQp.t -> FooT -> Rep`.
+  Next, we define the representation predicate for class `IntCell`.
+  This will be a function `IntCellR : cQp.t -> IntCellT -> Rep`.
 
-  Assertion `p |-> FooR q m` gives ownership `q` of a `Foo` instance whose content matches the
-  model `m`, living at location `p`. Concretely, we define `FooR` as follows:
+  Assertion `p |-> IntCellR q m` gives ownership `q` of a `IntCell` instance whose content matches the
+  model `m`, living at location `p`. Concretely, we define `IntCellR` as follows:
   *)
-  Definition FooR (q : cQp.t) (m : FooT) : Rep :=
-    _field "Foo::n" |-> intR q m.(foo_n) **
-    structR "Foo" q.
+  Definition IntCellR (q : cQp.t) (m : IntCellT) : Rep :=
+    _field "IntCell::n" |-> intR q m.(foo_n) **
+    structR "IntCell" q.
   (*@@
-  This definition describes the layout of type `Foo`.
+  This definition describes the layout of type `IntCell`.
   In many cases, such representation predicate can be generated, but we define
   it ourselves to explain how these work.
 
-  We use `intR q m.(foo_n)` because field `Foo::n` contains an
+  We use `intR q m.(foo_n)` because field `IntCell::n` contains an
   integer with value `m.(foo_n)`.
-  We offset that representation predicate with `_field "Foo::n"` because this
+  We offset that representation predicate with `_field "IntCell::n"` because this
   integer does not live at location `p` (which points to the whole object) but
-  at location `p ,, _field "Foo::n"`.
+  at location `p ,, _field "IntCell::n"`.
 
   This works because when we define a `Rep`, the `x |-> R` operator is
   overloaded to expect `x` to be a pointer _offset_ `o` instead of a pointer.
 
-  `structR "Foo" q` means we own `q` fraction of a `Foo` instance; `structR` is
+  `structR "IntCell" q` means we own `q` fraction of a `IntCell` instance; `structR` is
   used for all `struct` and `class` aggregate C++ types.
   *)
 
   (*@HIDE@*)
   (* TODO: I want to show br.lock, not this, but it's too early for [br.lock]. *)
-  Hint Opaque FooR : br_opacity typeclass_instances.
+  Hint Opaque IntCellR : br_opacity typeclass_instances.
   (*@END-HIDE@*)
 
-  (*@@ Specify `Foo`'s constructor and destructor. *)
-  cpp.spec (default_ctor "Foo") as ctor_spec with
+  (*@@ Specify `IntCell`'s constructor and destructor. *)
+  cpp.spec (default_ctor "IntCell") as ctor_spec with
     (\this this
-     (* After invoking `Foo`'s constructor on `this`,
-      we have full ownership `1$m` of a `Foo` instance,
+     (* After invoking `IntCell`'s constructor on `this`,
+      we have full ownership `1$m` of a `IntCell` instance,
       whose model is `MkT 0`.
       *)
-     \post this |-> FooR 1$m (MkT 0)).
+     \post this |-> IntCellR 1$m (MkT 0)).
 
-  (*@@ Conversely, `Foo`'s destructor consumes full ownership of a `Foo`
+  (*@@ Conversely, `IntCell`'s destructor consumes full ownership of a `IntCell`
   instance with any model. *)
-  cpp.spec (dtor "Foo") as dtor_spec with
+  cpp.spec (dtor "IntCell") as dtor_spec with
     (\this this
-     \pre{m} this |-> FooR 1$m m
+     \pre{m} this |-> IntCellR 1$m m
      \post emp).
 
   (*@@ Here we have the specification of a method that does nothing. *)
-  cpp.spec "Foo::method()" as method_spec with
+  cpp.spec "IntCell::method() const" as method_spec with
     (\this this
-     \prepost{q m} this |-> FooR q m
+     \prepost{q m} this |-> IntCellR q m
      \post emp).
 
   cpp.spec "test()" as test_spec with

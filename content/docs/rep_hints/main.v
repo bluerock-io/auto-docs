@@ -6,14 +6,14 @@ Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 (*@@ Define AST `source` containing our example C++ program.
 This is the same as in the [earlier tutorial](../../class_reps/main). *)
 cpp.prog source prog cpp:{{
-  struct Foo {
+  struct IntCell {
     int n{0};
-    void method();
+    void method() const;
   };
 
 
   void test() {
-    Foo m;
+    IntCell m;
     m.method();
   }
 }}.
@@ -24,16 +24,16 @@ Section with_cpp.
 
   Parameter R : cQp.t -> N -> Rep.
 
-  cpp.spec (default_ctor "Foo") as ctor_spec with
+  cpp.spec (default_ctor "IntCell") as ctor_spec with
     (\this this
      \post this |-> R 1$m 0).
 
-  cpp.spec (dtor "Foo") as dtor_spec with
+  cpp.spec (dtor "IntCell") as dtor_spec with
     (\this this
      \pre{m} this |-> R 1$m m
      \post emp).
 
-  cpp.spec "Foo::method()" as lock_spec with
+  cpp.spec "IntCell::method() const" as method_spec with
     (\this this
      \prepost{q m} this |-> R q m
      \post emp).
@@ -51,7 +51,7 @@ Section with_cpp.
     #[only(cfracsplittable)] derive R.
     progress work.
 
-    #[only(type_ptr="Foo")] derive R.
+    #[only(type_ptr="IntCell")] derive R.
 
     progress work.
     go.
