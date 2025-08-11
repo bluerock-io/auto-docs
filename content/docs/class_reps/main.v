@@ -38,7 +38,12 @@ cpp.prog source prog cpp:{{
 ## The Model
 
 To formalize type `IntCell`, we define a type `IntCellT` of _models_ of `IntCell`. A value
-of type `IntCellT` describes the data inside an instance of `IntCell`. *)
+of type `IntCellT` describes the data inside an instance of `IntCell`.
+Since `IntCell` is a C++ struct with one field of type `int`,
+and we use Rocq type `Z` of signed integers as model for `int` (via
+representation predicate `intR`),
+our model will be a Rocq record with one field of type `Z`.
+*)
 Record IntCellT := MkT {
   foo_n : Z
 }.

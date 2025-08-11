@@ -32,7 +32,13 @@ Check primR "long int" 1$c (Vint 1000). (* << constant long int cell containing 
 
 (*@@
 Because `primR` captures **initialized** program state, it implies that the value stored in the location
-(the last argument) is well typed at the type of the location. Formally, this is captured by the following
+(the last argument) is well typed at the type of the location.
+For instance, a `char` cannot store a `Vint` value, an `int` cannot store a
+`Vchar` value, and neither can store a value that overflows the storage.
+In other words, even if `val` has "too many" values, `primR ty q v` can rule out
+the values of `v` that are not appropriate for `ty`.
+
+Formally, this is captured by the following:
 *)
 Lemma primR_has_type : forall (p : ptr) ty q v,
     p |-> primR ty q v |-- validP<ty> v.
