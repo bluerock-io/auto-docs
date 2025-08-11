@@ -24,6 +24,8 @@ cpp.prog source prog cpp:{{
   struct IntCell {
     int n{0};
     void method() const {}
+    IntCell() = default;
+    IntCell(int _n): n(_n) {}
   };
 
   void test() {
@@ -87,33 +89,58 @@ Section with_cpp.
 
   (*@HIDE@*)
   (* TODO: I want to show br.lock, not this, but it's too early for [br.lock]. *)
-  Hint Opaque IntCellR : br_opacity typeclass_instances.
+  #[global] Hint Opaque IntCellR : br_opacity typeclass_instances.
   (*@END-HIDE@*)
 
-  (*@@ Specify `IntCell`'s constructor and destructor. *)
-  cpp.spec (default_ctor "IntCell") as ctor_spec with
-    (\this this
-     (* After invoking `IntCell`'s constructor on `this`,
-      we have full ownership `1$m` of a `IntCell` instance,
-      whose model is `MkT 0`.
-      *)
-     \post this |-> IntCellR 1$m (MkT 0)).
+  (*@@
+  ## The Specifications
 
-  (*@@ Conversely, `IntCell`'s destructor consumes full ownership of a `IntCell`
-  instance with any model. *)
-  cpp.spec (dtor "IntCell") as dtor_spec with
-    (\this this
-     \pre{m} this |-> IntCellR 1$m m
-     \post emp).
+  Next, we specify [IntCell] constructors, destructor, and methods.
 
-  (*@@ Here we have the specification of a method that does nothing. *)
-  cpp.spec "IntCell::method() const" as method_spec with
-    (\this this
-     \prepost{q m} this |-> IntCellR q m
-     \post emp).
+  Such specifications typically need to refer to the object being constructor,
+  destructed, or on which the method is being invoked --- the _receiver_.
+  To that end, they can use `\this p` and then for instance `this |-> IntCellR
+  1$m m`. `\this p` binds pointer `p` to the receiver object in the rest of the
+  spec, and `this |-> IntCellR 1$m m` asserts full ownership of that object.
 
-  cpp.spec "test()" as test_spec with
-    (\post emp).
+  First, we specify the default constructor.
+  *)
+  cpp.spec "IntCell::IntCell()" as default_ctor_spec with (
+    \this this
+    \post this |-> IntCellR 1$m (MkT 0)).
+  (*@@
+  Invoking any constructor returns full ownership `1$m` to a new object.
+  The `IntCell` default constructor initializes `IntCell::m` to `0`, so the
+  model for the new object is `MkT 0`.
+
+  Next we specify a non-default constructor `IntCell(int)`; this spec is
+  similar, but `IntCell(n)` will produce an object with model `MkT n` instead of
+  `MkT 0`.
+  *)
+  cpp.spec "IntCell::IntCell(int)" as int_ctor_spec with (
+    \this this
+    \arg{n} "_n" (Vint n)
+    \post this |-> IntCellR 1$m (MkT n)).
+
+  (*@@
+  Conversely, `IntCell`'s destructor consumes full ownership `1$m` of a `IntCell`
+  instance with any model, and returns no ownership. *)
+  cpp.spec "IntCell::~IntCell()" as dtor_spec with (
+    \this this
+    \pre{m} this |-> IntCellR 1$m m
+    \post emp).
+
+  (*@@ Next, we have the specification of a method that does nothing. *)
+  cpp.spec "IntCell::method() const" as method_spec with (
+    \this this
+    (* Since this method does _not_ modify its receiver, this method doesn't
+    need full ownership of [IntCellR] and just borrows partial ownership [q].
+    *)
+    \prepost{q m} this |-> IntCellR q m
+    \post emp).
+
+  cpp.spec "test()" as test_spec with (
+    \post emp).
 
 (*@HIDE@*)
 End with_cpp.

@@ -1,9 +1,10 @@
+(*@HIDE@*)
 (*@@
-Automation
 First we setup our automation and use an example program: *)
 Require Import bluerock.auto.cpp.prelude.proof.
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 Implicit Type (σ : genv).
+(*@END-HIDE@*)
 
 NES.Begin Point.
 
