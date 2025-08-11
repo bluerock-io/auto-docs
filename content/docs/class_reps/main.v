@@ -1,9 +1,23 @@
+(*@@
+In this document, we demonstrate how to specify a class.
+
+We specify a class in three steps:
+
+1. We write the **model** of the class, i.e. what a value of this class "means"
+at an intuitive level.
+2. We write the **representation predicate** of the class, i.e. how the model is
+implemented in the C++ source code.
+3. We specify the member functions using the representation predicate.
+*)
+
+(*@HIDE@*)
 (*@@ Here, we demonstrate how to verify a class
 First we setup our automation. *)
 Require Import bluerock.auto.cpp.prelude.proof.
 
 (*@@ Import a command to specify our C++ program "inline". *)
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+(*@END-HIDE@*)
 
 (*@@ Here, we define AST `source` containing our example C++ program: *)
 cpp.prog source prog cpp:{{
@@ -27,6 +41,7 @@ Record FooT := MkT {
   foo_n : Z
 }.
 
+(*@HIDE@*)
 (*@@ Open a Rocq section, that abstracts over some assumptions. *)
 Section with_cpp.
   (*@@ Separation logic statements depend on an instance of the [cpp_logic] typeclass. *)
@@ -35,9 +50,12 @@ Section with_cpp.
   the concrete AST [source] that we're doing proofs about.
   We know nothing else about the program. *)
   Context `{MOD : source ⊧ σ}.
+(*@END-HIDE@*)
 
   (*@@
-  We already [have seen](../../state_basics/main) how `intR` lets us represent the state
+  ## The Representation Predicate
+
+  In [state basics](../../state_basics/main) we saw how `intR` lets us represent the state
   of a variable of type `int`. That is, `intR` is the representation predicate for type `int`.
 
   Next, we define the representation predicate for class `Foo`.
@@ -97,21 +115,6 @@ Section with_cpp.
   cpp.spec "test()" as test_spec with
     (\post emp).
 
-  (*@HIDE@*)
-  (* TODO: can't explain this proof now well. *)
-  Lemma test_ok : verify[source] test_spec.
-  Proof.
-    verify_spec; go.
-
-    #[global] Declare Instance R_learm : Cbn (Learn (any ==> learn_eq ==> learn_hints.fin) FooR).
-    progress work.
-    #[only(cfracsplittable)] derive FooR.
-    progress work.
-
-    #[only(type_ptr="Foo")] derive FooR.
-
-    progress work.
-    go.
-  Qed.
-  (*@END-HIDE@*)
+(*@HIDE@*)
 End with_cpp.
+(*@END-HIDE@*)

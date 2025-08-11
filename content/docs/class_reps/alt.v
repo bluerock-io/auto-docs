@@ -22,7 +22,7 @@ cpp.prog source1 prog cpp:{{
 (*@@
 Just like `intR` defines the memory representation for the type `int`,
 we can define `PointR` to define the memory representation for the class `Point`.
-The following assertion describes an struct of type `Point` where field `x`
+The following assertion describes a struct of type `Point` where field `x`
 contains the integer `1` and field `y` contains the integer value `5`: *)
 
 Example R15 `{Σ : cpp_logic} {σ} (q : cQp.t) : Rep :=

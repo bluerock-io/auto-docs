@@ -46,7 +46,7 @@ Section with_cpp.
     verify_spec; go.
     (*@@ TODO: explain here the goals we're stuck on, and the hints we need. *)
 
-    #[global] Declare Instance R_learm : Cbn (Learn (any ==> learn_eq ==> learn_hints.fin) R).
+    #[global] Declare Instance R_learn : Cbn (Learn (any ==> learn_eq ==> learn_hints.fin) R).
     progress work.
     #[only(cfracsplittable)] derive R.
     progress work.
