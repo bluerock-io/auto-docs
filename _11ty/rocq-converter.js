@@ -12,7 +12,7 @@ export function rocqToMd(sentences) {
       // Escape to protect from cpp:{{ ... }}.
       // see https://liquidjs.com/tutorials/escaping.html#Liquid-Escape.
       markdown +=
-        '{% raw %}\n```coq\n' + codeBlock + '\n```\n{% endraw %}\n';
+          '{% raw %}\n```coq\n' + codeBlock.replace(/^(\s*\n)+/,'').trimEnd() + '\n```\n{% endraw %}\n';
 
       codeBlock = '';
     }
