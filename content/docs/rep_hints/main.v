@@ -1,10 +1,10 @@
-(*@@ Here, we show some hints about `Rep`s that we can declare to get proofs unstuck.
- First we setup our automation and use an example program: *)
+(*| Here, we show some hints about `Rep`s that we can declare to get proofs unstuck.
+ First we setup our automation and use an example program: |*)
 Require Import bluerock.auto.cpp.prelude.proof.
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
-(*@@ Define AST `source` containing our example C++ program.
-This is the same as in the [earlier tutorial](../../class_reps/main). *)
+(*| Define AST `source` containing our example C++ program.
+This is the same as in the [earlier tutorial](../../class_reps/main). |*)
 cpp.prog source prog cpp:{{
   struct IntCell {
     int n{0};
@@ -44,7 +44,7 @@ Section with_cpp.
   Lemma test_ok : verify[source] test_spec.
   Proof.
     verify_spec; go.
-    (*@@ TODO: explain here the goals we're stuck on, and the hints we need. *)
+    (*| TODO: explain here the goals we're stuck on, and the hints we need. |*)
 
     #[global] Declare Instance R_learn : Cbn (Learn (any ==> learn_eq ==> learn_hints.fin) R).
     progress work.

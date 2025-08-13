@@ -14,15 +14,15 @@ const testCases = [
   },
   {
     name: 'Only markdown',
-    input: ['(*@@ # Title *)', '(*@@ ## Subtitle *)'],
+    input: ['(*| # Title |*)', '(*| ## Subtitle |*)'],
     expected: '# Title\n## Subtitle',
   },
   {
     name: 'Mixed content',
     input: [
-      '(*@@ # Title *)',
+      '(*| # Title |*)',
       'Definition a := 1.',
-      '(*@@ ## Subtitle *)',
+      '(*| ## Subtitle |*)',
       'Print a.',
     ],
     expected:
@@ -30,12 +30,12 @@ const testCases = [
   },
   {
     name: 'Code block at the end',
-    input: ['(*@@ # Title *)', 'Definition a := 1.'],
+    input: ['(*| # Title |*)', 'Definition a := 1.'],
     expected: '# Title\n{% raw %}\n```coq\nDefinition a := 1.\n```\n{% endraw %}',
   },
   {
     name: 'Markdown at the end',
-    input: ['Definition a := 1.', '(*@@ # Title *)'],
+    input: ['Definition a := 1.', '(*| # Title |*)'],
     expected: '{% raw %}\n```coq\nDefinition a := 1.\n```\n{% endraw %}\n# Title',
   },
 ];
