@@ -1,6 +1,6 @@
 (*@HIDE@*)
-(*@@
-First we setup our automation and use an example program: *)
+(*|
+First we setup our automation and use an example program: |*)
 Require Import bluerock.auto.cpp.prelude.proof.
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 Implicit Type (σ : genv).
@@ -8,11 +8,11 @@ Implicit Type (σ : genv).
 
 NES.Begin Point.
 
-(*@@
+(*|
 ## Class Representation predicates
 
 Consider the following AST `source1`, definining C++ class `Point`.
-*)
+|*)
 cpp.prog source1 prog cpp:{{
   class Point {
     int x;
@@ -20,11 +20,11 @@ cpp.prog source1 prog cpp:{{
   };
 }}.
 
-(*@@
+(*|
 Just like `intR` defines the memory representation for the type `int`,
 we can define `PointR` to define the memory representation for the class `Point`.
 The following assertion describes a struct of type `Point` where field `x`
-contains the integer `1` and field `y` contains the integer value `5`: *)
+contains the integer `1` and field `y` contains the integer value `5`: |*)
 
 Example R15 `{Σ : cpp_logic} {σ} (q : cQp.t) : Rep :=
   structR "Point" q **
@@ -32,11 +32,11 @@ Example R15 `{Σ : cpp_logic} {σ} (q : cQp.t) : Rep :=
   _field "Point::y"  |-> intR q 5.
 
 
-(*@@
+(*|
 The above was too concrete; it stored the specific point `(1, 5)`.
 Just like `intR` takes as agument a `z : Z` to denote the mathematical number being
 represented, we define a Gallina record type `t` to denote the mathematical model of what is stored:
-*)
+|*)
 
 Record t : Type := Mk
 { p_x : Z
@@ -50,7 +50,7 @@ Definition R `{Σ : cpp_logic} {σ} (q : cQp.t) (m : t): Rep :=
   _field "Point::x"  |-> intR q m.(p_x) **
   _field "Point::y"  |-> intR q m.(p_y).
 
-(*@@ We derive some utility infrastructure to be used later. *)
+(*| We derive some utility infrastructure to be used later. |*)
 #[only(cfracsplittable)] derive R.
 #[only(type_ptr=Point)] derive R.
 Module R_Unfold.
@@ -74,7 +74,7 @@ Section with_Σ.
       verify_spec; go.
       Import MyPretty.
       Show.
-(*@@
+(*|
 Here, the proof is stuck.
 Sometimes, that means that our automation needs help to complete the proof.
 But here, our program does not implement our specification, so one of the two is buggy.
@@ -95,7 +95,7 @@ More specifically, pointer `this ,, o_field σ "Point::x"` (in C++, `&(this->x)`
 Same for `this ,, o_field σ "Point::y"` (in C++, `&(this->y)`).
 
 To continue, we abort the proof, and define AST `source` with a fixed version of the code.
-*)
+|*)
     Abort.
 
     cpp.prog source prog cpp:{{
@@ -105,11 +105,11 @@ To continue, we abort the proof, and define AST `source` with a fixed version of
       };
     }}.
 
-    (*@@
+    (*|
     In the fixed AST `source`, `Point`'s implicitly generated constructor will
     initialize fields `x` and `y` to `0`.
     We can then easily prove `Point`'s constructor correct against the new AST.
-    *)
+    |*)
 
     Lemma ctor_ok : verify[source] ctor_spec.
     Proof.

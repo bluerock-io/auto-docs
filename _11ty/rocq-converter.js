@@ -26,9 +26,12 @@ export function rocqToMd(sentences) {
     if (hide) continue;
     if (sentence === '(*@HIDE@*)') {
       hide = true;
-    } else if (sentence.startsWith('(*@@')) {
+    } else if (sentence.startsWith('(*|')) {
+        if (!sentence.endsWith('|*)')) {
+            console.log(`Bad comment:\n"${sentence}"`);
+        }
       flushCodeBlock();
-      const content = sentence.substring(4, sentence.length - 2).trim();
+      const content = sentence.substring(3, sentence.length - 3).trim();
       markdown += content + '\n';
     } else {
       codeBlock += sentence;

@@ -1,4 +1,4 @@
-(*@@
+(*|
 In this document, we demonstrate how to specify a class.
 
 We specify a class in three steps:
@@ -8,18 +8,18 @@ at an intuitive level.
 2. We write the **representation predicate** of the class, i.e. how the model is
 implemented in the C++ source code.
 3. We specify the member functions using the representation predicate.
-*)
+|*)
 
 (*@HIDE@*)
-(*@@ Here, we demonstrate how to verify a class
-First we setup our automation. *)
+(*| Here, we demonstrate how to verify a class
+First we setup our automation. |*)
 Require Import bluerock.auto.cpp.prelude.proof.
 
-(*@@ Import a command to specify our C++ program "inline". *)
+(*| Import a command to specify our C++ program "inline". |*)
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 (*@END-HIDE@*)
 
-(*@@ Here, we define AST `source` containing our example C++ program: *)
+(*| Here, we define AST `source` containing our example C++ program: |*)
 cpp.prog source prog cpp:{{
   struct IntCell {
     int n{0};
@@ -34,7 +34,7 @@ cpp.prog source prog cpp:{{
   }
 }}.
 
-(*@@
+(*|
 ## The Model
 
 To formalize type `IntCell`, we define a type `IntCellT` of _models_ of `IntCell`. A value
@@ -43,23 +43,23 @@ Since `IntCell` is a C++ struct with one field of type `int`,
 and we use Rocq type `Z` of signed integers as model for `int` (via
 representation predicate `intR`),
 our model will be a Rocq record with one field of type `Z`.
-*)
+|*)
 Record IntCellT := MkT {
   foo_n : Z
 }.
 
 (*@HIDE@*)
-(*@@ Open a Rocq section, that abstracts over some assumptions. *)
+(*| Open a Rocq section, that abstracts over some assumptions. |*)
 Section with_cpp.
-  (*@@ Separation logic statements depend on an instance of the [cpp_logic] typeclass. *)
+  (*| Separation logic statements depend on an instance of the [cpp_logic] typeclass. |*)
   Context `{Σ : cpp_logic}.
-  (*@@ Specs and proofs also require us to assume that the linked program [σ] contains
+  (*| Specs and proofs also require us to assume that the linked program [σ] contains
   the concrete AST [source] that we're doing proofs about.
-  We know nothing else about the program. *)
+  We know nothing else about the program. |*)
   Context `{MOD : source ⊧ σ}.
 (*@END-HIDE@*)
 
-  (*@@
+  (*|
   ## The Representation Predicate
 
   In [state basics](../../state_basics/main) we saw how `intR` lets us represent the state
@@ -70,11 +70,11 @@ Section with_cpp.
 
   Assertion `p |-> IntCellR q m` gives ownership `q` of a `IntCell` instance whose content matches the
   model `m`, living at location `p`. Concretely, we define `IntCellR` as follows:
-  *)
+  |*)
   Definition IntCellR (q : cQp.t) (m : IntCellT) : Rep :=
     _field "IntCell::n" |-> intR q m.(foo_n) **
     structR "IntCell" q.
-  (*@@
+  (*|
   This definition describes the layout of type `IntCell`.
   In many cases, such representation predicate can be generated, but we define
   it ourselves to explain how these work.
@@ -90,14 +90,14 @@ Section with_cpp.
 
   `structR "IntCell" q` means we own `q` fraction of a `IntCell` instance; `structR` is
   used for all `struct` and `class` aggregate C++ types.
-  *)
+  |*)
 
   (*@HIDE@*)
   (* TODO: I want to show br.lock, not this, but it's too early for [br.lock]. *)
   #[global] Hint Opaque IntCellR : br_opacity typeclass_instances.
   (*@END-HIDE@*)
 
-  (*@@
+  (*|
   ## The Specifications
 
   Next, we specify [IntCell] constructors, destructor, and methods.
@@ -109,11 +109,11 @@ Section with_cpp.
   spec, and `this |-> IntCellR 1$m m` asserts full ownership of that object.
 
   First, we specify the default constructor.
-  *)
+  |*)
   cpp.spec "IntCell::IntCell()" as default_ctor_spec with (
     \this this
     \post this |-> IntCellR 1$m (MkT 0)).
-  (*@@
+  (*|
   Invoking any constructor returns full ownership `1$m` to a new object.
   The `IntCell` default constructor initializes `IntCell::m` to `0`, so the
   model for the new object is `MkT 0`.
@@ -121,21 +121,21 @@ Section with_cpp.
   Next we specify a non-default constructor `IntCell(int)`; this spec is
   similar, but `IntCell(n)` will produce an object with model `MkT n` instead of
   `MkT 0`.
-  *)
+  |*)
   cpp.spec "IntCell::IntCell(int)" as int_ctor_spec with (
     \this this
     \arg{n} "_n" (Vint n)
     \post this |-> IntCellR 1$m (MkT n)).
 
-  (*@@
+  (*|
   Conversely, `IntCell`'s destructor consumes full ownership `1$m` of a `IntCell`
-  instance with any model, and returns no ownership. *)
+  instance with any model, and returns no ownership. |*)
   cpp.spec "IntCell::~IntCell()" as dtor_spec with (
     \this this
     \pre{m} this |-> IntCellR 1$m m
     \post emp).
 
-  (*@@ Next, we have the specification of a method that does nothing. *)
+  (*| Next, we have the specification of a method that does nothing. |*)
   cpp.spec "IntCell::method() const" as method_spec with (
     \this this
     (* Since this method does _not_ modify its receiver, this method doesn't

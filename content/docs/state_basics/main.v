@@ -1,4 +1,4 @@
-(*@@
+(*|
 # The Program State
 
 In this tutorial we will focus on the very basics of {{ "separation logic" | terminology }},
@@ -96,7 +96,7 @@ _local "x" |-> intR 1$m 1 ** _local "y" |-> intR 1$m 11
 
 With this we have seen the basics of how separation logic works in a very small example.
 Many resources exist online with a more comprehensive description of separation logic.
-*)
+|*)
 
 (*@HIDE@*)
 (* See {{ "separation logic" | terminology }} for more information. *)
