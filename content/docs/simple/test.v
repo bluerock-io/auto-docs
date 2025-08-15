@@ -68,10 +68,10 @@ Qed.
 The `Qed` ends the proof and Rocq tells us that the proof is checked.
 
 Congratulations! You've walked through your first proof.
-*)
+|*)
 
 (*@HIDE@*)
-(*@@
+(*|
 ## What's Next?
 
 Consider verifying some more simple functions including:
