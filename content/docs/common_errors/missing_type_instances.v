@@ -39,7 +39,7 @@ Section with_cpp.
 (*@END-HIDE@*)
 
 (*|
-When we start our proof, `verify?` complains that it can not find a specification of `missing_spec()`, so we're aware of the problem.
+This proof gets stuck on the following goal:
  |*)
 Lemma test_ok : verify[source] "test(C)".
 Proof.
@@ -68,14 +68,17 @@ This is most commonly solved using a `Typed` hint on the class. The following co
   #[only(type_ptr="C")] derive CR.
 (*|
 After introducing the hint, the automation can make progress.
+
+In this case, `#[only(type_ptr)] derive CR.` is also sufficient,
+because the automation can infer the type `C` from `CR`'s definition.
 |*)
   go.
+(*@HIDE@*)
+
 (*|
 Consult [`reference_to` and `type_ptr` here]() for more information about this
 concept.
 |*)
-
-(*@HIDE@*)
   Qed.
 End with_cpp.
 (*@END-HIDE@*)
