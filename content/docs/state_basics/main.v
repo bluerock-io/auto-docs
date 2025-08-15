@@ -31,7 +31,8 @@ The `|->` is the "points-to" operator which takes a left-hand-side that is a poi
 and the right-hand-side describing a portion of the program state at that pointer.
 The `_local "x"` is effectively the pointer `&x`. The right hand side, `intR 1$m 0`,
 represents a mutable program location of type `int` with value `0`.
-(The `1` in `1$m` is a {{ "fractional ownership" | terminology }}, but we will ignore it
+(The `1` in `1$m` is a {{ "fraction" | terminology }}, used to specify {{
+"fractional ownership" | terminology }}, but we will ignore it
 for now and always use `1`.)
 
 Incrementing `x` changes the value stored in the cell. The resulting state is described

@@ -38,12 +38,13 @@ Section with_cpp.
 (*|
 ## Specifying the expected behavior
 
-We must first specify what the [test] function does.
+We must first specify what the `test` function does.
 |*)
 cpp.spec "test()" from source as test_spec with
   (\post emp).
 (*|
-The `emp` tells you that the function doesn't return any {{ "resource" | terminology }}, but we'll get into that more later.
+This specification states that `test()` does nothing.
+The `\post emp` tells you that the function doesn't return any {{ "resource" | terminology }}, but we'll get into that more later.
 
 ## Verifying the Function
 
@@ -52,7 +53,8 @@ Now, we can set up the verification by posing a `Lemma`.
 Lemma test_ok : verify[source] "test()".
 Proof.
 (*|
-This sets up a theorem for our function that states that the function satisfies the specification. In this case, this means that executing the function will not produce any {{ "undefined behavior" | terminology }}.
+This sets up a theorem for our function that states that the function satisfies the specification, and that invoking the function
+as specified will not produce any {{ "undefined behavior" | terminology }}.
 
 Since this is a particularly simple function, the proof is also simple. This proceeds in two stages:
 1. We use `verify_spec` to begin the proof: our goal becomes a goal about the concrete function body.
@@ -66,13 +68,15 @@ Qed.
 The `Qed` ends the proof and Rocq tells us that the proof is checked.
 
 Congratulations! You've walked through your first proof.
+*)
 
+(*@HIDE@*)
+(*@@
 ## What's Next?
 
 Consider verifying some more simple functions including:
 
 |*)
 
-(*@HIDE@*)
 End with_cpp.
 (*@END-HIDE@*)
