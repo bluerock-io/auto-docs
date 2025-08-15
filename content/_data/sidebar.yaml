@@ -15,3 +15,9 @@
       url: docs/class_reps/alt.v
     - title: Hints about Representation Predicates
       url: docs/rep_hints/main.v
+
+- title: Common Problems
+  url: /troubleshooting
+  children:
+    - title: Dealing with Missing Type Instances
+      url: docs/common_errors/missing_type_instances.v
