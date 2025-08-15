@@ -1,6 +1,4 @@
 (*|
-# Dealing with Missing Type Instances
-
 Sometimes, a proof will get stuck because the automation
 can not prove the a reference is valid. In these cases,
 the proof usually gets stuck on a `reference_to<ty> p` obligation.

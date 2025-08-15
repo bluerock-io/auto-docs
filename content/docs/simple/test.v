@@ -1,5 +1,5 @@
 (*|
-# Verifying a simple function
+# Verifying a Simple Function
 
 Our first proof will be about a very simple function:
 
@@ -9,7 +9,7 @@ void test() { }
 
 This is trivial, but it lets us teach the basics about verification.
 
-## Setting up the verification
+## Setting up the Verification
 
 Import the C++ verification environment:
 |*)
@@ -36,7 +36,7 @@ Section with_cpp.
 (*@END-HIDE@*)
 
 (*|
-## Specifying the expected behavior
+## Specifying the Expected Behavior
 
 We must first specify what the `test` function does.
 |*)
@@ -68,10 +68,10 @@ Qed.
 The `Qed` ends the proof and Rocq tells us that the proof is checked.
 
 Congratulations! You've walked through your first proof.
-*)
+|*)
 
 (*@HIDE@*)
-(*@@
+(*|
 ## What's Next?
 
 Consider verifying some more simple functions including:
