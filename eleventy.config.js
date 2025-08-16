@@ -50,6 +50,7 @@ export default function (eleventyConfig) {
         return value.slice(value.lastIndexOf('/') + 1);
     });
 
+  // Passthrough files
 
   eleventyConfig.addPassthroughCopy({
     'node_modules/lunr/lunr.min.js': 'node_modules/lunr/lunr.min.js',
@@ -57,6 +58,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('content/**/*.v', {
     mode: 'html-relative',
   });
+  eleventyConfig.addPassthroughCopy('content/assets');
 
   // eleventyConfig.addExtension("v", {
   //     compile: async (inputContent)  => {
