@@ -3,6 +3,7 @@ import { mvParser } from './_11ty/mv-parser.js';
 import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
 import slugify from '@sindresorhus/slugify'; /* same as 11ty */
+import markdownItDefList from "markdown-it-deflist";
 
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
@@ -23,6 +24,10 @@ export default function (eleventyConfig) {
     key: 'md',
   });
 
+  // Markdown Extensions
+  eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItDefList));
+
+  // Collections
   eleventyConfig.addCollection('learn', function (collectionApi) {
     return collectionApi.getFilteredByTag('learn');
   });
