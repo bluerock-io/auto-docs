@@ -1,3 +1,6 @@
+- title: Home
+  url: index.njk
+
 - title: Learn
   url: /learn
   children:
