@@ -1,3 +1,6 @@
+- title: Home
+  url: index.njk
+
 - title: Learn
   url: /learn
   children:
@@ -21,3 +24,9 @@
   children:
     - title: Dealing with Missing Type Instances
       url: docs/common_errors/missing_type_instances.v
+
+- title: Further Reading
+  url: further-reading.md
+
+- title: Contributing
+  url: contributing.md

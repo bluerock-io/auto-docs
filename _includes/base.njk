@@ -1,149 +1,157 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ siteTitle }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        :root {
-            --bluerock-blue: #007bff; /* Example blue, replace with actual from bluerock.io */
-            --bluerock-dark: #343a40; /* Example dark, replace with actual from bluerock.io */
-        }
-        .navbar {
-            background-color: var(--bluerock-dark);
-        }
-        .navbar-brand,
-        .nav-link {
-            /* color: white !important; */
-        }
-        #searchInput {
-            border: none;
-            border-bottom: 1px solid #fff; /* White underline */
-            border-radius: 0;
-            box-shadow: none;
-            color: white;
-        }
-        #searchInput::placeholder {
-            color: rgba(255, 255, 255, 0.7); /* Lighter white for placeholder */
-        }
-        #searchInput:focus {
-            border-color: #fff;
-            box-shadow: none;
-        }
-        .sidebar {
-            bottom: 0;
-            left: 0;
-            z-index: 1000;
-            padding-left: 0;
-            overflow-x: hidden;
-            overflow-y: auto;
-            background-color: #f8f9fa;
-            border-right: 1px solid #dee2e6;
-        }
-        #sidebar {
-            padding-top: 10pt;
-        }
-        .main-content {
-            padding-top: 10pt; /* Height of navbar + some spacing */
-        }
-        #searchResults {
-            position: absolute;
-            top: 56px; /* Height of navbar */
-            right: 15px; /* Adjust as needed */
-            width: 300px; /* Adjust as needed */
-            z-index: 1050; /* Above navbar */
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ siteTitle }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style type="text/css">
+    :root {
+        --bluerock-blue: #007bff;
+        --bluerock-dark: #343a40;
+        --bluerock-light: rgb(248, 249, 250);
 
-ul#sidebar > li > a {
-  padding: .25rem .5rem;
-  font-weight: 600;
-  color: var(--bs-emphasis-color);
-  background-color: transparent;
-}
+    }
+    .navbar {
+        background-color: var(--bluerock-dark);
+    }
+    .navbar-brand,
+    .nav-link {
+        /* color: white !important; */
+    }
+    #searchInput {
+        border: none;
+        border-bottom: 1px solid #fff; /* White underline */
+        border-radius: 0;
+        box-shadow: none;
+        color: white;
+    }
+    #searchInput::placeholder {
+        color: rgba(255, 255, 255, 0.7); /* Lighter white for placeholder */
+    }
+    #searchInput:focus {
+        border-color: #fff;
+        box-shadow: none;
+    }
+    .sidebar {
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        padding-left: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #f8f9fa;
+        border-right: 1px solid #dee2e6;
+    }
+    #sidebar {
+        padding-top: 10pt;
+    }
+    .main-content {
+        padding-top: 10pt; /* Height of navbar + some spacing */
+    }
+    #searchResults {
+        position: absolute;
+        top: 56px; /* Height of navbar */
+        right: 15px; /* Adjust as needed */
+        width: 300px; /* Adjust as needed */
+        z-index: 1050; /* Above navbar */
+    }
 
-.sidebar-toggle {
-  padding: .25rem .5rem;
-  font-weight: 600;
-  color: var(--bs-emphasis-color);
-  background-color: transparent;
-}
+    ul#sidebar > li > a {
+        padding: .25rem .5rem;
+        font-weight: 600;
+        color: var(--bs-emphasis-color);
+        background-color: transparent;
+    }
 
-.sidebar-toggle:hover,
-.sidebar-toggle:focus {
-  color: rgba(var(--bs-emphasis-color-rgb), .85);
-  background-color: var(--bs-tertiary-bg);
-}
+    .sidebar-toggle {
+        padding: .25rem .5rem;
+        font-weight: 600;
+        color: var(--bs-emphasis-color);
+        background-color: transparent;
+    }
 
-.sidebar-toggle::before {
-    display: inline-block;
-  width: 1.25em;
-  line-height: 0;
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-  transition: transform .35s ease;
-  transform-origin: .5em 50%;
-}
+    .sidebar-toggle:hover,
+    .sidebar-toggle:focus {
+        color: rgba(var(--bs-emphasis-color-rgb), .85);
+        background-color: var(--bs-tertiary-bg);
+    }
 
-[data-bs-theme="dark"] .sidebar-toggle::before {
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255,255,255,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-}
+    .sidebar-toggle::before {
+        display: inline-block;
+        width: 1.25em;
+        line-height: 0;
+        content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+        transition: transform .35s ease;
+        transform-origin: .5em 50%;
+    }
 
-.sidebar-toggle[aria-expanded="true"] {
-  color: rgba(var(--bs-emphasis-color-rgb), .85);
-}
-.sidebar-toggle[aria-expanded="true"]::before {
-  transform: rotate(90deg);
-}
+    [data-bs-theme="dark"] .sidebar-toggle::before {
+        content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255,255,255,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+    }
 
-.sidebar-toggle-nav a {
-  padding: .1875rem .5rem;
-  margin-top: .125rem;
-  margin-left: 1.25rem;
-}
-.sidebar-toggle-nav a:hover,
-.sidebar-toggle-nav a:focus {
-  background-color: var(--bs-tertiary-bg);
-}
-    </style>
-<link
+    .sidebar-toggle[aria-expanded="true"] {
+        color: rgba(var(--bs-emphasis-color-rgb), .85);
+    }
+    .sidebar-toggle[aria-expanded="true"]::before {
+        transform: rotate(90deg);
+    }
+
+    .sidebar-toggle-nav a {
+        padding: .1875rem .5rem;
+        margin-top: .125rem;
+        margin-left: 1.25rem;
+    }
+    .sidebar-toggle-nav a:hover,
+    .sidebar-toggle-nav a:focus {
+        background-color: var(--bs-tertiary-bg);
+    }
+  </style>
+  <link
 			href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
-			rel="stylesheet"
-		/>
+			rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">{{ siteTitle }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <div class="input-group">
-                            <span class="input-group-text bg-transparent border-0 text-white"><i class="bi bi-search"></i></span>
-                            <input type="search" id="searchInput" class="form-control bg-transparent border-0 border-bottom text-white" placeholder="Search..." aria-label="Search">
-                        </div>
-                    </li>
-                </ul>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light navbar-light">
+    <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
+      <a class="navbar-brand" style="font-size: 20pt; font-weight: bolder" href="/">
+       <img src="/assets/bluerock-cube.svg" style="height: 25pt" />
+       {{ siteTitle }}
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-0"><i class="bi bi-search"></i></span>
+              <input type="search" id="searchInput" class="form-control bg-transparent border-0 border-bottom text-black" placeholder="Search..." aria-label="Search">
             </div>
-        </div>
+          </li>
+        </ul>
+      </div>
     </nav>
+  </header>
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-              {% include "sidebar.njk" %}
-            </nav>
-
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
-                {% block content %}
-                  {{ content | safe }}
-                {% endblock %}
-            </main>
-        </div>
+    <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout"
+         style="display: grid; grid-template-areas: 'sidebar main'; grid-template-columns: 1fr 5fr; gap: 0.5rem;">
+      <aside class="bd-sidebar" style="grid-area: 'sidebar'">
+        {% include "sidebar.njk" %}
+      </aside>
+      <main class="bd-main order-1">
+        {% block content %}
+        {{ content | safe }}
+        {% endblock %}
+      </main>
     </div>
+
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+      <center>
+        <small>BlueRock Security, Inc. 2025
+      </center>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/node_modules/lunr/lunr.min.js"></script>
