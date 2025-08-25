@@ -1,10 +1,11 @@
 {% macro menuitem(elem, indent) %}
 {% if elem.children %}
 <li class="mb-1">
-  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" style="margin-left: -1.5rem !important" aria-expanded="true">
+  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" style="margin-left: -1.5rem !important"
+  {%if not elem.collapse %}aria-expanded="true"{% endif %}>
     {{ elem.title }}
   </button>
-  <div class="collapse show" id="{{ elem.title | slugify }}-collapse">
+  <div class="collapse{%if not elem.collapse %} show{% endif %}" id="{{ elem.title | slugify }}-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       {% for xxx in elem.children %}
       {{ menuitem(xxx, false) }}

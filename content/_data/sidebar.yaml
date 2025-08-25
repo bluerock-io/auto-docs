@@ -17,6 +17,7 @@
   url: /learn
   children:
     - title: Classes
+      collapse: true
       url: docs/class_reps/main.v
       children:
         - title: Class Representation Predicates
