@@ -1,11 +1,11 @@
 {% macro menuitem(elem, indent) %}
 {% if elem.children %}
 <li class="mb-1">
-  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" aria-expanded="true">
+  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" style="margin-left: -1.5rem !important" aria-expanded="true">
     {{ elem.title }}
   </button>
   <div class="collapse show" id="{{ elem.title | slugify }}-collapse">
-    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       {% for xxx in elem.children %}
       {{ menuitem(xxx, false) }}
       {% endfor %}
@@ -13,14 +13,14 @@
   </div>
 </li>
 {% else %}
-<li class="mb-1{%if indent %} px-4{% endif %}">
+<li class="mb-1">
   <a class="nav-link" href="{{ elem.url | inputPathToUrl }}" {% if page.url == elem.url %} aria-current="page"{% endif %}>{{ elem.title }}</a>
 </li>
 {% endif %}
 {% endmacro %}
 
 <div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
-  <ul class="list-unstyled ps-0" id="sidebar">
+  <ul class="list-unstyled ps-0 mx-3" id="sidebar">
     {% for elem in sidebar %}
     {{ menuitem(elem, true) }}
     {% endfor %}
