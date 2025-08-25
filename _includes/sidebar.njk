@@ -1,10 +1,10 @@
 {% macro menuitem(elem, indent) %}
 {% if elem.children %}
 <li class="mb-1">
-  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#learn-collapse" aria-expanded="true">
+  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" aria-expanded="true">
     {{ elem.title }}
   </button>
-  <div class="collapse show" id="learn-collapse">
+  <div class="collapse show" id="{{ elem.title | slugify }}-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
       {% for xxx in elem.children %}
       {{ menuitem(xxx, false) }}
@@ -24,37 +24,5 @@
     {% for elem in sidebar %}
     {{ menuitem(elem, true) }}
     {% endfor %}
-{#
-    <li class="mb-1">
-      <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#learn-collapse" aria-expanded="true">
-        Learn
-      </button>
-      <div class="collapse show" id="learn-collapse">
-        <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
-          {% for elem in collections.learn %}
-          <li>
-            <a class="nav-link" href="{{ elem.url }}"{% if page.url == elem.url %} aria-current="page"{% endif %}>{{ elem.data.title or elem.fileSlug }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </li>
-    <li class="mb-1">
-      <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#reference-collapse" aria-expanded="true">
-        References
-      </button>
-      <div class="collapse show" id="reference-collapse">
-        <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small">
-          {% for page in collections.reference %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ page.url }}"{% if page.url == elem.url %} aria-current="page"{% endif %}>
-              {{ page.data.title or page.fileSlug }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </li>
-#}
   </ul>
 </div>
