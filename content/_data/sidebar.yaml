@@ -1,8 +1,8 @@
 - title: Home
   url: index.njk
 
-- title: Learn
-  url: /learn
+- title: Quick Start
+  url: /quick-start
   children:
     - title: "Very First Verification"
       url: docs/simple/test.v
@@ -12,12 +12,20 @@
       url: docs/primitive_reps/main.v
     - title: Stepping through Programs
       url: docs/debugging/main.v
-    - title: Class Representation Predicates
+
+- title: Learn
+  url: /learn
+  children:
+    - title: Classes
+      collapse: true
       url: docs/class_reps/main.v
-    - title: Class Representation Predicates, alternative
-      url: docs/class_reps/alt.v
-    - title: Hints about Representation Predicates
-      url: docs/rep_hints/main.v
+      children:
+        - title: Class Representation Predicates
+          url: docs/class_reps/main.v
+        - title: Class Representation Predicates, alternative
+          url: docs/class_reps/alt.v
+        - title: Hints about Representation Predicates
+          url: docs/rep_hints/main.v
 
 - title: Common Problems
   url: /troubleshooting

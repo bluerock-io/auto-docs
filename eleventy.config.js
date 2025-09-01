@@ -4,11 +4,13 @@ import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
 import slugify from '@sindresorhus/slugify'; /* same as 11ty */
 import markdownItDefList from "markdown-it-deflist";
+import brokenLinks from 'eleventy-plugin-broken-links';
 
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(brokenLinks);
   eleventyConfig.addDataExtension('yaml', (contents) => {
       return YAML.parse(contents);
   });
@@ -62,6 +64,7 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addPassthroughCopy('content/**/*.v', {
     mode: 'html-relative',
+    failOnError: true
   });
   eleventyConfig.addPassthroughCopy('content/assets');
 
