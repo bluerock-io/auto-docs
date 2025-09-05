@@ -40,7 +40,7 @@ cpp.prog source prog cpp:{{
 (*|
 ## The Model
 
-To formalize type `IntCell`, we define a type `IntCellT` as the _model_ of `IntCell`. A value
+To formalize the type `IntCell`, we define a type `IntCellT` as the _model_ of `IntCell`. A value
 of type `IntCellT` describes the data inside an instance of `IntCell`.
 Since `IntCell` is a C++ struct with one field of type `int`,
 and we use Rocq type `Z` of signed integers as model for `int` (via

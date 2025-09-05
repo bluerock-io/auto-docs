@@ -48,7 +48,7 @@ Section with_cpp.
 (*|
 ## Exploring a C++ Function with BlueRock Automation
 
-With the specification, we can step through the program using
+With the specification, we can step through the function using
 the BlueRock automation. The automation is structured to work like symbolic
 debugger. To start, we set up a proof of the function:
 |*)
@@ -71,7 +71,7 @@ At this point, the goal looks like the following
 ```
 
 Just like in a debugger, we can step forward in the program using the
-`run1` tactic, which will try to prove that the next step of the program is safe
+`run1` tactic, which will attempt to prove that the next step of the program is safe
 and step through it.
 |*)
   run1.
