@@ -1,5 +1,5 @@
 ---
-title: A Simple Verification Example with scaffold
+title: A Simple Verification Example with `scaffold`
 no_code: true
 ---
 
