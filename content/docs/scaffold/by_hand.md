@@ -15,7 +15,8 @@ We start by creating a copy of the `swap` function in a new `cpp` file
 `src/stage2.cpp`. The code is unchanged from the previous chapter:
 
 ```cpp
-#include "cstddef"
+#include <cstddef>
+
 void swap(size_t& x, size_t& y) {
     size_t tmp = y;
     y = x;

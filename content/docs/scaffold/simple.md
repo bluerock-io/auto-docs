@@ -22,7 +22,8 @@ To start with `scaffold`, we create a fresh directory `example/` and populate it
 code. We start with a very simple `swap` function which we put into `example/src/stage1.cpp`.
 
 ```cpp
-#include "cstddef"
+#include <cstddef>
+
 void swap(size_t& x, size_t& y) {
     size_t tmp = y;
     y = x;
