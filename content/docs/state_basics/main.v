@@ -2,7 +2,7 @@
 # The Program State
 
 In this tutorial we will focus on the very basics of {{ "separation logic" | terminology }},
-focusing in on primitive types. Separation logic is a logic of "resources" that can be "owned".
+primarily on primitive types. Separation logic is a logic of {{ "resource" | terminology }} that can be "owned".
 While this concept is somewhat abstract, seeing a few examples should clarify things.
 
 Consider the following program with a comment representing the program state at each line.
@@ -71,8 +71,8 @@ _local "x" |-> intR 1$m 1 ** _local "y" |-> intR 1$m 10
 The crucial feature of the separating conjunction is that it implicitly captures the disjointness
 of the two locations. Without the disjointness, we would need to explicitly state that
 `_local "x"` does not equal `_local "y"`. In this case, explicitly stating the disjointness would
-not be overly cumbersome, but as the number of pointers grows and abstractions hide internal pointers
-this solving this problem without separation logic quickly becomes intractable.
+not be overly cumbersome, but as the number of pointers grows and abstractions hide internal pointers,
+explicit disjointness without separation logic quickly becomes intractable.
 
 ## The Frame Rule
 
@@ -86,7 +86,7 @@ y++;
 To reason about this step, we only need to think about the "program cell" for `_local "y"`, i.e.
 the resource `_local "y" |-> intR 1$m 10`. We call this resource the "footprint" of the step.
 The other resources, in this case `_local "x" |-> intR 1$m 1` are called the "frame".
-In general, the footprint of a step __can__ change, while the frame __never__ changes.
+In general, the footprint of a step __can__ change, while the frame stay __unchanged__.
 Thus, after the update, the state looks like the following:
 
 ```coq
@@ -96,7 +96,7 @@ _local "x" |-> intR 1$m 1 ** _local "y" |-> intR 1$m 11
 ## Recap
 
 With this we have seen the basics of how separation logic works in a very small example.
-Many resources exist online with a more comprehensive description of separation logic.
+See the [Further Reading](../../further-reading) section for more materials on separation logic.
 |*)
 
 (*@HIDE@*)

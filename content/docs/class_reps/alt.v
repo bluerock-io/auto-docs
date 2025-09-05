@@ -11,9 +11,9 @@ NES.Begin Point.
 (*|
 ## Class Representation predicates
 
-Consider the following AST `source1`, definining C++ class `Point`.
+Consider the following AST `source`, definining C++ class `Point`.
 |*)
-cpp.prog source1 prog cpp:{{
+cpp.prog source prog cpp:{{
   class Point {
     int x;
     int y;
@@ -59,9 +59,8 @@ End R_Unfold.
 
 Section with_Σ.
   Context `{Σ : cpp_logic} {σ}.
-  (* Context `{MOD : source ⊧ σ}. *)
 
-  cpp.spec (default_ctor "Point") from source1 as ctor_spec with (
+  cpp.spec (default_ctor "Point") from source as ctor_spec with (
     \this this
     \post this |-> R 1$m (Mk 0 0)
   ).
@@ -69,7 +68,7 @@ Section with_Σ.
   Section with_R_Unfold.
     Import R_Unfold.
 
-    Lemma ctor_ok : verify[source1] ctor_spec.
+    Lemma ctor_ok : verify[source] ctor_spec.
     Proof.
       verify_spec; go.
       Import MyPretty.
@@ -94,11 +93,11 @@ More specifically, pointer `this ,, o_field σ "Point::x"` (in C++, `&(this->x)`
 `uninitR "int" 1$m` in the assumption, and to `intR 1$m 0` in the goal.
 Same for `this ,, o_field σ "Point::y"` (in C++, `&(this->y)`).
 
-To continue, we abort the proof, and define AST `source` with a fixed version of the code.
+To continue, we abort the proof, and define AST `source1` with a fixed version of the code.
 |*)
     Abort.
 
-    cpp.prog source prog cpp:{{
+    cpp.prog source1 prog cpp:{{
       class Point {
         int x{0};
         int y{0};
@@ -106,12 +105,12 @@ To continue, we abort the proof, and define AST `source` with a fixed version of
     }}.
 
     (*|
-    In the fixed AST `source`, `Point`'s implicitly generated constructor will
+    In the fixed AST `source1`, `Point`'s implicitly generated constructor will
     initialize fields `x` and `y` to `0`.
     We can then easily prove `Point`'s constructor correct against the new AST.
     |*)
 
-    Lemma ctor_ok : verify[source] ctor_spec.
+    Lemma ctor_ok : verify[source1] ctor_spec.
     Proof.
       verify_spec; go.
     Qed.

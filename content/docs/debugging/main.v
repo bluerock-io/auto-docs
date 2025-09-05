@@ -48,15 +48,15 @@ Section with_cpp.
 (*|
 ## Exploring a C++ Function with BlueRock Automation
 
-With the specification setup, we can start to step through the program using
+With the specification, we can step through the program using
 the BlueRock automation. The automation is structured to work like symbolic
-debugger. To set it up, we set up a proof of the function:
+debugger. To start, we set up a proof of the function:
 |*)
   Lemma test_ok : verify[source] "test()".
   Proof.
     verify_spec.
 (*|
-At this point, the goal is looks like the following
+At this point, the goal looks like the following
 
 ```coq
   _ : denoteModule source  (* < the program that we are working with *)
@@ -70,8 +70,8 @@ At this point, the goal is looks like the following
         Sexpr (core.Epostdec (Evar "x" "int") "int")])
 ```
 
-Just like a debugger, we can step forward in the program using the
-`run1` tactic which will try to prove that the next step of the program is safe
+Just like in a debugger, we can step forward in the program using the
+`run1` tactic, which will try to prove that the next step of the program is safe
 and step through it.
 |*)
   run1.
@@ -79,7 +79,7 @@ and step through it.
 This invocation took us to the evaluation of the integer constant `0` that is
 the initializer for `x`. We can continue to step through the program with more
 invocations of `run1`, then complete the proof with `Qed`.
-If we are just exploring, and want to abort the proof, we can use `Abort` instead of `Qed`.
+If we are just exploring, we can use `Abort` instead of `Qed` to abort the proof.
  |*)
   run1.
 (*|

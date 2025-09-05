@@ -10,7 +10,7 @@ While this guide aims to be a (relatively) standalone introduction to the specif
 [Software Foundations](https://deepspec.github.io/sf/) series
 : These are undergraduate level text books that use Rocq to present the basics of programming langauge theory which includes topics such as functional programming in Rocq, programm language semantics, type systems, and verification.
 
-[Coq in a Hurry](https://cel.archives-ouvertes.fr/file/index/docid/459139/filename/coq-hurry.pdf)
+[Coq in a Hurry](https://cel.hal.science/file/index/docid/459139/filename/coq-hurry.pdf)
 : Yves Bertot's tutorial can help get you started with Rocq exploring basic tactics and navigation.
 
 ## Separation Logic
