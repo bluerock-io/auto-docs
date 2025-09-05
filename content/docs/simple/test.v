@@ -7,7 +7,7 @@ Our first proof will be about a very simple function:
 void test() { }
 ```
 
-This is trivial, but it lets us teach the basics about verification.
+This is trivial, but it lets us learn the basics about verification.
 
 ## Setting up the Verification
 
@@ -58,7 +58,7 @@ as specified will not produce any {{ "undefined behavior" | terminology }}.
 
 Since this is a particularly simple function, the proof is also simple. This proceeds in two stages:
 1. We use `verify_spec` to begin the proof: our goal becomes a goal about the concrete function body.
-2. Next we use the `go` tactic to "execute" the body of the function and prove the post-condition.
+2. Next we use the `go` tactic to {{ "symbolically execute" | terminology }} the body of the function and prove the post-condition.
 
 Idiomatically, we chain these two tactics together using a `;` which leads us to the following proof script.
 |*)

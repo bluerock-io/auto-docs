@@ -4,9 +4,9 @@ In this document, we demonstrate how to specify a class.
 We specify a class in three steps:
 
 1. We write the **model** of the class, i.e. what a value of this class "means"
-at an intuitive level.
+at an intuitive, abstract level.
 2. We write the **representation predicate** of the class, i.e. how the model is
-implemented in the C++ source code.
+implemented using C++ resources.
 3. We specify the member functions using the representation predicate.
 |*)
 
@@ -19,7 +19,10 @@ Require Import bluerock.auto.cpp.prelude.proof.
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 (*@END-HIDE@*)
 
-(*| Here, we define AST `source` containing our example C++ program: |*)
+(*|
+## The Program
+
+Here, we define the AST `source` containing our example C++ program: |*)
 cpp.prog source prog cpp:{{
   struct IntCell {
     int n{0};
@@ -37,7 +40,7 @@ cpp.prog source prog cpp:{{
 (*|
 ## The Model
 
-To formalize type `IntCell`, we define a type `IntCellT` of _models_ of `IntCell`. A value
+To formalize the type `IntCell`, we define a type `IntCellT` as the _model_ of `IntCell`. A value
 of type `IntCellT` describes the data inside an instance of `IntCell`.
 Since `IntCell` is a C++ struct with one field of type `int`,
 and we use Rocq type `Z` of signed integers as model for `int` (via
@@ -100,13 +103,13 @@ Section with_cpp.
   (*|
   ## The Specifications
 
-  Next, we specify [IntCell] constructors, destructor, and methods.
+  Next, we specify `IntCell` constructors, destructor, and methods.
 
   Such specifications typically need to refer to the object being constructor,
   destructed, or on which the method is being invoked --- the _receiver_.
-  To that end, they can use `\this p` and then for instance `this |-> IntCellR
+  To that end, they can use `\this p` and then for instance `p |-> IntCellR
   1$m m`. `\this p` binds pointer `p` to the receiver object in the rest of the
-  spec, and `this |-> IntCellR 1$m m` asserts full ownership of that object.
+  spec, and `p |-> IntCellR 1$m m` asserts full ownership of that object.
 
   First, we specify the default constructor.
   |*)
@@ -116,11 +119,12 @@ Section with_cpp.
   (*|
   Invoking any constructor returns full ownership `1$m` to a new object.
   The `IntCell` default constructor initializes `IntCell::m` to `0`, so the
-  model for the new object is `MkT 0`.
+  default model for the new object is `MkT 0`.
 
   Next we specify a non-default constructor `IntCell(int)`; this spec is
   similar, but `IntCell(n)` will produce an object with model `MkT n` instead of
-  `MkT 0`.
+  `MkT 0`. `\arg{n} "_n" (Vint n)` binds the C++ argument `_n`'s value to the
+  variable `n`.
   |*)
   cpp.spec "IntCell::IntCell(int)" as int_ctor_spec with (
     \this this
@@ -135,7 +139,8 @@ Section with_cpp.
     \pre{m} this |-> IntCellR 1$m m
     \post emp).
 
-  (*| Next, we have the specification of a method that does nothing. |*)
+  (*| Next, we have the specification of a method that does nothing.
+  `\prepost P` means that `P` is used in both the pre-condition and the post-condition of the specification. |*)
   cpp.spec "IntCell::method() const" as method_spec with (
     \this this
     (* Since this method does _not_ modify its receiver, this method doesn't

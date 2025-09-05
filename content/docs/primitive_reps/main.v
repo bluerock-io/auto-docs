@@ -31,8 +31,8 @@ Check primR "char" 1$m (Vchar 65).      (* << mutable character cell containing 
 Check primR "long int" 1$c (Vint 1000). (* << constant long int cell containing value 1000 *)
 
 (*|
-Because `primR` captures **initialized** program state, it implies that the value stored in the location
-(the last argument) is well typed at the type of the location.
+Because `primR` captures **initialized** program state, it implies that
+the value (the last argument) stored at the location is well typed at the type of the location.
 For instance, a `char` cannot store a `Vint` value, an `int` cannot store a
 `Vchar` value, and neither can store a value that overflows the storage.
 In other words, even if `val` has "too many" values, `primR ty q v` can rule out
@@ -64,6 +64,7 @@ For instance, variable `x` is not initialized in the following code.
 ```cpp
 void f() {
   int x;
+  // _local "x" |-> uninitR "int" 1$m
 }
 ```
 BRiCk provides the `Rep`-predicate `uninitR` to capture uninitialized program cells of a particular type.
@@ -90,7 +91,9 @@ The `anyR` ownership can be particularly useful when describing a program state 
 of a loop. For example, suppose that you have the following `do-while` loop.
 ```cpp
 int x;
+// _local "x" |-> uninitR "int" 1$m
 do {
+  // _local "x" |-> anyR "int" 1$m
   x = f();
 } while (x > 0);
 ```
