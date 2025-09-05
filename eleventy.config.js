@@ -8,6 +8,8 @@ import brokenLinks from 'eleventy-plugin-broken-links';
 
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
+import { markdownify, unmarkdownify } from './_11ty/filters.js';
+
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(brokenLinks);
@@ -56,6 +58,9 @@ export default function (eleventyConfig) {
     eleventyConfig.addFilter('filename', (value) => {
         return value.slice(value.lastIndexOf('/') + 1);
     });
+
+  eleventyConfig.addFilter('md', markdownify);
+  eleventyConfig.addFilter('un_md', unmarkdownify);
 
   // Passthrough files
 
