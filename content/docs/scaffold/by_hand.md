@@ -1,4 +1,7 @@
-# Providing a Specification by Hand
+---
+title: Providing a Specification by Hand
+no_code: true
+---
 
 In the <a href="docs/scaffold/simple.md">previous chapter</a>, we asked
 `scaffold` to generate a default specification in order to prove memory safety

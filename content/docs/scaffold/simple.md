@@ -1,4 +1,7 @@
-# A Simple Verification Example with `scaffold`
+---
+title: A Simple Verification Example with scaffold
+no_code: true
+---
 
 The `scaffold` tool offers a quick way start verification of existing C++ code.
 In this tutorial, we look at some of the features of the tool in a series of
