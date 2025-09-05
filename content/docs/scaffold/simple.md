@@ -244,4 +244,5 @@ fulfills it provides a number of guarantees that are not immediately obvious.
 * ...
 * and, more generally, that `swap` is *safe* in the sense of "free of undefined behavior".
 
-
+In the <a href="docs/scaffold/by_hand.md">next chapter of this tutorial</a>, we
+provide a more precise specification that also encompasses the functional behavior of `swap`.
