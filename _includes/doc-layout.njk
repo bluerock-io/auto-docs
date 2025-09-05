@@ -1,7 +1,7 @@
 {% extends "base.njk" %}
 
 {% block content %}
-<h1>{{ title }}</h1>
+<h1>{{ title | md | safe }}</h1>
 {%if not no_code %}
 <div class="alert alert-info" role="alert">
   <b>Follow Along</b> by downloading the <a href="{{ page.inputPath | filename }}" download><i class="bi bi-download"></i>Rocq sources</a><br/>
