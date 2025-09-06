@@ -5,7 +5,7 @@
   <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse"
     data-bs-target="#{{ elem.title | slugify }}-collapse" style="margin-left: -1.5rem !important"
     {{ 'aria-expanded="true"' if is_current }}>
-    {{ elem.title }}
+    {{ elem.title | md | safe }}
   </button>
   <div class="collapse {{'show' if is_current }}" id="{{ elem.title | slugify }}-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
