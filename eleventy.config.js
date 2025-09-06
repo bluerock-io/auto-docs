@@ -2,6 +2,8 @@ import YAML from 'yaml';
 import { mvParser } from './_11ty/mv-parser.js';
 import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
+import relativeLinks from "./_11ty/relative-links.js";
+
 import slugify from '@sindresorhus/slugify'; /* same as 11ty */
 import markdownItDefList from "markdown-it-deflist";
 import markdownItContainer from "markdown-it-container";
@@ -117,6 +119,9 @@ export default function (eleventyConfig) {
   //            (item.inputPath.endsWith('.md') || item.inputPath.endsWith('.html') || item.inputPath.endsWith('.v'));
   //   }).sort((a, b) => a.data.title.localeCompare(b.data.title)); // Sort by title
   // });
+
+  // make all links relative
+  eleventyConfig.addPlugin(relativeLinks);
 }
 export const config = {
   dir: {
