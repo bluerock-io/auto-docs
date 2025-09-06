@@ -17,6 +17,21 @@
         --bluerock-light: rgb(248, 249, 250);
 
     }
+    a[href]:not(:where(
+                    /* exclude hash only links */
+                    [href^="#"],
+                    /* exclude javascript only links */
+                    [href^="javascript:" i],  
+                    /* exclude relative but not double slash only links */
+                    [href^="/"]:not([href^="//"]),
+                    /* domains to exclude */
+                    [href*="//stackoverflow.com"],
+                    /* subdomains to exclude */
+                    [href*="//meta.stackoverflow.com"],
+                )):after {
+        content: '⎘';
+    }
+
     .navbar {
         background-color: var(--bluerock-dark);
     }
