@@ -24,10 +24,7 @@
                     [href^="javascript:" i],  
                     /* exclude relative but not double slash only links */
                     [href^="/"]:not([href^="//"]),
-                    /* domains to exclude */
-                    [href*="//stackoverflow.com"],
-                    /* subdomains to exclude */
-                    [href*="//meta.stackoverflow.com"],
+                    [href^="."]
                 )):after {
         content: '⎘';
     }
