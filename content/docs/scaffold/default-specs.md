@@ -1,93 +1,11 @@
 ---
-title: A Simple Verification Example with `scaffold`
+title: Using Default Specifications
 no_code: true
 ---
 
-The `scaffold` tool offers a quick way start verification of existing C++ code.
-In this tutorial, we look at some of the features of the tool in a series of
-simple examples.
-
-## Requirements
-
-The tutorial assumes that the following tools are installed:
-
-* `scaffold`
-* `bear`
-* `clang`
-* BlueRock proof automation
-
-## The C++ Code
-
-To get started, we create a fresh directory `example/` and populate it with C++
-code. We start with a very simple `swap` function which we put into `example/src/stage1.cpp`.
-
-```cpp
-#include <cstddef>
-
-void swap(size_t& x, size_t& y) {
-    size_t tmp = y;
-    y = x;
-    x = tmp;
-}
-```
-
-Before we start verifying the code, we have to make sure `scaffold` knows how to
-build it. To keep the example simple, we do not use a build system. Instead, we
-build the file manually and use `bear` to automatically put the build
-instructions into a file called `compile_commands.json` where `scaffold` can
-find them. To this end, we run the following command in `example/`.
-
-```shell
-$ bear -- clang -c src/stage1.cpp
-```
-
-The `compile_commands.json` that `scaffold` uses is [standard across the `clang` ecosystem](https://clang.llvm.org/docs/JSONCompilationDatabase.html), and many build systems, e.g. `cmake`, `bazel`, etc, support generating the file automatically.
-
-## Project Initialization
-
-Before we get to that, we first have to prepare our project for verification. To
-this end, we run `scaffold init`, which presents us with a number of prompts for which
-we accept the default answers by pressing **Enter**.
-
-```shell
-$ scaffold init
-> Project name? example
-> Rocq name? example
-> Proof directory? proof
-> Initialization complete!
-Shall I generate the build files? Yes
-Using compilation database! /home/janno/br/bhv/fmdeps/fm-tools/scaffold/example/compile_commands.json
-```
-
-Note that build files can always be generated separately by running `scaffold gen`.
-
-`scaffold init` creates all files necessary for our verification endeavour.
-Accordingly, `example/` now contains a number of new directories and files.
-For now, we can simply run `dune b` to confirm that the infrastructure builds.
-We include the directory listing below to allow readers to check that their local state matches the tutorial.
-
-```shell
-$ tree
-.
-├── br-project.toml
-├── compile_commands.json
-├── dune
-├── dune-project
-├── proof
-│   ├── dune
-│   └── prelude
-│       ├── proof.v
-│       └── spec.v
-├── src
-    ├── dune
-    ├── dune.inc
-    └── stage1.cpp
-└── stage1.o
-```
-
-With the project initialized, we can move on to the actual verification task.
-
-## Verification
+:::info
+This tutorial builds on the [Getting Started with Scaffold](gettings-started.md) tutorial.
+:::
 
 `scaffold` is geared towards incremental verification. It allows users to
 iteratively increase the scope of the verification project. Running the
