@@ -4,6 +4,7 @@ import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
 import slugify from '@sindresorhus/slugify'; /* same as 11ty */
 import markdownItDefList from "markdown-it-deflist";
+import markdownItContainer from "markdown-it-container";
 import brokenLinks from 'eleventy-plugin-broken-links';
 
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
@@ -29,7 +30,32 @@ export default function (eleventyConfig) {
   });
 
   // Markdown Extensions
-  eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItDefList));
+  eleventyConfig.amendLibrary("md", (mdLib) => {
+      mdLib.use(markdownItDefList);
+      function container(name, cls) {
+          let re = new RegExp(`^${name}$`, '');
+          mdLib.use(markdownItContainer, name, {
+              validate: function(params) {
+                  return params.trim().match(re);
+              },
+
+              render: function (tokens, idx) {
+                  var m = tokens[idx].info.trim().match(re);
+
+                  if (tokens[idx].nesting === 1) {
+                      // opening tag
+                      return `<div class="${cls}" role="alert">\n`;
+                  } else {
+                      // closing tag
+                      return '</div>\n';
+                  }
+              }
+          });
+      }
+      container('info', 'alert alert-info');
+      container('success', 'alert alert-success');
+      container('warn', 'alert alert-warning');
+  });
 
   // Collections
   eleventyConfig.addCollection('learn', function (collectionApi) {

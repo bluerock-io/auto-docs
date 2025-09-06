@@ -21,6 +21,7 @@
     "bootstrap": "^5.3.3",
     "eleventy-plugin-broken-links": "^2.2.1",
     "lunr": "^2.3.9",
+    "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-emoji": "^3.0.0",
     "markedjs": "^0.0.1-security",
