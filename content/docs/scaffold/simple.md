@@ -18,7 +18,7 @@ The tutorial assumes that the following tools are installed:
 
 ## The C++ Code
 
-To start with `scaffold`, we create a fresh directory `example/` and populate it with C++
+To get started, we create a fresh directory `example/` and populate it with C++
 code. We start with a very simple `swap` function which we put into `example/src/stage1.cpp`.
 
 ```cpp
@@ -41,10 +41,7 @@ find them. To this end, we run the following command in `example/`.
 $ bear -- clang -c src/stage1.cpp
 ```
 
-In a real world example, the invocation of `clang` would be replaced by an
-invocation of `cmake` or something similar. For our simple example, calling
-`clang` directly suffices and we can now run `scaffold` for the first time to
-start verifying our code.
+The `compile_commands.json` that `scaffold` uses is [standard across the `clang` ecosystem](https://clang.llvm.org/docs/JSONCompilationDatabase.html), and many build systems, e.g. `cmake`, `bazel`, etc, support generating the file automatically.
 
 ## Project Initialization
 
@@ -65,10 +62,9 @@ Using compilation database! /home/janno/br/bhv/fmdeps/fm-tools/scaffold/example/
 Note that build files can always be generated separately by running `scaffold gen`.
 
 `scaffold init` creates all files necessary for our verification endeavour.
-Accordingly, `example/` now contains a number of new directories and files. We
-will not have to make changes to any of the files and thus do need to inspect
-them at this point. We include the directory listing below to allow readers to
-check that their local state matches the tutorial.
+Accordingly, `example/` now contains a number of new directories and files.
+For now, we can simply run `dune b` to confirm that the infrastructure builds.
+We include the directory listing below to allow readers to check that their local state matches the tutorial.
 
 ```shell
 $ tree
@@ -97,8 +93,9 @@ With the project initialized, we can move on to the actual verification task.
 iteratively increase the scope of the verification project. Running the
 interactive command `scaffold verify` presents us with all available
 specification/verification targets (or, in our case, one target), e.g.
-functions, but also `enum`s and `struct`s. Run `scaffold verify`,
-make sure the `swap` function is selected, and confirm with **Enter**.
+functions, but also `enum`s and `struct`s.
+
+Run `scaffold verify`, select the `swap` function, and confirm the choice with **Enter**.
 
 ```shell
 $ scaffold verify
@@ -108,10 +105,13 @@ $ scaffold verify
 ```
 
 `scaffold` now asks us to select **how** we want to specify the function. We
-have the option of writing a specification by hand, to automatically generate a
-default specification to verify {{ "memory safety" | terminology }} of `swap`, or to
-sidestep the task of specifying `swap` by indicating that the verification of
-clients should inline the function. To keep the example simple, we select `Memory safey`.
+have several options:
+
+1. Writing a specification by hand,
+2. Automatically generating a default specification to verify {{ "memory safety" | terminology }}, or
+3. Avoid writing a specification directly and instead direct the tools to reason about it by inlining it.
+
+To keep the example simple, we select `Memory safey`.
 
 ```shell
 Verifying swap(size_t &, size_t &)...
@@ -248,5 +248,5 @@ fulfills it provides a number of guarantees that are not immediately obvious.
 * ...
 * and, more generally, that `swap` is *safe* in the sense of "free of undefined behavior".
 
-In the <a href="docs/scaffold/by_hand.md">next chapter of this tutorial</a>, we
+In the [next chapter of this tutorial](docs/scaffold/by_hand.md), we
 provide a more precise specification that also encompasses the functional behavior of `swap`.

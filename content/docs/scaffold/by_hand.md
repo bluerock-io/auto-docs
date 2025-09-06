@@ -3,7 +3,7 @@ title: Providing a Specification by Hand
 no_code: true
 ---
 
-In the <a href="docs/scaffold/simple.md">previous chapter</a>, we asked
+In the [previous chapter](docs/scaffold/simple.md), we asked
 `scaffold` to generate a default specification in order to prove memory safety
 of a simple `swap` function. This tutorial builds upon the previous chapter by
 demonstrating how to manually provide a specification for `swap` that fully
@@ -30,9 +30,9 @@ To make sure scaffold understands the new file, we re-run our `bear` and `clang`
 $ bear -- clang -c src/stage1.cpp -c src/stage2.cpp
 ```
 
-Now that `scaffold` understands how to build `stage2.cpp` we proceed by running
+Now that `scaffold` understands how to build `stage2.cpp`, we proceed by running
 `scaffold verify`. We are presented with two `swap` functions with identical
-signatures. Helpfully, `scaffold` indicates which file they come from. We select
+signatures. Helpfully, `scaffold` indicates which file each of them comes from. We select
 the one from `stage2.cpp`, then choose `By hand`, and press **e** to open an
 editor. `scaffold` pre-populates the temporary file with specifiers for the
 function arguments but leaves the rest to us. (`\post emp` indicates an trivial
@@ -95,5 +95,5 @@ proving the function's correctness against the new specification.
 $ dune b proof/stage2_cpp/
 ```
 
-Having successfully check our proof, we can now be certain that `swap` does
+Having successfully checked our proof, we can now be certain that `swap` does
 indeed swap the contents of its two arguments.
