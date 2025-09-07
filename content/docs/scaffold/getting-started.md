@@ -9,10 +9,10 @@ The `scaffold` tool offers a quick way to start verifying existing C++ code.
 
 The tutorial assumes that the following tools are installed:
 
-* `scaffold`
-* `bear`
-* `clang`
 * BlueRock proof automation
+* `scaffold`
+* [`bear`](https://github.com/rizsotto/Bear)
+* [`clang`](https://clang.llvm.org/)
 
 ## The C++ Code
 
