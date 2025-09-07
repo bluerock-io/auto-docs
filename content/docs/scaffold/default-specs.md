@@ -4,7 +4,7 @@ no_code: true
 ---
 
 :::info
-This tutorial builds on the [Getting Started with Scaffold](gettings-started.md) tutorial.
+    This tutorial builds on the [Getting Started with Scaffold](getting-started.md) tutorial.
 :::
 
 `scaffold` is geared towards incremental verification. It allows users to

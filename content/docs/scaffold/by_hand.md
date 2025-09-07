@@ -3,7 +3,7 @@ title: Providing a Specification by Hand
 no_code: true
 ---
 
-In the [previous chapter](docs/scaffold/simple.md), we asked
+In the [previous chapter](default-specs.md), we asked
 `scaffold` to generate a default specification in order to prove memory safety
 of a simple `swap` function. This tutorial builds upon the previous chapter by
 demonstrating how to manually provide a specification for `swap` that fully
