@@ -29,7 +29,7 @@ have several options:
 2. Automatically generating a default specification to verify {{ "memory safety" | terminology }}, or
 3. Avoid writing a specification directly and instead direct the tools to reason about it by inlining it.
 
-To keep the example simple, we select `Memory safey`.
+To keep the example simple, we select `Memory safey`, which will generate a simple specification based on the function's type.
 
 ```shell
 Verifying swap(size_t &, size_t &)...
@@ -56,8 +56,7 @@ supposed to be. We select `<DONE>` to save our changes to disk.
 ```
 
 The `proof/` directory now contains a new directory called `stage1_cpp`. In it,
-`scaffold` collects specifications and proofs of functions from `stage1.cpp`, i.e. `swap`
-in our case.
+`scaffold` collects specifications and proofs of functions from `stage1.cpp`, i.e. `swap` in our case.
 
 ```shell
 $ tree proof/stage1_cpp/
@@ -69,18 +68,37 @@ proof/stage1_cpp/
 └── spec.v
 ```
 
-Two files are of particular interest to us. 
-1. `proof/stage1_cpp/spec.v` contains the specification that was generated for us. Since we selected the default specification for {{ "memory safety" | terminology }}, we see only following line:
+:::info
+`scaffold` is based on document splices so the special comments that look like
+```coq
+(*BEGIN:"name"*)
+(*END*)
+```
+are the document portions that `scaffold` will modify. Anything outside of these fragements should be preserved; however, it is always best to use version control and run `scaffold` on a pristine repository state.
+:::
+
+Two files are of particular interest to us.
+1. `proof/stage1_cpp/spec.v` contains the specification that was generated for us. Since we selected the default specification, we see only following line:
    ```coq
    cpp.spec "swap(size_t &, size_t &)" as swap_spec default.
    ```
-   We will later see examples of explicit specifications which take the place of the `default` keyword.
 
-2. `proof/stage1_cpp/proof/swap.v` contains a generated proof that verifies {{ "memory safety" | terminology }} of `swap`. The two relevant lines are:
+2. `proof/stage1_cpp/proof/swap.v` contains a simple proof script that is meant to verify the function. The two relevant lines are:
    ```coq
    Lemma swap_ok : verify[source] "swap(size_t &, size_t &)".
    Proof. verify_spec; go. Qed.
    ```
+
+:::info
+`scaffold` follows a particular file structure introducing a directory for each source file and dividing the verification in each directory into the following files:
+1. `pred.v` contains representation predicates used to model classes. Hints and properties about these predicates should also go in this files.
+2. `spec.v` contains function specifications.
+3. `proof/function_name.v` contains the proof of `function_name`.
+4. `proof.v` bundles the proofs of all of the functions into an easy to `Import` library.
+
+The decomposition of `pred.v` and `spec.v` is critical in instances where headers depend on each other in a cyclic manner. The decompsition of differnet proof files enables parallel builds and makes batch builds more informative.
+:::
+
 
 Even though the proof ends with `Qed`, it has not actually been checked yet. We
 can run `dune build proof/` (or `dune b proof/` for short) to check the proof is
