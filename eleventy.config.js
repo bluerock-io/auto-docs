@@ -10,6 +10,7 @@ import markdownItContainer from "markdown-it-container";
 import brokenLinks from 'eleventy-plugin-broken-links';
 
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
+import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 
 import { markdownify, unmarkdownify } from './_11ty/filters.js';
 
@@ -120,6 +121,8 @@ export default function (eleventyConfig) {
   //   }).sort((a, b) => a.data.title.localeCompare(b.data.title)); // Sort by title
   // });
 
+  // automatically convert paths to input files to output files
+  eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
   // make all links relative
   eleventyConfig.addPlugin(relativeLinks);
 }
