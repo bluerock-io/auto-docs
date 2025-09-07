@@ -7,6 +7,7 @@ import relativeLinks from "./_11ty/relative-links.js";
 import slugify from '@sindresorhus/slugify'; /* same as 11ty */
 import markdownItDefList from "markdown-it-deflist";
 import markdownItContainer from "markdown-it-container";
+import markdownItFootnote from "markdown-it-footnote";
 import brokenLinks from 'eleventy-plugin-broken-links';
 
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
@@ -35,6 +36,7 @@ export default function (eleventyConfig) {
   // Markdown Extensions
   eleventyConfig.amendLibrary("md", (mdLib) => {
       mdLib.use(markdownItDefList);
+      mdLib.use(markdownItFootnote);
       function container(name, cls) {
           let re = new RegExp(`^${name}$`, '');
           mdLib.use(markdownItContainer, name, {
