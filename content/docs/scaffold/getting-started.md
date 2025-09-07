@@ -99,5 +99,5 @@ At this point, we have initialized a new verification of a simple bit of C++ cod
 To continue with this example, take a look at:
 
 1. [Specifying functions](default-specs.md)
-2. Adapting function specifications
+2. [Adapting function specifications](by_hand.md)
 
