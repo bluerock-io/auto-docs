@@ -87,7 +87,7 @@ export default function (eleventyConfig) {
     }
   });
     eleventyConfig.addFilter('filename', (value) => {
-        return value.slice(value.lastIndexOf('/') + 1);
+        return value.slice(value.lastIndexOf('/'));
     });
 
   eleventyConfig.addFilter('md', markdownify);
