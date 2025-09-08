@@ -1,4 +1,5 @@
 import YAML from 'yaml';
+import spawn from "node:child_process";
 import { mvParser } from './_11ty/mv-parser.js';
 import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
@@ -23,6 +24,7 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addGlobalData('siteTitle', 'BlueRock FM Docs');
+  eleventyConfig.addGlobalData("docsTarBall", { path : 'docs', filename : "docs.tar.gz"});
   eleventyConfig.addTemplateFormats('v');
   eleventyConfig.addPreprocessor('markdown-rocq', 'v', (data, content) => {
     const sentences = parseCoqContent(content);
@@ -103,6 +105,9 @@ export default function (eleventyConfig) {
     failOnError: true
   });
   eleventyConfig.addPassthroughCopy('content/assets');
+  eleventyConfig.addPassthroughCopy('content/docs/docs.tar.gz', {
+    failOnError: true
+  });
 
   // eleventyConfig.addExtension("v", {
   //     compile: async (inputContent)  => {
@@ -127,6 +132,19 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
   // make all links relative
   eleventyConfig.addPlugin(relativeLinks);
+
+  eleventyConfig.on("eleventy.before", async ({ directories, runMode, outputMode }) => {
+		// Run me before the build starts
+    // find ./ -name "*.v" -exec tar -czf docs.tar.gz {} +
+    const ls = spawn.spawn(
+      'find', ['./','-name','*.v','-exec','tar','-czf',eleventyConfig.globalData.docsTarBall.filename,'{}','+'],
+      { cwd : './content/'+eleventyConfig.globalData.docsTarBall.path, stdio: 'ignore'}
+    );
+
+    ls.on('close', (code) => {
+      console.log(`Child process creating ${eleventyConfig.globalData.docsTarBall.filename} exited with code ${code}`);
+    });
+	});
 }
 export const config = {
   dir: {
