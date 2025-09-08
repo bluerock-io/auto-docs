@@ -86,7 +86,7 @@ $ tree
 └── stage1.o
 ```
 
-## Building the Projecct
+## Building the Project
 
 It is useful to confirm that the generated code builds. To do that, we use [`dune`](https://dune.build/).
 
