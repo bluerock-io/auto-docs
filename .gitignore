@@ -6,6 +6,7 @@ yarn-error.log*
 
 # Eleventy
 _site/
+.cache
 
 # Environment
 .envrc
