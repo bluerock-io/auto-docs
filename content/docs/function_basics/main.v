@@ -1,10 +1,10 @@
 (*|
-In this tutorial, we consider specifications and verifications of verify simple
+In this tutorial, we consider specifications and verifications of very simple
 programs. These include additions of integers, a swap function, and
 a function that loops 10 times.
 |*)
 (*|
-# Simple Functions
+## Simple Functions
 Import the C++ verification environment:
 |*)
 Require Import bluerock.auto.cpp.prelude.proof.
@@ -38,11 +38,11 @@ cpp.prog source prog cpp:{{
 }}.
 
 (*|
-# Specifying and Verifying Integer Addition
+## Specifying and Verifying Integer Addition
 We can specify our functions as follows.
 |*)
 
-cpp.spec "add(int,int)" from source as add_spec with (
+cpp.spec "add(int, int)" from source as add_spec with (
   \arg{x} "x" (Vint x)
   \arg{y} "y" (Vint y)
   (* - 2^31 ≤ x + y ≤ 2^31 - 1 *)
@@ -50,7 +50,7 @@ cpp.spec "add(int,int)" from source as add_spec with (
   \post[Vint (x + y)] emp
 ).
 
-cpp.spec "add(unsigned int,unsigned int)" from source as add_unsigned_spec with (
+cpp.spec "add(unsigned int, unsigned int)" from source as add_unsigned_spec with (
   \arg{x} "x" (Vint x)
   \arg{y} "y" (Vint y)
   \post[Vint (trim 32 (x + y))] emp
@@ -83,9 +83,8 @@ Section with_cpp.
   Context `{Σ : cpp_logic}.
   Context `{MOD : !source ⊧ σ}.
 
-  Lemma add_spec_ok : verify[source] "add(int,int)".
+  Lemma add_spec_ok : verify[source] "add(int, int)".
   Proof.
-    (* denoteModule source ⊢ add_spec *)
     verify_spec. go.
   Qed.
 
@@ -109,7 +108,7 @@ and generate the expected lemma statement.
 |*)
 
 (*|
-# Specifying and Verifying Swap
+## Specifying and Verifying Swap
 |*)
 
 cpp.spec "swap(int*, int* )" from source as swap_spec with (
