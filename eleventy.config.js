@@ -135,9 +135,11 @@ export default function (eleventyConfig) {
   // make all links relative
   eleventyConfig.addPlugin(relativeLinks);
 
-  eleventyConfig.on("eleventy.before", ({ directories, runMode, outputMode }) => {
+  eleventyConfig.on("eleventy.before", async ({ directories, runMode, outputMode }) => {
 		// Run me before the build starts
-    // We do not use async here, as that can cause build with watch to loop.
+    // We avoid making the tarball if we are running with watch,
+    // as that can cause build with watch to loop.
+    if (!runMode.match("build")) return;
     // find ./ -name "*.v" -exec tar -czf docs.tar.gz {} +
     const ls = spawn.spawn(
       'find', ['./','-name','*.v','-exec','tar','-czvf',eleventyConfig.globalData.docsTarBall.filename,'{}','+'],
