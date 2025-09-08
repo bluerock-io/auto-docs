@@ -154,16 +154,16 @@ These 5 lines can be categorized into three distinct groups:
    `Z` in Rocq) that come into play in the next specifier category.
 2. Preconditions, written `\pre ...`. In our case, these preconditions are of
    the form `<name>_addr |-> ulongR 1$m <name>`. The `|->` operator is explained
-   in more detail in the chapters on <a href="docs/state_basics/">Program
-   State</a> and <a href="docs/primitive_reps/main">Primitive Data</a>. Here, it
+   in more detail in the chapters on [Program State](/docs/state_basics/) and 
+   [Primitive Data](/docs/primitive_reps/main). Here, it
    is sufficient to know that these preconditions specify the contents of our
    C++ references, establishing the connection between the C++ state (i.e. the
    memory to which our references point) and our verification variables `x` and
    `y`.
    
    Specifying multiple preconditions establishes a {{ "separating conjunction" |
-   terminology }} between them. See <a href="docs/state_basics/">Program
-   State</a> for more details. In our case, the benefit of this separation is
+   terminology }} between them. See [Program State](/docs/state_basics/)
+   for more details. In our case, the benefit of this separation is
    that `x_addr` and `y_addr` are guaranteed to be distinct pointers.
    
    Note that `ulongR`, i.e. `unsigned long`, is what `size_t` resolves to on the
