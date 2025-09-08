@@ -105,6 +105,11 @@ export default function (eleventyConfig) {
     failOnError: true
   });
   eleventyConfig.addPassthroughCopy('content/assets');
+  eleventyConfig.addPassthroughCopy(
+    'content/'+eleventyConfig.globalData.docsTarBall.path+'/'+eleventyConfig.globalData.docsTarBall.filename,
+    { failOnError: true }
+  );
+
 
   // eleventyConfig.addExtension("v", {
   //     compile: async (inputContent)  => {
@@ -130,15 +135,13 @@ export default function (eleventyConfig) {
   // make all links relative
   eleventyConfig.addPlugin(relativeLinks);
 
-  eleventyConfig.on("eleventy.before", async ({ directories, runMode, outputMode }) => {
+  eleventyConfig.on("eleventy.before", ({ directories, runMode, outputMode }) => {
 		// Run me before the build starts
-    // We manually proce the docs.tar.gz in the output _site, instead of
-    // using addPassthroughCopy, because that can cause build with watch to loop.
-    const out = '../../_site/'+eleventyConfig.globalData.docsTarBall.path+'/'+eleventyConfig.globalData.docsTarBall.filename;
-    // find ./ -name "*.v" -exec tar -czf ../../_site/docs/docs.tar.gz {} +
+    // We do not use async here, as that can cause build with watch to loop.
+    // find ./ -name "*.v" -exec tar -czf docs.tar.gz {} +
     const ls = spawn.spawn(
-      'find', ['./','-name','*.v','-exec','tar','-czf',out,'{}','+'],
-      { cwd : './content/'+eleventyConfig.globalData.docsTarBall.path, stdio: 'ignore'}
+      'find', ['./','-name','*.v','-exec','tar','-czvf',eleventyConfig.globalData.docsTarBall.filename,'{}','+'],
+      { cwd : './content/'+eleventyConfig.globalData.docsTarBall.path, stdio : 'ignore'}
     );
 
     ls.on('close', (code) => {
