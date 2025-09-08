@@ -7,7 +7,7 @@ In the [previous chapter](default-specs.md), we asked
 `scaffold` to generate a default specification in order to prove memory safety
 of a simple `swap` function. This tutorial builds upon the previous chapter by
 demonstrating how to manually provide a specification for `swap` that fully
-specifies the functions behavior. We assumes that the `example/` has been
+specifies the functions behavior. We assumes that the `example/` directory has been
 initialized with `scaffold init` and that all the files of the previous chapter
 are still present.
 
