@@ -88,9 +88,9 @@ export default function (eleventyConfig) {
       return value;
     }
   });
-    eleventyConfig.addFilter('filename', (value) => {
-        return value.slice(value.lastIndexOf('/'));
-    });
+  eleventyConfig.addFilter('filename', (value) => {
+    return value.slice(value.lastIndexOf('/')+1);
+  });
 
   eleventyConfig.addFilter('md', markdownify);
   eleventyConfig.addFilter('un_md', unmarkdownify);
@@ -101,13 +101,10 @@ export default function (eleventyConfig) {
     'node_modules/lunr/lunr.min.js': 'node_modules/lunr/lunr.min.js',
   });
   eleventyConfig.addPassthroughCopy('content/**/*.v', {
-    mode: 'html-relative',
+    // mode: 'html-relative',
     failOnError: true
   });
   eleventyConfig.addPassthroughCopy('content/assets');
-  eleventyConfig.addPassthroughCopy('content/docs/docs.tar.gz', {
-    failOnError: true
-  });
 
   // eleventyConfig.addExtension("v", {
   //     compile: async (inputContent)  => {
@@ -135,9 +132,12 @@ export default function (eleventyConfig) {
 
   eleventyConfig.on("eleventy.before", async ({ directories, runMode, outputMode }) => {
 		// Run me before the build starts
-    // find ./ -name "*.v" -exec tar -czf docs.tar.gz {} +
+    // We manually proce the docs.tar.gz in the output _site, instead of
+    // using addPassthroughCopy, because that can cause build with watch to loop.
+    const out = '../../_site/'+eleventyConfig.globalData.docsTarBall.path+'/'+eleventyConfig.globalData.docsTarBall.filename;
+    // find ./ -name "*.v" -exec tar -czf ../../_site/docs/docs.tar.gz {} +
     const ls = spawn.spawn(
-      'find', ['./','-name','*.v','-exec','tar','-czf',eleventyConfig.globalData.docsTarBall.filename,'{}','+'],
+      'find', ['./','-name','*.v','-exec','tar','-czf',out,'{}','+'],
       { cwd : './content/'+eleventyConfig.globalData.docsTarBall.path, stdio: 'ignore'}
     );
 
