@@ -12,6 +12,8 @@
       url: docs/primitive_reps/main.v
     - title: Stepping through Programs
       url: docs/debugging/main.v
+    - title: Verifying Some Basic Functions
+      url: docs/function_basics/main.v
 
 - title: Learn
   url: /learn
