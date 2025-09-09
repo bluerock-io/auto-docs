@@ -1,0 +1,6 @@
+{
+  "title": "Specifying a Loop Invariant",
+  "tags": ["learn"],
+  "requires": [],
+  "provides": ["reps"]
+}
