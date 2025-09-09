@@ -12,6 +12,10 @@
       url: docs/primitive_reps/main.v
     - title: Stepping through Programs
       url: docs/debugging/main.v
+    - title: Verifying Some Basic Functions
+      url: docs/function_basics/main.v
+    - title: Specifying a Loop Invariant
+      url: docs/function_basics/loop.v
 
 - title: Learn
   url: /learn
