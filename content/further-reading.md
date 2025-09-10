@@ -1,6 +1,10 @@
 ---
 title: External Resources
 layout: page
+eleventyNavigation:
+  key: further-reading
+  title : Further Reading
+  order : 1000
 ---
 
 While this guide aims to be a (relatively) standalone introduction to the specification infrastructure at BedRock Systems, there are a variety of supplemental resources which can help you to improve your craft:

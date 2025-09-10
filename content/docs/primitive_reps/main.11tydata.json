@@ -2,5 +2,10 @@
   "title": "Primitive Data",
   "tags": ["doc"],
   "requires": [],
-  "provides": ["reps"]
+  "provides": ["reps"],
+  "eleventyNavigation": {
+    "order" : 2,
+    "parent" : "quick-start",
+    "title": "Primitive Data"
+  }
 }

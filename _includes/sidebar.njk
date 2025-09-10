@@ -1,5 +1,5 @@
 {% macro menuitem(elem, indent) %}
-{% if elem.children %}
+{% if elem.children and 0 < (elem.children | length) %}
 <li class="mb-1">
   <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" style="margin-left: -1.5rem !important"
   {%if not elem.collapse %}aria-expanded="true"{% endif %}>
@@ -15,14 +15,14 @@
 </li>
 {% else %}
 <li class="mb-1">
-  <a class="nav-link" href="{{ elem.url | inputPathToUrl }}" {% if page.url == elem.url %} aria-current="page"{% endif %}>{{ elem.title }}</a>
+  <a class="nav-link" href="{{ elem.url }}" {% if page.url == elem.url %} aria-current="page"{% endif %}>{{ elem.title }}</a>
 </li>
 {% endif %}
 {% endmacro %}
 
 <div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
   <ul class="list-unstyled ps-0 mx-3" id="sidebar">
-    {% for elem in sidebar %}
+    {% for elem in collections.all | eleventyNavigation %}
     {{ menuitem(elem, true) }}
     {% endfor %}
   </ul>
