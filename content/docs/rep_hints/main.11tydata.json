@@ -1,5 +1,10 @@
 {
     "title": "Hints about Reps",
     "tags": ["learn"],
-    "provides": ["reps","hints"]
+    "provides": ["reps","hints"],
+    "eleventyNavigation": {
+        "order" : 4,
+        "parent" : "classes",
+        "title": "Hints about Representation Predicates"
+    }
 }

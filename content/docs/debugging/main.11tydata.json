@@ -2,5 +2,10 @@
   "title": "Exploring Programs in Logic",
   "tags": ["learn"],
   "requires": [],
-  "provides": ["automation"]
+  "provides": ["automation"],
+  "eleventyNavigation": {
+    "order" : 3,
+    "parent" : "quick-start",
+    "title": "Exploring Programs in Logic"
+  }
 }

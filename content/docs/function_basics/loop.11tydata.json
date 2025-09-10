@@ -2,5 +2,10 @@
   "title": "Specifying a Loop Invariant",
   "tags": ["learn"],
   "requires": [],
-  "provides": ["reps"]
+  "provides": ["reps"],
+  "eleventyNavigation": {
+    "order" : 6,
+    "parent" : "quick-start",
+    "title": "Specifying a Loop Invariant"
+  }
 }
