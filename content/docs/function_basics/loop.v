@@ -56,7 +56,7 @@ ownership of the local variable `"i"`
 (at the location `_local ρ "i"` which is also `i_addr`)
 with some value `i` that is less than or equal to `10`.
 
-The next `go` use the full ownership of `i` to reads its current value,
+The next `go` uses the full ownership of `i` to reads its current value,
 and leaves us with the goal of the loop's conditional `(i < 10)`.
 Here, we use the `wp_if` tactic to make the case distinction.
 - If the conditional holds, we enter the loop iteration, and we have
