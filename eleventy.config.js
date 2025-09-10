@@ -100,7 +100,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/lunr/lunr.min.js': 'node_modules/lunr/lunr.min.js',
   });
-  eleventyConfig.addPassthroughCopy('content/**/*.v', {
+  eleventyConfig.addPassthroughCopy('content/docs/**/*.v', {
     // mode: 'html-relative',
     failOnError: true
   });
