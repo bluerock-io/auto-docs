@@ -15,6 +15,7 @@ import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 
 import { markdownify, unmarkdownify } from './_11ty/filters.js';
+import navigation from "@11ty/eleventy-navigation";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
@@ -134,6 +135,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
   // make all links relative
   eleventyConfig.addPlugin(relativeLinks);
+  // to generate navigation bar
+  eleventyConfig.addPlugin(navigation);
 
   eleventyConfig.on("eleventy.before", async ({ directories, runMode, outputMode }) => {
 		// Run me before the build starts
