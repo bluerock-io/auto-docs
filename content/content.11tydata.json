@@ -1,0 +1,7 @@
+{
+  "eleventyComputed": {
+    "eleventyNavigation": {
+      "title": "{{ title }}"
+    }
+  }
+}

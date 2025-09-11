@@ -3,7 +3,6 @@ title: Contributing
 layout: page
 eleventyNavigation:
   key: contributing
-  title : Contributing
   order : 1001
 ---
 

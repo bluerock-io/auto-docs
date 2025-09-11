@@ -1,0 +1,10 @@
+---
+title: Exploring Programs in Logic
+tags:
+- learn
+requires: []
+provides:
+- automation
+eleventyNavigation:
+  order: 3
+  parent: quick-start

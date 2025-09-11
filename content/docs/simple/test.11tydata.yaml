@@ -1,0 +1,11 @@
+---
+title: Very First Verification
+tags:
+- learn
+provides:
+- spec
+- proof
+eleventyNavigation:
+  order: 0
+  parent: quick-start
+  

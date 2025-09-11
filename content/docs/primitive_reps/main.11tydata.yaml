@@ -1,0 +1,10 @@
+---
+title: Primitive Data
+tags:
+- doc
+requires: []
+provides:
+- reps
+eleventyNavigation:
+  order: 2
+  parent: quick-start

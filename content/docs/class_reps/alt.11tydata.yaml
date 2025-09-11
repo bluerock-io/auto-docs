@@ -1,0 +1,10 @@
+---
+title: Class Representation Predicates, alternative
+tags:
+- learn
+requires: []
+provides:
+- automation
+eleventyNavigation:
+  order: 3
+  parent: classes
