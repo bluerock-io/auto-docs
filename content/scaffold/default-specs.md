@@ -1,6 +1,9 @@
 ---
 title: Using Default Specifications
 no_code: true
+eleventyNavigation:
+    parent: scaffold
+    order: 1
 ---
 
 :::info

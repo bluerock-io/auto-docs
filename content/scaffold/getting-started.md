@@ -1,6 +1,9 @@
 ---
-title: A Simple Verification Example with `scaffold`
+title: Getting Started
 no_code: true
+eleventyNavigation:
+    parent: scaffold
+    order: 0
 ---
 
 The `scaffold` tool offers a quick way to start verifying existing C++ code.

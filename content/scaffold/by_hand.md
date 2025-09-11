@@ -1,6 +1,9 @@
 ---
 title: Providing a Specification by Hand
 no_code: true
+eleventyNavigation:
+    parent: scaffold
+    order: 2
 ---
 
 In the [previous chapter](default-specs.md), we asked
