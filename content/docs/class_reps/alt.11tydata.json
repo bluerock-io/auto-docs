@@ -5,7 +5,6 @@
   "provides": ["automation"],
   "eleventyNavigation": {
     "order" : 3,
-    "parent" : "classes",
-    "title": "Class Representation Predicates, alternative"
+    "parent" : "classes"
   }
 }

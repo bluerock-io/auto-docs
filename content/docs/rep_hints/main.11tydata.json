@@ -4,7 +4,6 @@
     "provides": ["reps","hints"],
     "eleventyNavigation": {
         "order" : 4,
-        "parent" : "classes",
-        "title": "Hints about Representation Predicates"
+        "parent" : "classes"
     }
 }

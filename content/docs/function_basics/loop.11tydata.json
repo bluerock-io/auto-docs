@@ -5,7 +5,6 @@
   "provides": ["reps"],
   "eleventyNavigation": {
     "order" : 6,
-    "parent" : "quick-start",
-    "title": "Specifying a Loop Invariant"
+    "parent" : "quick-start"
   }
 }

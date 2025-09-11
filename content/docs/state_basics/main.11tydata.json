@@ -5,7 +5,6 @@
   "provides": ["reps"],
   "eleventyNavigation": {
     "order" : 1,
-    "parent" : "quick-start",
-    "title": "Basics about Program State"
+    "parent" : "quick-start"
   }
 }

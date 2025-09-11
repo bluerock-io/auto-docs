@@ -3,6 +3,5 @@ tags:
   - "common_errors"
 eleventyNavigation:
   key: missing-type-instances
-  title : Dealing with Missing Type Instances
   parent : troubleshooting
   order : 200

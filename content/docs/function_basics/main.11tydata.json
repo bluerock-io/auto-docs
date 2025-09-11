@@ -5,7 +5,6 @@
   "provides": ["reps"],
   "eleventyNavigation": {
     "order" : 5,
-    "parent" : "quick-start",
-    "title": "Verifying Some Basic Functions"
+    "parent" : "quick-start"
   }
 }

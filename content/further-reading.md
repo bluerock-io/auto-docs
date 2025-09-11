@@ -3,7 +3,6 @@ title: External Resources
 layout: page
 eleventyNavigation:
   key: further-reading
-  title : Further Reading
   order : 1000
 ---
 

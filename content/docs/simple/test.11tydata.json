@@ -4,7 +4,6 @@
   "provides": ["spec", "proof"],
   "eleventyNavigation": {
     "order" : 0,
-    "parent" : "quick-start",
-    "title": "Very First Verification"
+    "parent" : "quick-start"
   }
 }
