@@ -1,9 +1,0 @@
-{
-    "title": "Hints about Reps",
-    "tags": ["learn"],
-    "provides": ["reps","hints"],
-    "eleventyNavigation": {
-        "order" : 4,
-        "parent" : "classes"
-    }
-}
