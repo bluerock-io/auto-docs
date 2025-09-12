@@ -1,5 +1,4 @@
----
-title: Specifying a Loop Invariant
+title: Loop Invariants
 tags:
 - learn
 requires: []
@@ -7,4 +6,4 @@ provides:
 - reps
 eleventyNavigation:
   order: 6
-  parent: quick-start
+  parent: control-flow
