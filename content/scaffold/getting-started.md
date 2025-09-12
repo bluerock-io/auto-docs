@@ -93,7 +93,7 @@ It is useful to confirm that the generated code builds. To do that, we use [`dun
 $ dune build
 ```
 
-What this command does is use the rules that `scaffold` generated to convert all of the C++ code that you have into a form that BRiCk can understand it.
+What this command does is to use the rules that `scaffold` generated to convert all of the C++ code that you have into a form that BRiCk can understand it.
 This process relies on the build files generated in the previous step, when you answered **Yes** to "Shall I generate the build files?".
 If you ever add or remove C++ files from your project such that your `compile_commands.json` file needs to change, you will need to regenerate these build files.
 You can do this using `scaffold gen`.
