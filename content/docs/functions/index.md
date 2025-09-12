@@ -6,3 +6,5 @@ eleventyNavigation:
   parent: learn
   order: 10
 ---
+
+Learn about basic function verification.
