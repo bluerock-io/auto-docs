@@ -1,29 +1,43 @@
-{% macro menuitem(elem, indent) %}
+{% macro menuitem(elem, indent, current=null, ancestors=[]) %}
 {% if elem.children and 0 < (elem.children | length) %}
 <li class="mb-1">
-  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" style="margin-left: -1.5rem !important"
-  {%if not elem.collapse %}aria-expanded="true"{% endif %}>
+  {% set is_current = elem.key == current.key %}
+  <button class="btn sidebar-toggle align-items-center rounded" data-bs-toggle="collapse"
+    data-bs-target="#{{ elem.title | slugify }}-collapse" style="margin-left: -1.5rem !important"
+    {{ 'aria-expanded="true"' if is_current }}>
     {{ elem.title }}
   </button>
-  <div class="collapse{%if not elem.collapse %} show{% endif %}" id="{{ elem.title | slugify }}-collapse">
+  <div class="collapse {{'show' if is_current }}" id="{{ elem.title | slugify }}-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      {% set current = ancestors.pop() if is_current %}
       {% for xxx in elem.children %}
-      {{ menuitem(xxx, false) }}
+        {% if is_current and xxx.key == current.key %}
+          {{ menuitem(xxx, false, current, ancestors) }}
+        {% else %}
+          {{ menuitem(xxx, false) }}
+        {% endif %}
       {% endfor %}
     </ul>
   </div>
 </li>
 {% else %}
 <li class="mb-1">
-  <a class="nav-link" href="{{ elem.url }}" {% if page.url == elem.url %} aria-current="page"{% endif %}>{{ elem.title }}</a>
+  <a class="nav-link" href="{{ elem.url }}" {{ 'aria-current="page"' if page.url == elem.url }}>{{ elem.title }}</a>
 </li>
 {% endif %}
 {% endmacro %}
 
+{% set ancestors = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.parent, { includeSelf: true }) | reverse %}
+
 <div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
   <ul class="list-unstyled ps-0 mx-3" id="sidebar">
+    {% set current = ancestors.pop() %}
     {% for elem in collections.all | eleventyNavigation %}
-    {{ menuitem(elem, true) }}
+      {% if elem.key == current.key %}
+        {{ menuitem(elem, true, current, ancestors) }}
+      {% else %}
+        {{ menuitem(elem, true) }}
+      {% endif %}
     {% endfor %}
   </ul>
 </div>
