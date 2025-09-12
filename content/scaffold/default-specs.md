@@ -143,7 +143,7 @@ This is an important feature that we will see [in the next section](by_hand.md).
 In `scaffold` ,the default specification for a function is formed by specifying the basic ownership of each type with existentially quantified values.
 For more information on what this specification means, check out [the documentation on function specifications](/docs/specifications.v).
 
-While the default specification doesn't that the function actually swaps its arguments, the proof of it does guarantee the absence of [undefined behavior]() as long as the pre-condition holds when calling the function.
+While the default specification doesn't say that the function actually swaps its arguments, the proof of it does guarantee the absence of [undefined behavior]() as long as the pre-condition holds when calling the function.
 This includes properties such as
 * `swap` does not free the references `x` and `y`,
 * `swap` does not change the type of the content of `x` and `y`,
