@@ -1,8 +1,8 @@
 ---
-title: Classes
+title: Functions
 layout: index-page
 eleventyNavigation:
-  key: classes
+  key: functions
   parent: learn
-  order: 100
+  order: 10
 ---

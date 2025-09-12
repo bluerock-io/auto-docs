@@ -1,8 +1,8 @@
 ---
-title: Classes
+title: Control Flow
 layout: index-page
 eleventyNavigation:
-  key: classes
+  key: control-flow
   parent: learn
-  order: 100
+  order: 20
 ---

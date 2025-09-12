@@ -1,0 +1,9 @@
+title: Function Specifications
+tags:
+- learn
+requires: []
+provides:
+- specs
+eleventyNavigation:
+  order: 0
+  parent: functions

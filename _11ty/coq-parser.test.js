@@ -28,6 +28,11 @@ const testCases = [
     expected: ['Definition a := 1.', ' ', '(* a comment *)'],
   },
   {
+    name: 'Empty comment',
+    input: '(*||*)',
+    expected: ['(*||*)'],
+  },
+  {
     name: 'Comment in the middle',
     input: 'Definition a (* a comment *) := 1.',
     expected: ['Definition a ', '(* a comment *)', ' := 1.'],
