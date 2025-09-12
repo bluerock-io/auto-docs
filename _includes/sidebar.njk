@@ -20,9 +20,9 @@
     </ul>
   </div>
 </li>
-{% else %}
+{% elif elem.title %}
 <li class="mb-1">
-  <a class="nav-link" href="{{ elem.url }}" {{ 'aria-current="page"' if page.url == elem.url }}>{{ elem.title }}</a>
+  <a class="nav-link" href="{{ elem.url }}" {{ 'aria-current="page"' if page.url == elem.url }}>{{ elem.title | md | safe }}</a>
 </li>
 {% endif %}
 {% endmacro %}
