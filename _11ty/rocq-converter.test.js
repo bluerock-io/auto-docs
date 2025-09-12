@@ -8,6 +8,11 @@ const testCases = [
     expected: '',
   },
   {
+    name: 'Only hide',
+    input: ['(*@HIDE@*)','\n','foo','(*@END-HIDE@*)'],
+    expected: '',
+  },
+  {
     name: 'Only code',
     input: ['Definition a := 1.', '\nPrint a.'],
       expected: '{% raw %}\n```coq\nDefinition a := 1.\nPrint a.\n```\n{% endraw %}',
