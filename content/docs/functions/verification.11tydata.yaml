@@ -1,4 +1,3 @@
----
 title: Verifying Some Basic Functions
 tags:
 - learn
@@ -7,4 +6,4 @@ provides:
 - reps
 eleventyNavigation:
   order: 5
-  parent: quick-start
+  parent: functions

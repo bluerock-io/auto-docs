@@ -1,8 +1,8 @@
 ---
-title: Control Flow
+title: Functions
 layout: index-page
 eleventyNavigation:
-  key: control-flow
+  key: functions
   parent: learn
-  order: 20
+  order: 10
 ---
