@@ -5,6 +5,9 @@ eleventyNavigation:
     parent: scaffold
     order: 2
 ---
+:::info
+This tutorial builds on the [Getting Started with Scaffold](getting-started.md) tutorial.
+:::
 
 In the [previous chapter](default-specs.md), we asked
 `scaffold` to generate a default specification in order to prove memory safety
