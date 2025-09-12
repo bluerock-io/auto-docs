@@ -1,0 +1,9 @@
+{% extends "page.njk" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+{{ content | safe }}
+
+<h2>Contents</h2>
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml }}
+{% endblock %}
