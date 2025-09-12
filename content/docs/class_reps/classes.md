@@ -1,8 +1,8 @@
 ---
 title: Classes
-layout: page
+layout: index-page
 eleventyNavigation:
   key: classes
-  parent : learn
-  order : 200
+  parent: learn
+  order: 100
 ---
