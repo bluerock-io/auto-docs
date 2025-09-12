@@ -35,7 +35,7 @@ void swap(size_t& x, size_t& y) {
 Before we start verifying the code, we have to make sure `scaffold` knows how to
 build it. `scaffold` uses the standard
 [compile_commands.json](https://clang.llvm.org/docs/JSONCompilationDatabase.html)
-format to determine how to build your code. Since we have a simple project, we will generate this using the [`bear` tool](https://github.com/rizsotto/Bear).
+format to determine how to build your code. Since we have a simple project, we will generate a `compile_commands.json` using the [`bear` tool](https://github.com/rizsotto/Bear).
 
 ```shell
 $ bear -- clang -c src/stage1.cpp
@@ -47,8 +47,8 @@ Build systems such as [cmake](https://cmake.org/cmake/help/latest/variable/CMAKE
 
 ## Project Initialization
 
-Before we get to verification, we have to prepare our project. To
-do this, we run `scaffold init`, which presents us with a number of prompts to configure the project. For this example, we can accept the defaults by pressing **Enter**.
+Before we get to verification, we have to prepare our project.
+To do this, we run `scaffold init`, which presents us with a number of prompts to configure the project. For this example, we can accept the defaults by pressing **Enter**.
 
 ```shell
 $ scaffold init
@@ -59,10 +59,6 @@ $ scaffold init
 Shall I generate the build files? Yes
 Using compilation database! /home/janno/br/bhv/fmdeps/fm-tools/scaffold/example/compile_commands.json
 ```
-
-:::info
-Note that build files can always be generated separately by running `scaffold gen`.
-:::
 
 `scaffold init` creates all files necessary for our verification endeavour.
 Accordingly, `example/` now contains a number of new directories and files. We
@@ -96,6 +92,16 @@ It is useful to confirm that the generated code builds. To do that, we use [`dun
 ```shell
 $ dune build
 ```
+
+What this command does is use the rules that `scaffold` generated to convert all of the C++ code that you have into a form that BRiCk can understand it.
+This process relies on the build files generated in the previous step, when you answered **Yes** to "Shall I generate the build files?".
+If you ever add or remove C++ files from your project such that your `compile_commands.json` file needs to change, you will need to regenerate these build files.
+You can do this using `scaffold gen`.
+
+```shell
+$ scaffold gen
+```
+
 ## Wrapping Up
 
 At this point, we have initialized a new verification of a simple bit of C++ code.
