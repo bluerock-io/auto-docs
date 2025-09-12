@@ -4,10 +4,8 @@
 <h1>{{ title | md | safe }}</h1>
 {%if not no_code %}
 <div class="alert alert-info" role="alert">
-  <b>Follow Along</b> by downloading the <a href="../{{ page.inputPath | filename }}" download><i class="bi bi-download"></i>Rocq source</a> of this tutorial.<br/>
+  <b>Follow Along</b> by downloading the <a href="../{{ page.inputPath | filename }}" download><i class="bi bi-download"></i>Rocq source of this tutorial</a>, or <a href="/{{ docsTarBall.path }}/{{ docsTarBall.filename }}" download><i class="bi bi-download"></i>the full docs tarball</a>.<br/>
   <small>Some code is deliberately elided for presentation purposes, the full, working source code can be downloaded with the above link.</small><br/>
-  <small>Dowload the Rocq sources of all tutorials <a href="/{{ docsTarBall.path }}/{{ docsTarBall.filename }}" download><i class="bi bi-download"></i>here</a>.</small>
-
 </div>
 {% endif %}
 {{ content | safe }}
