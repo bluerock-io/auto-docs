@@ -17,4 +17,3 @@ If you're interested in using the tools, please [contact us](mailto:contact@blue
 
 We want to [hear your feedback](contributing.md), it is the way we build better products.
 
-## Getting Set Up
