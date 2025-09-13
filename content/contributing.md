@@ -10,7 +10,7 @@ We are very interested in your feedback on everything.
 
 - **Our tools**. Bug reports, feature requests. [Email us](mailto:contact@bluerock.io)
 - **The documentation**. Typo? Unclear explanation? Related material? [Open an issue](https://github.com/bluerock-io/auto-docs/issues)
-- **BRiCk semantics**. File a [bug report or feature request](https://github.com/bluerock-io/BRiCk/issues**, or 👍 an existing issue.
+- **BRiCk semantics**. File a [bug report or feature request](https://github.com/bluerock-io/BRiCk/issues), or 👍 an existing issue.
 
 ## Showcase your Development
 
