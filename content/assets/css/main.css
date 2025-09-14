@@ -13,7 +13,8 @@ a[href]:not(:where(
                 [href^="/"]:not([href^="//"]),
                 [href^="."]
             )):after {
-    content: '⎘';
+    content: ' ⎘';
+    font-weight: normal;
 }
 
 .navbar {

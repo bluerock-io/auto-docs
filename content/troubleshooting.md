@@ -1,5 +1,5 @@
 ---
-title: Common Problems
+title: Troubleshooting
 layout: page
 eleventyNavigation:
   key: troubleshooting

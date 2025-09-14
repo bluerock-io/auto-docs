@@ -6,3 +6,5 @@ eleventyNavigation:
   parent: learn
   order: 100
 ---
+
+Learn about the specification and verification of aggregate data types defined with `struct` and `class`.

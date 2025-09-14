@@ -1,9 +1,9 @@
-title: Verifying Some Examples
+title: "`if` Statements"
 tags:
 - learn
 requires: []
 provides:
 - reps
 eleventyNavigation:
-  order: 5
-  parent: functions
+  order: 3
+  parent: control-flow

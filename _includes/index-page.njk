@@ -5,5 +5,5 @@
 {{ content | safe }}
 
 <h2>Contents</h2>
-{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml }}
+{{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml | safe }}
 {% endblock %}
