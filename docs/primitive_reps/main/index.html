@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Primitive Data - BlueRock FM Docs</title>
+  
+  <link rel="icon" type="image/x-icon" href="../../../assets/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+</head>
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light navbar-light">
+    <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
+      <a class="navbar-brand" style="font-size: 20pt; font-weight: bolder" href="../../../">
+       <img src="../../../assets/bluerock-cube.svg" style="height: 25pt">
+       BlueRock FM Docs
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-0"><i class="bi bi-search"></i></span>
+              <input type="search" id="searchInput" class="form-control bg-transparent border-0 border-bottom text-black" placeholder="Search..." aria-label="Search">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+    <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout" style="display: grid; grid-template-areas: 'sidebar main'; grid-template-columns: 1fr 5fr; gap: 0.5rem;">
+      <aside class="bd-sidebar" style="grid-area: 'sidebar'">
+        
+
+
+
+<div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
+  <ul class="list-unstyled ps-0 mx-3" id="sidebar">
+    
+    
+      
+        
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../">Home</a>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#quick-start-collapse" aria-expanded="true">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../quick-start/">
+    Quick Start
+  </a>
+  <div class="collapse show" id="quick-start-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../setup/">Setup</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../simple/test/">Very First Verification</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../state_basics/main/">Basics about Program State</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="./" aria-current="&quot;page&quot;">Primitive Data</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../debugging/main/">Exploring Programs in Logic</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#learn-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../learn/">
+    Learn
+  </a>
+  <div class="collapse " id="learn-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#functions-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../functions/">
+    Functions
+  </a>
+  <div class="collapse " id="functions-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../functions/specification/">Function Specifications</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../functions/verification/">Verifying Some Examples</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#control-flow-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../control-flow/">
+    Control Flow
+  </a>
+  <div class="collapse " id="control-flow-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../control_flow/if/"><code>if</code> Statements</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../control_flow/loop/">Loop Invariants</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#classes-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../class_reps/classes/">
+    Classes
+  </a>
+  <div class="collapse " id="classes-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../class_reps/main/">Class Representation Predicates</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../class_reps/alt/">Class Representation Predicates, alternative</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../rep_hints/main/">Hints about Reps</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../fractional-sharing/intro/">Sharing with Fractional Permissions</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#troubleshooting-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../troubleshooting/">
+    Troubleshooting
+  </a>
+  <div class="collapse " id="troubleshooting-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../common_errors/missing_type_instances/">Dealing with Missing Type Instances</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#scaffold-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../scaffold/">
+    Scaffold
+  </a>
+  <div class="collapse " id="scaffold-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../scaffold/getting-started/">Getting Started</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../scaffold/default-specs/">Using Default Specifications</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../scaffold/by_hand/">Providing a Specification by Hand</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#demos-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/">
+    Demos
+  </a>
+  <div class="collapse " id="demos-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#point-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/aggregate01/README/">
+    Point
+  </a>
+  <div class="collapse " id="point-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/aggregate01/Point.hpp.html">Point.hpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/aggregate01/Point_hpp_spec/">Point_hpp_spec.v</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/aggregate01/Point_hpp_proof/">Point_hpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#basics-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/basic/README/">
+    Basics
+  </a>
+  <div class="collapse " id="basics-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/basic/main.cpp.html">main.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/basic/main_cpp_proof/">main_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#dataclass-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/data_class/README/">
+    Dataclass
+  </a>
+  <div class="collapse " id="dataclass-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/data_class/main.cpp.html">main.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/data_class/main_proof/">main_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#forward-list-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/forward_list_v1/README/">
+    Forward List
+  </a>
+  <div class="collapse " id="forward-list-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/forward_list_v1/test.cpp.html">test.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/forward_list_v1/test_cpp_proof/">test_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#inlining-specifications-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/inline/README/">
+    Inlining Specifications
+  </a>
+  <div class="collapse " id="inlining-specifications-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/inline/inline.hpp.html">inline.hpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/inline/inline_hpp_spec/">inline_hpp_spec.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#singly-linked-list-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/linked_list/README/">
+    Singly-linked List
+  </a>
+  <div class="collapse " id="singly-linked-list-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/linked_list/linked_list.hpp.html">linked_list.hpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/linked_list/linked_list.cpp.html">linked_list.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/linked_list/linked_list_hpp_spec/">linked_list_hpp_spec.v</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/linked_list/linked_list_cpp_proof/">linked_list_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#loops-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../demo/loops/README/">
+    Loops
+  </a>
+  <div class="collapse " id="loops-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/loops/main.cpp.html">main.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../demo/loops/main_cpp_proof/">main_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../further-reading/">External Resources</a>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../contributing/">Feedback</a>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#reference-docs-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../reference/">
+    Reference Docs
+  </a>
+  <div class="collapse " id="reference-docs-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../reference/coq-bluerock-auto-core/theories/hints/cancelx_notation/">DSL for <code>CancelX</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../reference/coq-bluerock-auto-cpp/theories/auto/cpp/elpi/derive/bi/">Derive instances for BI predicates</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+
+      
+    
+      
+        
+
+
+      
+    
+  </ul>
+</div>
+
+      </aside>
+      <main class="bd-main order-1">
+        
+<h1>Primitive Data</h1>
+
+<div class="alert alert-info" role="alert">
+  <b>Follow Along</b> by downloading the <a href="../main.v" download=""><i class="bi bi-download"></i>Rocq source of this tutorial</a>, or <a href="../../docs.tar.gz" download=""><i class="bi bi-download"></i>the full docs tarball</a>.<br>
+  <small>Some code is deliberately elided for presentation purposes, the full, working source code can be downloaded with the above link.</small><br>
+</div>
+
+<h1>Primitive Reps</h1>
+<p>The BRiCk program logic provides several representation predicates for
+primitive C++ state.</p>
+<ul>
+<li><code>primR ty q v</code> -- initialized program location storing <code>v</code> of type <code>ty</code> (can not store raw values)</li>
+<li><code>uninitR ty q</code> -- uninitialized program location of type <code>ty</code></li>
+<li><code>anyR ty q</code> -- a program location of type <code>ty</code> with completely unknown contents (initialized, uninitialized, or raw)</li>
+</ul>
+<p><strong>Convention</strong>: By convention, representation predicates end with a capital <code>R</code>, e.g. <code>primR</code>, <code>fooR</code>, etc.</p>
+<h2><code>primR</code></h2>
+<p>The most common predicate for talking about the value at a program location is <code>primR</code>.</p>
+<pre class="language-coq"><code class="language-coq"><span class="token keyword">About</span> primR<span class="token punctuation">.</span>
+<span class="token comment">(* primR : type -> cQp.t -> val -> Rep *)</span></code></pre>
+<p><code>primR ty q v</code> captures the <code>q</code> ownership of the <strong>initialized</strong> program cell with type <code>ty</code> and value <code>v</code>.
+Some examples,</p>
+<pre class="language-coq"><code class="language-coq"><span class="token keyword">Check</span> primR <span class="token string">"int"</span> <span class="token number">1</span>$m <span class="token punctuation">(</span>Vint <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>         <span class="token comment">(* &lt;&lt; mutable integer cell containing value 3 *)</span>
+<span class="token keyword">Check</span> primR <span class="token string">"char"</span> <span class="token number">1</span>$m <span class="token punctuation">(</span>Vchar <span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">.</span>      <span class="token comment">(* &lt;&lt; mutable character cell containing value 'A' *)</span>
+<span class="token keyword">Check</span> primR <span class="token string">"long int"</span> <span class="token number">1</span>$c <span class="token punctuation">(</span>Vint <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token comment">(* &lt;&lt; constant long int cell containing value 1000 *)</span></code></pre>
+<p>Because <code>primR</code> captures <strong>initialized</strong> program state, it implies that
+the value (the last argument) stored at the location is well typed at the type of the location.
+For instance, a <code>char</code> cannot store a <code>Vint</code> value, an <code>int</code> cannot store a
+<code>Vchar</code> value, and neither can store a value that overflows the storage.
+In other words, even if <code>val</code> has &quot;too many&quot; values, <code>primR ty q v</code> can rule out
+the values of <code>v</code> that are not appropriate for <code>ty</code>.</p>
+<p>Formally, this is captured by the following:</p>
+<pre class="language-coq"><code class="language-coq"><span class="token keyword">Lemma</span> primR_has_type <span class="token punctuation">:</span> <span class="token keyword">forall</span> <span class="token punctuation">(</span>p <span class="token punctuation">:</span> ptr<span class="token punctuation">)</span> ty q v<span class="token punctuation">,</span>
+    p <span class="token operator">|-</span><span class="token operator">></span> primR ty q v <span class="token operator">|-</span><span class="token operator">-</span> validP<span class="token operator">&lt;</span>ty<span class="token operator">></span> v<span class="token punctuation">.</span>
+<span class="token keyword">Proof</span><span class="token punctuation">.</span>  <span class="token keyword">Admitted</span><span class="token punctuation">.</span></code></pre>
+<p>Because <code>primR</code> is so common, BRiCk provides notations for the basic types with their canonical type representations.
+For example,</p>
+<pre class="language-coq"><code class="language-coq"><span class="token keyword">Print</span> intR<span class="token punctuation">.</span>
+<span class="token keyword">Print</span> ulongR<span class="token punctuation">.</span>
+<span class="token keyword">Print</span> ulonglongR<span class="token punctuation">.</span>
+<span class="token keyword">Print</span> charR<span class="token punctuation">.</span>
+<span class="token keyword">Print</span> wcharR<span class="token punctuation">.</span></code></pre>
+<h2><code>uninitR</code> -- Uninitialized Data</h2>
+<p>Unlike high-level languages, C++ does not mandate that all variables are initialized.
+For instance, variable <code>x</code> is not initialized in the following code.</p>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> x<span class="token punctuation">;</span>
+  <span class="token comment">// _local "x" |-> uninitR "int" 1$m</span>
+<span class="token punctuation">}</span></code></pre>
+<p>BRiCk provides the <code>Rep</code>-predicate <code>uninitR</code> to capture uninitialized program cells of a particular type.</p>
+<pre class="language-coq"><code class="language-coq"><span class="token keyword">About</span> uninitR<span class="token punctuation">.</span>
+<span class="token comment">(* uninitR : type -> cQp.t -> Rep *)</span></code></pre>
+<p>Formally, <code>uinitR ty q</code> captures an uninitialized program location of type <code>ty</code>.
+However, because uninitialized data is often transitory, explicitly writing this predicate is quite rare.
+In practice, we often prefer <code>anyR</code> to capture a value that may or may not be initialized.</p>
+<h2><code>anyR</code> -- Possibly Uninitialized Data</h2>
+<p>The <code>anyR</code> <code>Rep</code>-predicate captures a program location that is either initialized or not.
+The type of <code>anyR</code> is the same as <code>uninitR</code>.</p>
+<pre class="language-coq"><code class="language-coq"><span class="token keyword">About</span> anyR<span class="token punctuation">.</span>
+<span class="token comment">(* anyR : type -> cQp.t -> Rep *)</span></code></pre>
+<p>The <code>anyR</code> ownership can be particularly useful when describing a program state at the beginning
+of a loop. For example, suppose that you have the following <code>do-while</code> loop.</p>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">int</span> x<span class="token punctuation">;</span>
+<span class="token comment">// _local "x" |-> uninitR "int" 1$m</span>
+<span class="token keyword">do</span> <span class="token punctuation">{</span>
+  <span class="token comment">// _local "x" |-> anyR "int" 1$m</span>
+  x <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Before we enter the loop the first time, we know that <code>x</code> is uninitialized, but on subsequent
+iterations of the loop, <code>x</code> might be initialized. To capture this pattern, we can use <code>anyR</code>
+to say that the loop will execute correctly regardless of whether <code>x</code> is initialized or not.</p>
+<h2>Recap</h2>
+<p>Here we learned about the three most common predicates for describing primitive data,</p>
+<ol>
+<li><code>primR</code> for initialized data;</li>
+<li><code>anyR</code> for data that may or may not be initialized; and</li>
+<li><code>uninitR</code> for data that is known to be uninitialized.</li>
+</ol>
+<p>These predicates alone are sufficient for describing the behavior of many simple programs.</p>
+
+
+      </main>
+    </div>
+
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+      <center>
+        <small>BlueRock Security, Inc. 2025
+      </small></center>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../../node_modules/lunr/lunr.min.js"></script>
+    <script>
+        (async function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.createElement('div');
+            searchResults.id = 'searchResults';
+            searchResults.classList.add('list-group', 'mt-2');
+            document.body.appendChild(searchResults);
+
+            let idx;
+            let docs;
+
+            try {
+                const response = await fetch('/search.json');
+                docs = await response.json();
+
+                idx = lunr(function () {
+                    this.ref('url');
+                    this.field('title');
+                    this.field('content');
+
+                    docs.forEach(function (doc) {
+                        this.add(doc);
+                    }, this);
+                });
+            } catch (error) {
+                console.error('Error loading search index:', error);
+                return;
+            }
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value;
+                searchResults.innerHTML = '';
+
+                if (query.length > 2) {
+                    const results = idx.search(query);
+                    results.forEach(result => {
+                        const doc = docs.find(d => d.url === result.ref);
+                        if (doc) {
+                            const a = document.createElement('a');
+                            a.href = doc.url;
+                            a.classList.add('list-group-item', 'list-group-item-action');
+                            a.textContent = doc.title;
+                            searchResults.appendChild(a);
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

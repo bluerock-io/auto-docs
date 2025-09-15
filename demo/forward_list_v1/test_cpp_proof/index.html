@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>test_cpp_proof.v - BlueRock FM Docs</title>
+  
+  <link rel="icon" type="image/x-icon" href="../../../assets/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+</head>
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light navbar-light">
+    <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
+      <a class="navbar-brand" style="font-size: 20pt; font-weight: bolder" href="../../../">
+       <img src="../../../assets/bluerock-cube.svg" style="height: 25pt">
+       BlueRock FM Docs
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-0"><i class="bi bi-search"></i></span>
+              <input type="search" id="searchInput" class="form-control bg-transparent border-0 border-bottom text-black" placeholder="Search..." aria-label="Search">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+    <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout" style="display: grid; grid-template-areas: 'sidebar main'; grid-template-columns: 1fr 5fr; gap: 0.5rem;">
+      <aside class="bd-sidebar" style="grid-area: 'sidebar'">
+        
+
+
+
+<div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
+  <ul class="list-unstyled ps-0 mx-3" id="sidebar">
+    
+    
+      
+        
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../">Home</a>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#quick-start-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../quick-start/">
+    Quick Start
+  </a>
+  <div class="collapse " id="quick-start-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../setup/">Setup</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/simple/test/">Very First Verification</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/state_basics/main/">Basics about Program State</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/primitive_reps/main/">Primitive Data</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/debugging/main/">Exploring Programs in Logic</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#learn-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../learn/">
+    Learn
+  </a>
+  <div class="collapse " id="learn-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#functions-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../docs/functions/">
+    Functions
+  </a>
+  <div class="collapse " id="functions-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/functions/specification/">Function Specifications</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/functions/verification/">Verifying Some Examples</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#control-flow-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../docs/control-flow/">
+    Control Flow
+  </a>
+  <div class="collapse " id="control-flow-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/control_flow/if/"><code>if</code> Statements</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/control_flow/loop/">Loop Invariants</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#classes-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../docs/class_reps/classes/">
+    Classes
+  </a>
+  <div class="collapse " id="classes-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/class_reps/main/">Class Representation Predicates</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/class_reps/alt/">Class Representation Predicates, alternative</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/rep_hints/main/">Hints about Reps</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/fractional-sharing/intro/">Sharing with Fractional Permissions</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#troubleshooting-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../troubleshooting/">
+    Troubleshooting
+  </a>
+  <div class="collapse " id="troubleshooting-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../docs/common_errors/missing_type_instances/">Dealing with Missing Type Instances</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#scaffold-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../scaffold/">
+    Scaffold
+  </a>
+  <div class="collapse " id="scaffold-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../scaffold/getting-started/">Getting Started</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../scaffold/default-specs/">Using Default Specifications</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../scaffold/by_hand/">Providing a Specification by Hand</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#demos-collapse" aria-expanded="true">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../">
+    Demos
+  </a>
+  <div class="collapse show" id="demos-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#point-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../aggregate01/README/">
+    Point
+  </a>
+  <div class="collapse " id="point-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../aggregate01/Point.hpp.html">Point.hpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../aggregate01/Point_hpp_spec/">Point_hpp_spec.v</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../aggregate01/Point_hpp_proof/">Point_hpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#basics-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../basic/README/">
+    Basics
+  </a>
+  <div class="collapse " id="basics-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../basic/main.cpp.html">main.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../basic/main_cpp_proof/">main_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#dataclass-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../data_class/README/">
+    Dataclass
+  </a>
+  <div class="collapse " id="dataclass-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../data_class/main.cpp.html">main.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../data_class/main_proof/">main_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#forward-list-collapse" aria-expanded="true">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../README/">
+    Forward List
+  </a>
+  <div class="collapse show" id="forward-list-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../test.cpp.html">test.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="./" aria-current="&quot;page&quot;">test_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#inlining-specifications-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../inline/README/">
+    Inlining Specifications
+  </a>
+  <div class="collapse " id="inlining-specifications-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../inline/inline.hpp.html">inline.hpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../inline/inline_hpp_spec/">inline_hpp_spec.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#singly-linked-list-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../linked_list/README/">
+    Singly-linked List
+  </a>
+  <div class="collapse " id="singly-linked-list-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../linked_list/linked_list.hpp.html">linked_list.hpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../linked_list/linked_list.cpp.html">linked_list.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../linked_list/linked_list_hpp_spec/">linked_list_hpp_spec.v</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../linked_list/linked_list_cpp_proof/">linked_list_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#loops-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../loops/README/">
+    Loops
+  </a>
+  <div class="collapse " id="loops-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../loops/main.cpp.html">main.cpp</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../loops/main_cpp_proof/">main_cpp_proof.v</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../further-reading/">External Resources</a>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../contributing/">Feedback</a>
+</li>
+
+
+      
+    
+      
+        
+
+<li class="mb-1">
+  
+  <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#reference-docs-collapse">
+  </button>
+  <a class="nav-link px-0" style="display: inline" href="../../../reference/">
+    Reference Docs
+  </a>
+  <div class="collapse " id="reference-docs-collapse">
+    <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
+      
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../reference/coq-bluerock-auto-core/theories/hints/cancelx_notation/">DSL for <code>CancelX</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../../reference/coq-bluerock-auto-cpp/theories/auto/cpp/elpi/derive/bi/">Derive instances for BI predicates</a>
+</li>
+
+
+        
+      
+    </ul>
+  </div>
+</li>
+
+
+      
+    
+      
+        
+
+
+      
+    
+      
+        
+
+
+      
+    
+  </ul>
+</div>
+
+      </aside>
+      <main class="bd-main order-1">
+        
+<h1>test_cpp_proof.v</h1>
+
+<div class="alert alert-info" role="alert">
+  <b>Follow Along</b> by downloading the <a href="../test_cpp_proof.v" download=""><i class="bi bi-download"></i>this Rocq source</a>.
+</div>
+
+<pre class="language-coq"><code class="language-coq"><span class="token comment">(*
+ * Copyright (c) 2025 BlueRock Systems, Inc.
+ * This software is distributed under the terms of the BedRock Open-Source License.
+ * See the LICENSE-BedRock file in the repository root for details.
+ *)</span></code></pre>
+<p>This demonstrates a <em>simple</em> way of specifying <code>forward_list</code> and its iterators - this
+is easy to write and automate, but for iterators this only (attempts to)
+ensure memory safety, as we do not track the element being pointed.</p>
+<div class="alert alert-warning" role="alert">
+<p>XXX: the iterator specs are unsound, because list mutations that remove a
+node will invalidate iterators to that node. How to fix this is unclear.</p>
+</div>
+<p>We will provide elsewhere sound specs that support functional correctness
+<em>and</em> good automation, but these are significantly more complicated.</p>
+<pre class="language-coq"><code class="language-coq"><span class="token keyword">Require</span> <span class="token keyword">Import</span> bluerock<span class="token punctuation">.</span>auto<span class="token punctuation">.</span>cpp<span class="token punctuation">.</span>spec<span class="token punctuation">.</span>
+<span class="token keyword">Require</span> <span class="token keyword">Import</span> bluerock<span class="token punctuation">.</span>auto<span class="token punctuation">.</span>cpp<span class="token punctuation">.</span>proof<span class="token punctuation">.</span>
+<span class="token keyword">Require</span> <span class="token keyword">Import</span> bluerock<span class="token punctuation">.</span>cpp<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>forward_list_v1<span class="token punctuation">.</span>test_cpp<span class="token punctuation">.</span>
+
+<span class="token keyword">Implicit</span> <span class="token keyword">Type</span> <span class="token punctuation">(</span>p <span class="token punctuation">:</span> ptr<span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+<span class="token comment">(** TO UPSTREAM BEGIN *)</span>
+
+<span class="token keyword">Import</span> linearity<span class="token punctuation">.</span>
+
+<span class="token attribute attr-name"><span class="token punctuation">#[</span>program<span class="token punctuation">]</span></span> <span class="token keyword">Definition</span> wand_CX <span class="token punctuation">{</span>PROP <span class="token punctuation">:</span> bi<span class="token punctuation">}</span> <span class="token punctuation">{</span>A <span class="token punctuation">:</span> <span class="token keyword">Type</span><span class="token punctuation">}</span> <span class="token punctuation">(</span>Q <span class="token punctuation">:</span> A <span class="token operator">-></span> PROP<span class="token punctuation">)</span> <span class="token punctuation">(</span>x <span class="token punctuation">:</span> A<span class="token punctuation">)</span> <span class="token punctuation">(</span>P <span class="token punctuation">:</span> PROP<span class="token punctuation">)</span> <span class="token operator">:=</span>
+  \cancelx
+  \<span class="token keyword">using</span> P
+  \<span class="token keyword">using</span> P <span class="token operator">-</span><span class="token operator">*</span> Q x
+  \bound y
+  \proving Q y
+  \through <span class="token punctuation">[</span><span class="token operator">|</span> y <span class="token operator">=</span> x <span class="token operator">|</span><span class="token punctuation">]</span>
+  \<span class="token keyword">end</span><span class="token punctuation">.</span>
+<span class="token keyword">Next</span> <span class="token keyword">Obligation</span><span class="token punctuation">.</span> work<span class="token punctuation">.</span> <span class="token keyword">Qed</span><span class="token punctuation">.</span>
+
+<span class="token keyword">Section</span> with_Σ<span class="token punctuation">.</span>
+  <span class="token keyword">Context</span> <span class="token punctuation">`{</span>Σ <span class="token punctuation">:</span> cpp_logic<span class="token punctuation">}</span><span class="token punctuation">.</span>
+  <span class="token keyword">Definition</span> wand_p_CX <span class="token punctuation">{</span>A <span class="token punctuation">:</span> <span class="token keyword">Type</span><span class="token punctuation">}</span> p <span class="token punctuation">(</span>Q <span class="token punctuation">:</span> A <span class="token operator">-></span> Rep<span class="token punctuation">)</span> <span class="token operator">:=</span> wand_CX <span class="token punctuation">(</span>λ y<span class="token punctuation">,</span> p <span class="token operator">|-</span><span class="token operator">></span> Q y<span class="token punctuation">)</span><span class="token punctuation">.</span>
+<span class="token keyword">End</span> with_Σ<span class="token punctuation">.</span>
+<span class="token attribute attr-name"><span class="token punctuation">#[</span>local<span class="token punctuation">]</span></span> <span class="token keyword">Hint</span> <span class="token keyword">Resolve</span> wand_p_CX <span class="token punctuation">:</span> wand_db<span class="token punctuation">.</span>
+
+<span class="token keyword">Import</span> auto_frac auto_pick_frac<span class="token punctuation">.</span>
+
+<span class="token keyword">Ltac</span> merge_wand <span class="token operator">:=</span> wname <span class="token punctuation">[</span>bi_wand<span class="token punctuation">]</span> <span class="token string">"W"</span><span class="token punctuation">;</span> iDestruct <span class="token punctuation">(</span><span class="token string">"W"</span> <span class="token keyword">with</span> <span class="token string">"[$]"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token string">"?"</span><span class="token punctuation">.</span>
+<span class="token keyword">Ltac</span> admit_spec spec <span class="token operator">:=</span> iAssert spec <span class="token keyword">as</span> <span class="token string">"#?"</span><span class="token punctuation">;</span> first admit<span class="token punctuation">.</span>
+
+<span class="token comment">(* TO upstream END *)</span>
+
+NES<span class="token punctuation">.</span>Begin std<span class="token punctuation">.</span>forward_list<span class="token punctuation">.</span>
+
+  <span class="token keyword">Notation</span> N <span class="token operator">:=</span> <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>"</span><span class="token operator">%</span>cpp_name<span class="token punctuation">.</span>
+  <span class="token keyword">Notation</span> T <span class="token operator">:=</span> <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>"</span><span class="token operator">%</span>cpp_type<span class="token punctuation">.</span>
+  <span class="token keyword">Goal</span> T <span class="token operator">=</span> Tnamed N<span class="token punctuation">.</span> done<span class="token punctuation">.</span> <span class="token keyword">Abort</span><span class="token punctuation">.</span>
+
+  <span class="token comment">(* The name of the iterator type. *)</span>
+  <span class="token keyword">Notation</span> itN <span class="token operator">:=</span> <span class="token string">"std::__1::__forward_list_iterator&lt;std::__1::__forward_list_node&lt;int, void*>*>"</span><span class="token operator">%</span>cpp_name<span class="token punctuation">.</span></code></pre>
+<p>Representation predicate for <code>forward_list&lt;int&gt;</code>.</p>
+<pre class="language-coq"><code class="language-coq">  br<span class="token punctuation">.</span>lock <span class="token keyword">Definition</span> R <span class="token punctuation">`{</span>Σ <span class="token punctuation">:</span> cpp_logic<span class="token punctuation">,</span> σ <span class="token punctuation">:</span> genv<span class="token punctuation">}</span> <span class="token punctuation">(</span>q <span class="token punctuation">:</span> cQp<span class="token punctuation">.</span>t<span class="token punctuation">)</span> <span class="token punctuation">(</span>xs <span class="token punctuation">:</span> list Z<span class="token punctuation">)</span><span class="token punctuation">:</span> Rep <span class="token operator">:=</span>
+    structR N q<span class="token punctuation">.</span>
+  <span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>type_ptr<span class="token punctuation">,</span>cfracsplittable<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive R<span class="token punctuation">.</span>
+  <span class="token comment">(** [b] is true for non-past-the-end iterators. *)</span></code></pre>
+<p>Representation predicate for <code>forward_list&lt;int&gt;::iterator</code>.</p>
+<p><code>b = true</code> means that this iterator is not at the end.</p>
+<pre class="language-coq"><code class="language-coq">  br<span class="token punctuation">.</span>lock <span class="token keyword">Definition</span> itR <span class="token punctuation">`{</span>Σ <span class="token punctuation">:</span> cpp_logic<span class="token punctuation">,</span> σ <span class="token punctuation">:</span> genv<span class="token punctuation">}</span>
+      <span class="token punctuation">(</span>own <span class="token punctuation">:</span> option <span class="token punctuation">(</span>ptr <span class="token operator">*</span> cQp<span class="token punctuation">.</span>t <span class="token operator">*</span> list Z<span class="token punctuation">)</span><span class="token punctuation">)</span> q <span class="token punctuation">(</span>b <span class="token punctuation">:</span> bool<span class="token punctuation">)</span><span class="token punctuation">:</span> Rep <span class="token operator">:=</span>
+    structR itN q<span class="token punctuation">.</span>
+  <span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>type_ptr<span class="token punctuation">,</span>cfracsplittable<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive itR<span class="token punctuation">.</span>
+
+  <span class="token keyword">Section</span> with_Σ<span class="token punctuation">.</span>
+    <span class="token keyword">Context</span> <span class="token punctuation">`{</span>Σ <span class="token punctuation">:</span> cpp_logic<span class="token punctuation">,</span> σ <span class="token punctuation">:</span> genv<span class="token punctuation">}</span><span class="token punctuation">.</span>
+    <span class="token keyword">Context</span> <span class="token punctuation">`{</span>MOD <span class="token punctuation">:</span> test_cpp<span class="token punctuation">.</span>module ⊧ σ<span class="token punctuation">}</span><span class="token punctuation">.</span>
+
+    <span class="token attribute attr-name"><span class="token punctuation">#[</span>global<span class="token punctuation">]</span></span> <span class="token keyword">Instance</span> R_learn
+      <span class="token punctuation">:</span> Cbn <span class="token punctuation">(</span>Learn <span class="token punctuation">(</span>any <span class="token operator">=</span><span class="token operator">=></span> learn_eq <span class="token operator">=</span><span class="token operator">=></span> learn_hints<span class="token punctuation">.</span>fin<span class="token punctuation">)</span> R<span class="token punctuation">)</span> <span class="token operator">:=</span> ltac<span class="token punctuation">:</span><span class="token punctuation">(</span>solve_learnable<span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    <span class="token attribute attr-name"><span class="token punctuation">#[</span>global<span class="token punctuation">]</span></span> <span class="token keyword">Instance</span> itR_learn
+      <span class="token punctuation">:</span> Cbn <span class="token punctuation">(</span>Learn <span class="token punctuation">(</span>learn_eq <span class="token operator">=</span><span class="token operator">=></span> any <span class="token operator">=</span><span class="token operator">=></span> learn_eq <span class="token operator">=</span><span class="token operator">=></span> learn_hints<span class="token punctuation">.</span>fin<span class="token punctuation">)</span> itR<span class="token punctuation">)</span> <span class="token operator">:=</span> ltac<span class="token punctuation">:</span><span class="token punctuation">(</span>solve_learnable<span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::forward_list()"</span>
+        <span class="token keyword">as</span> ctor_spec <span class="token keyword">with</span>
+     <span class="token punctuation">(</span>\this this
+      \post this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span>$m <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::~forward_list()"</span>
+      <span class="token keyword">as</span> dtor_spec <span class="token keyword">with</span>
+     <span class="token punctuation">(</span>\this this
+      \pre<span class="token punctuation">{</span>xs<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span>$m xs
+      \post emp<span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::push_front(int&amp;&amp;)"</span>
+      <span class="token keyword">as</span> push_front_move_spec <span class="token keyword">with</span>
+     <span class="token punctuation">(</span>\this this
+      \pre<span class="token punctuation">{</span>ns<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span>$m ns
+      \arg<span class="token punctuation">{</span>p<span class="token punctuation">}</span> <span class="token string">"n"</span> <span class="token punctuation">(</span>Vref p<span class="token punctuation">)</span>
+      \prepost<span class="token punctuation">{</span>q n<span class="token punctuation">}</span> p <span class="token operator">|-</span><span class="token operator">></span> intR q n
+      \post this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span>$m <span class="token punctuation">(</span>n <span class="token punctuation">:</span><span class="token punctuation">:</span> ns<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::pop_front()"</span>
+      <span class="token keyword">as</span> pop_front_move_spec <span class="token keyword">with</span>
+     <span class="token punctuation">(</span>\this this
+      \pre<span class="token punctuation">{</span>n ns<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span>$m <span class="token punctuation">(</span>n <span class="token punctuation">:</span><span class="token punctuation">:</span> ns<span class="token punctuation">)</span>
+      \post this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span>$m ns<span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::empty() const"</span>
+      <span class="token keyword">as</span> empty_spec <span class="token keyword">with</span>
+     <span class="token punctuation">(</span>\this this
+      \prepost<span class="token punctuation">{</span>ns<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span>$m ns
+      \post<span class="token punctuation">[</span>Vbool <span class="token punctuation">(</span>bool_decide <span class="token punctuation">(</span>ns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span> emp<span class="token punctuation">)</span><span class="token punctuation">.</span></code></pre>
+<p>This specification consumes the entire list in order to check out a single
+value. This is similar to Rust's handling of array access, once you perform
+a mutable borrow of an element from an array, you can not borrow more elements.</p>
+<p>Stronger specifications exist, but they require finer-grained tracking
+of the values.</p>
+<pre class="language-coq"><code class="language-coq">    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::front()"</span>
+      <span class="token keyword">as</span> front_spec <span class="token keyword">with</span>
+      <span class="token punctuation">(</span>\this this
+      \pre<span class="token punctuation">{</span>n ns<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span> <span class="token punctuation">(</span>n <span class="token punctuation">:</span><span class="token punctuation">:</span> ns<span class="token punctuation">)</span>
+      \post<span class="token punctuation">{</span>p<span class="token punctuation">}</span><span class="token punctuation">[</span>Vref p<span class="token punctuation">]</span>
+        p <span class="token operator">|-</span><span class="token operator">></span> intR <span class="token number">1</span>$m n <span class="token operator">**</span>
+        <span class="token punctuation">(</span>p <span class="token operator">|-</span><span class="token operator">></span> intR <span class="token number">1</span>$m n <span class="token operator">-</span><span class="token operator">*</span> this <span class="token operator">|-</span><span class="token operator">></span> R <span class="token number">1</span> <span class="token punctuation">(</span>n <span class="token punctuation">:</span><span class="token punctuation">:</span> ns<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span></code></pre>
+<h2>Iterators</h2>
+<p>Creating an iterator consumes part of the underlying list.
+This is necessary to prevent concurrent modifications to the list.</p>
+<pre class="language-coq"><code class="language-coq">    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::begin()"</span>
+        <span class="token keyword">as</span> begin_spec <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \this this
+      \pre<span class="token punctuation">{</span>q ns<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> R q ns
+      \post<span class="token punctuation">{</span>p<span class="token punctuation">}</span><span class="token punctuation">[</span>Vptr p<span class="token punctuation">]</span> p <span class="token operator">|-</span><span class="token operator">></span> itR <span class="token punctuation">(</span>Some <span class="token punctuation">(</span>this<span class="token punctuation">,</span> q<span class="token punctuation">,</span> ns<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">1</span>$m <span class="token punctuation">(</span>bool_decide <span class="token punctuation">(</span>ns <span class="token operator">&lt;></span> nil<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token comment">(* ^^ Return a past-the-end iterator for empty lists. *)</span>
+      <span class="token comment">(* TODO AUTO this type error produces a raw [False] *)</span>
+      <span class="token comment">(* \post emp *)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::forward_list&lt;int, std::__1::allocator&lt;int>>::end()"</span>
+        <span class="token keyword">as</span> end_spec <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \this this
+      \pre<span class="token punctuation">{</span>q ns<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> R q ns
+      \post<span class="token punctuation">{</span>p<span class="token punctuation">}</span><span class="token punctuation">[</span>Vptr p<span class="token punctuation">]</span> p <span class="token operator">|-</span><span class="token operator">></span> itR <span class="token punctuation">(</span>Some <span class="token punctuation">(</span>this<span class="token punctuation">,</span> q<span class="token punctuation">,</span> ns<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">1</span>$m false
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::operator!=(const std::__1::__forward_list_iterator&lt;std::__1::__forward_list_node&lt;int, void*>*>&amp;, const std::__1::__forward_list_iterator&lt;std::__1::__forward_list_node&lt;int, void*>*>&amp;)"</span>
+        <span class="token keyword">as</span> it_ne_spec <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \arg<span class="token punctuation">{</span>r1<span class="token punctuation">}</span> <span class="token string">""</span> <span class="token punctuation">(</span>Vref r1<span class="token punctuation">)</span>
+      \arg<span class="token punctuation">{</span>r2<span class="token punctuation">}</span> <span class="token string">""</span> <span class="token punctuation">(</span>Vref r2<span class="token punctuation">)</span>
+      \prepost<span class="token punctuation">{</span>m1 q1 b1<span class="token punctuation">}</span> r1 <span class="token operator">|-</span><span class="token operator">></span> itR m1 q1 b1
+      \prepost<span class="token punctuation">{</span>m2 q2 b2<span class="token punctuation">}</span> r2 <span class="token operator">|-</span><span class="token operator">></span> itR m2 q2 b2
+      \post<span class="token punctuation">{</span>b<span class="token punctuation">}</span><span class="token punctuation">[</span>Vbool b<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">|</span> <span class="token keyword">if</span> bool_decide <span class="token punctuation">(</span>b <span class="token operator">=</span> false<span class="token punctuation">)</span> <span class="token keyword">then</span> b1 <span class="token operator">=</span> b2
+                           <span class="token keyword">else</span> b1 <span class="token operator">=</span> true <span class="token operator">\/</span> b2 <span class="token operator">=</span> true <span class="token operator">|</span><span class="token punctuation">]</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token punctuation">(</span>dtor <span class="token string">"std::__1::__forward_list_iterator&lt;std::__1::__forward_list_node&lt;int, void*>*>"</span><span class="token punctuation">)</span>
+        <span class="token keyword">as</span> it_dtor_spec <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \this this
+      \pre<span class="token punctuation">{</span>m b<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> itR m <span class="token number">1</span>$m b
+      \post <span class="token keyword">match</span> m <span class="token keyword">with</span>
+            <span class="token operator">|</span> None <span class="token operator">=></span> emp
+            <span class="token operator">|</span> Some <span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> ls<span class="token punctuation">)</span> <span class="token operator">=></span> p <span class="token operator">|-</span><span class="token operator">></span> R q ls
+            <span class="token keyword">end</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::__forward_list_iterator&lt;std::__1::__forward_list_node&lt;int, void*>*>::operator++()"</span>
+      <span class="token keyword">as</span> it_op_pre_plusplus
+      <span class="token keyword">with</span> <span class="token punctuation">(</span>
+        \this this
+        \pre<span class="token punctuation">{</span>m b<span class="token punctuation">}</span> this <span class="token operator">|-</span><span class="token operator">></span> itR m <span class="token number">1</span>$m b
+        \post<span class="token punctuation">{</span>b<span class="token operator">'</span><span class="token punctuation">}</span><span class="token punctuation">[</span>Vptr this<span class="token punctuation">]</span> this <span class="token operator">|-</span><span class="token operator">></span> itR m <span class="token number">1</span>$m b<span class="token operator">'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span></code></pre>
+<p>Similar to <code>front</code> above, this specification consumes the entire iterator
+ownership in order to check out the current value.
+See the comment there for more information.</p>
+<pre class="language-coq"><code class="language-coq">    cpp<span class="token punctuation">.</span>spec <span class="token string">"std::__1::__forward_list_iterator&lt;std::__1::__forward_list_node&lt;int, void*>*>::operator*() const"</span>
+        <span class="token keyword">as</span> it_op_star_spec <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \this this
+      \<span class="token keyword">let</span><span class="token punctuation">{</span>lp q ls<span class="token punctuation">}</span> m <span class="token operator">:=</span> Some <span class="token punctuation">(</span>lp<span class="token punctuation">,</span> q<span class="token punctuation">,</span> ls<span class="token punctuation">)</span>
+      \pre this <span class="token operator">|-</span><span class="token operator">></span> itR m <span class="token number">1</span>$m true
+      \post<span class="token punctuation">{</span>p<span class="token punctuation">}</span><span class="token punctuation">[</span>Vptr p<span class="token punctuation">]</span> ∃ i<span class="token punctuation">,</span>
+        p <span class="token operator">|-</span><span class="token operator">></span> intR q i <span class="token operator">**</span>
+        <span class="token punctuation">(</span>p <span class="token operator">|-</span><span class="token operator">></span> intR q i <span class="token operator">-</span><span class="token operator">*</span> this <span class="token operator">|-</span><span class="token operator">></span> itR m <span class="token number">1</span>$m true<span class="token punctuation">)</span>
+      <span class="token comment">(* TODO AUTO: this type error produces a raw [False] *)</span>
+      <span class="token comment">(* \post emp *)</span>
+      <span class="token comment">(* \post{i}[Vint i] emp *)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+  <span class="token keyword">End</span> with_Σ<span class="token punctuation">.</span>
+
+NES<span class="token punctuation">.</span><span class="token keyword">End</span> std<span class="token punctuation">.</span>forward_list<span class="token punctuation">.</span>
+
+<span class="token keyword">Section</span> with_Σ<span class="token punctuation">.</span>
+  <span class="token keyword">Context</span> <span class="token punctuation">`{</span>Σ <span class="token punctuation">:</span> cpp_logic<span class="token punctuation">,</span> σ <span class="token punctuation">:</span> genv<span class="token punctuation">}</span><span class="token punctuation">.</span>
+
+  NES<span class="token punctuation">.</span><span class="token keyword">Open</span> std<span class="token punctuation">.</span>forward_list<span class="token punctuation">.</span>
+
+  <span class="token keyword">Section</span> with_MOD<span class="token punctuation">.</span>
+    <span class="token keyword">Context</span> <span class="token punctuation">`{</span>MOD <span class="token punctuation">:</span> test_cpp<span class="token punctuation">.</span>module ⊧ σ<span class="token punctuation">}</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"test(bool)"</span> <span class="token keyword">as</span> test_spec <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \arg <span class="token string">"b"</span> <span class="token punctuation">(</span>Vbool true<span class="token punctuation">)</span>
+      \post emp
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"TestBasic&lt;template std::__1::forward_list>()"</span> <span class="token keyword">as</span> test_basic <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \post emp
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"main()"</span> <span class="token keyword">as</span> main <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \post<span class="token punctuation">[</span>Vint <span class="token number">0</span><span class="token punctuation">]</span> emp
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+    cpp<span class="token punctuation">.</span>spec <span class="token string">"TestIterators&lt;template std::__1::forward_list>()"</span> <span class="token keyword">as</span> test_iterators <span class="token keyword">with</span> <span class="token punctuation">(</span>
+      \post<span class="token punctuation">{</span>n<span class="token punctuation">}</span><span class="token punctuation">[</span>Vint n<span class="token punctuation">]</span> emp<span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+  <span class="token keyword">End</span> with_MOD<span class="token punctuation">.</span>
+
+  <span class="token keyword">Section</span> iterators<span class="token punctuation">.</span>
+
+    <span class="token keyword">Lemma</span> test_iterators_ok <span class="token punctuation">:</span>
+      verify<span class="token punctuation">[</span>module<span class="token punctuation">]</span> test_iterators<span class="token punctuation">.</span>
+    <span class="token keyword">Proof</span><span class="token punctuation">.</span>
+      verify_spec<span class="token punctuation">.</span> go<span class="token punctuation">.</span>
+      progress name_locals<span class="token punctuation">.</span>
+
+      wp_for
+        <span class="token punctuation">(</span><span class="token keyword">fun</span> ρ <span class="token operator">=></span>
+          \pre<span class="token punctuation">{</span>b<span class="token punctuation">}</span> __begin0_addr <span class="token operator">|-</span><span class="token operator">></span> itR <span class="token operator">?</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token number">1</span>$m b
+          \pre<span class="token punctuation">{</span>n<span class="token punctuation">}</span> acc_addr <span class="token operator">|-</span><span class="token operator">></span> uintR <span class="token number">1</span>$m n
+          \post<span class="token operator">*</span> ∃ n<span class="token operator">'</span><span class="token punctuation">,</span> acc_addr <span class="token operator">|-</span><span class="token operator">></span> uintR <span class="token number">1</span>$m n<span class="token operator">'</span>
+          \post Exists b<span class="token operator">'</span><span class="token punctuation">,</span> __begin0_addr <span class="token operator">|-</span><span class="token operator">></span> itR <span class="token operator">?</span>m <span class="token number">1</span>$m b<span class="token operator">'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+      go<span class="token punctuation">.</span>
+      wp_if<span class="token punctuation">;</span> first last<span class="token punctuation">.</span> <span class="token punctuation">{</span> go<span class="token punctuation">.</span> <span class="token punctuation">}</span>
+      go<span class="token punctuation">.</span>
+      simplify_eq<span class="token operator">/</span><span class="token operator">=</span><span class="token punctuation">.</span>
+      destruct_or<span class="token operator">!</span><span class="token punctuation">;</span> try <span class="token keyword">by</span> exfalso<span class="token punctuation">.</span>
+      ego <span class="token keyword">with</span> #wand_db<span class="token punctuation">.</span>
+    <span class="token keyword">Qed</span><span class="token punctuation">.</span>
+
+  <span class="token keyword">End</span> iterators<span class="token punctuation">.</span>
+
+  <span class="token keyword">Section</span> basic<span class="token punctuation">.</span>
+    <span class="token keyword">Lemma</span> test_basic_ok <span class="token punctuation">:</span>
+      verify<span class="token punctuation">[</span>module<span class="token punctuation">]</span> test_basic<span class="token punctuation">.</span>
+    <span class="token keyword">Proof</span><span class="token punctuation">.</span>
+      verify_spec<span class="token punctuation">.</span>
+
+      go <span class="token keyword">with</span> #wand_db<span class="token punctuation">.</span>
+    <span class="token keyword">Qed</span><span class="token punctuation">.</span>
+  <span class="token keyword">End</span> basic<span class="token punctuation">.</span>
+<span class="token keyword">End</span> with_Σ<span class="token punctuation">.</span></code></pre>
+
+
+      </main>
+    </div>
+
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+      <center>
+        <small>BlueRock Security, Inc. 2025
+      </small></center>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../../node_modules/lunr/lunr.min.js"></script>
+    <script>
+        (async function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.createElement('div');
+            searchResults.id = 'searchResults';
+            searchResults.classList.add('list-group', 'mt-2');
+            document.body.appendChild(searchResults);
+
+            let idx;
+            let docs;
+
+            try {
+                const response = await fetch('/search.json');
+                docs = await response.json();
+
+                idx = lunr(function () {
+                    this.ref('url');
+                    this.field('title');
+                    this.field('content');
+
+                    docs.forEach(function (doc) {
+                        this.add(doc);
+                    }, this);
+                });
+            } catch (error) {
+                console.error('Error loading search index:', error);
+                return;
+            }
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value;
+                searchResults.innerHTML = '';
+
+                if (query.length > 2) {
+                    const results = idx.search(query);
+                    results.forEach(result => {
+                        const doc = docs.find(d => d.url === result.ref);
+                        if (doc) {
+                            const a = document.createElement('a');
+                            a.href = doc.url;
+                            a.classList.add('list-group-item', 'list-group-item-action');
+                            a.textContent = doc.title;
+                            searchResults.appendChild(a);
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
