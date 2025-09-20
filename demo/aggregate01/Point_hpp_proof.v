@@ -32,19 +32,19 @@ Section with_Σ.
   #[local] Hint Opaque PointR : br_opacity.
   #[local] Hint Extern 1 (PointR _ _ |-- PointR _ _) => reflexivity : br_opacity.
 
-  Lemma ctor_ok : verify[ Point_hpp.module ] ctor_spec.
+  Lemma ctor_ok : verify[ Point_hpp.source ] ctor_spec.
   Proof. verify_spec; go. Qed.
 
-  Lemma dtor_ok : verify[ Point_hpp.module ] dtor_spec.
+  Lemma dtor_ok : verify[ Point_hpp.source ] dtor_spec.
   Proof. verify_spec; go. Qed.
 
-  Lemma getX_ok : verify[ Point_hpp.module ] getX_spec.
+  Lemma getX_ok : verify[ Point_hpp.source ] getX_spec.
   Proof. verify_spec'; rewrite /PointR; go. Qed.
 
-  Lemma getY_ok : verify[ Point_hpp.module ] getY_spec.
+  Lemma getY_ok : verify[ Point_hpp.source ] getY_spec.
   Proof. verify_spec'; rewrite /PointR; go. Qed.
 
-  Lemma mdist_ok : verify[ Point_hpp.module ] mdist_spec.
+  Lemma mdist_ok : verify[ Point_hpp.source ] mdist_spec.
   Proof. verify_spec; go. Qed.
 
   Definition mdist_link := [LINK] mdist_ok.
@@ -60,7 +60,7 @@ Section with_Σ.
 
   (* soundness of the specification *)
   Theorem Point_hpp_ok :
-      denoteModule Point_hpp.module |-- public_spec.
+      denoteModule Point_hpp.source |-- public_spec.
   Proof. rewrite /public_spec /=; go. Qed.
 
 End with_Σ.

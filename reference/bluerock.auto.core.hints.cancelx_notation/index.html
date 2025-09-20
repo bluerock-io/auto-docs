@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>DSL for CancelX hints - BlueRock FM Docs</title>
+  <title>DSL for defining hints - BlueRock FM Docs</title>
   
-  <link rel="icon" type="image/x-icon" href="../../../../../assets/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
   <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light navbar-light">
     <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
-      <a class="navbar-brand" style="font-size: 20pt; font-weight: bolder" href="../../../../../">
-       <img src="../../../../../assets/bluerock-cube.svg" style="height: 25pt">
+      <a class="navbar-brand" style="font-size: 20pt; font-weight: bolder" href="../../">
+       <img src="../../assets/bluerock-cube.svg" style="height: 25pt">
        BlueRock FM Docs
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <div class="input-group">
+            <div class="input-group" id="searchGroup">
               <span class="input-group-text bg-transparent border-0"><i class="bi bi-search"></i></span>
               <input type="search" id="searchInput" class="form-control bg-transparent border-0 border-bottom text-black" placeholder="Search..." aria-label="Search">
             </div>
@@ -49,7 +49,7 @@
         
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../">Home</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../">Home</a>
 </li>
 
 
@@ -62,18 +62,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#quick-start-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../quick-start/">
+  <a class="nav-link px-0" style="display: inline" href="../../quick-start/">
     Quick Start
   </a>
   <div class="collapse " id="quick-start-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../setup/">Setup</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../setup/">Setup</a>
 </li>
 
 
@@ -83,7 +88,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/simple/test/">Very First Verification</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/simple/test/">Very First Verification</a>
 </li>
 
 
@@ -93,7 +98,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/state_basics/main/">Basics about Program State</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/state_basics/main/">Basics about Program State</a>
 </li>
 
 
@@ -103,7 +108,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/primitive_reps/main/">Primitive Data</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/primitive_reps/main/">Primitive Data</a>
 </li>
 
 
@@ -113,7 +118,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/debugging/main/">Exploring Programs in Logic</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/debugging/main/">Exploring Programs in Logic</a>
 </li>
 
 
@@ -133,12 +138,17 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#learn-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../learn/">
+  <a class="nav-link px-0" style="display: inline" href="../../learn/">
     Learn
   </a>
   <div class="collapse " id="learn-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
@@ -147,18 +157,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#functions-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../docs/functions/">
+  <a class="nav-link px-0" style="display: inline" href="../../docs/functions/">
     Functions
   </a>
   <div class="collapse " id="functions-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/functions/specification/">Function Specifications</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/functions/specification/">Function Specifications</a>
 </li>
 
 
@@ -168,7 +183,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/functions/verification/">Verifying Some Examples</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/functions/verification/">Verifying Some Examples</a>
 </li>
 
 
@@ -188,18 +203,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#control-flow-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../docs/control-flow/">
+  <a class="nav-link px-0" style="display: inline" href="../../docs/control-flow/">
     Control Flow
   </a>
   <div class="collapse " id="control-flow-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/control_flow/if/"><code>if</code> Statements</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/control_flow/if/"><code>if</code> Statements</a>
 </li>
 
 
@@ -209,7 +229,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/control_flow/loop/">Loop Invariants</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/control_flow/loop/">Loop Invariants</a>
 </li>
 
 
@@ -229,18 +249,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#classes-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../docs/class_reps/classes/">
+  <a class="nav-link px-0" style="display: inline" href="../../docs/class_reps/classes/">
     Classes
   </a>
   <div class="collapse " id="classes-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/class_reps/main/">Class Representation Predicates</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/class_reps/main/">Class Representation Predicates</a>
 </li>
 
 
@@ -250,7 +275,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/class_reps/alt/">Class Representation Predicates, alternative</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/class_reps/alt/">Class Representation Predicates, alternative</a>
 </li>
 
 
@@ -260,7 +285,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/rep_hints/main/">Hints about Reps</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/rep_hints/main/">Hints about Reps</a>
 </li>
 
 
@@ -270,7 +295,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/fractional-sharing/intro/">Sharing with Fractional Permissions</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/fractional-sharing/intro/">Sharing with Fractional Permissions</a>
 </li>
 
 
@@ -297,18 +322,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#troubleshooting-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../troubleshooting/">
+  <a class="nav-link px-0" style="display: inline" href="../../troubleshooting/">
     Troubleshooting
   </a>
   <div class="collapse " id="troubleshooting-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../docs/common_errors/missing_type_instances/">Dealing with Missing Type Instances</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/common_errors/missing_type_instances/">Dealing with Missing Type Instances</a>
 </li>
 
 
@@ -328,18 +358,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#scaffold-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../scaffold/">
+  <a class="nav-link px-0" style="display: inline" href="../../scaffold/">
     Scaffold
   </a>
   <div class="collapse " id="scaffold-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../scaffold/getting-started/">Getting Started</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../scaffold/getting-started/">Getting Started</a>
 </li>
 
 
@@ -349,7 +384,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../scaffold/default-specs/">Using Default Specifications</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../scaffold/default-specs/">Using Default Specifications</a>
 </li>
 
 
@@ -359,7 +394,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../scaffold/by_hand/">Providing a Specification by Hand</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../scaffold/by_hand/">Providing a Specification by Hand</a>
 </li>
 
 
@@ -379,12 +414,17 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#demos-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/">
     Demos
   </a>
   <div class="collapse " id="demos-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
@@ -393,18 +433,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#point-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/aggregate01/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/aggregate01/README/">
     Point
   </a>
   <div class="collapse " id="point-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/aggregate01/Point.hpp.html">Point.hpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/aggregate01/Point.hpp.html">Point.hpp</a>
 </li>
 
 
@@ -414,7 +459,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/aggregate01/Point_hpp_spec/">Point_hpp_spec.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/aggregate01/Point_hpp_spec/">Point_hpp_spec.v</a>
 </li>
 
 
@@ -424,7 +469,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/aggregate01/Point_hpp_proof/">Point_hpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/aggregate01/Point_hpp_proof/">Point_hpp_proof.v</a>
 </li>
 
 
@@ -444,18 +489,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#basics-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/basic/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/basic/README/">
     Basics
   </a>
   <div class="collapse " id="basics-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/basic/main.cpp.html">main.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/basic/main.cpp.html">main.cpp</a>
 </li>
 
 
@@ -465,7 +515,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/basic/main_cpp_proof/">main_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/basic/main_cpp_proof/">main_cpp_proof.v</a>
 </li>
 
 
@@ -485,18 +535,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#dataclass-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/data_class/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/data_class/README/">
     Dataclass
   </a>
   <div class="collapse " id="dataclass-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/data_class/main.cpp.html">main.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/data_class/main.cpp.html">main.cpp</a>
 </li>
 
 
@@ -506,7 +561,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/data_class/main_proof/">main_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/data_class/main_proof/">main_proof.v</a>
 </li>
 
 
@@ -526,18 +581,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#forward-list-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/forward_list_v1/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/forward_list_v1/README/">
     Forward List
   </a>
   <div class="collapse " id="forward-list-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/forward_list_v1/test.cpp.html">test.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/forward_list_v1/test.cpp.html">test.cpp</a>
 </li>
 
 
@@ -547,7 +607,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/forward_list_v1/test_cpp_proof/">test_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/forward_list_v1/test_cpp_proof/">test_cpp_proof.v</a>
 </li>
 
 
@@ -567,18 +627,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#inlining-specifications-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/inline/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/inline/README/">
     Inlining Specifications
   </a>
   <div class="collapse " id="inlining-specifications-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/inline/inline.hpp.html">inline.hpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/inline/inline.hpp.html">inline.hpp</a>
 </li>
 
 
@@ -588,7 +653,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/inline/inline_hpp_spec/">inline_hpp_spec.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/inline/inline_hpp_spec/">inline_hpp_spec.v</a>
 </li>
 
 
@@ -608,18 +673,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#singly-linked-list-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/linked_list/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/linked_list/README/">
     Singly-linked List
   </a>
   <div class="collapse " id="singly-linked-list-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/linked_list/linked_list.hpp.html">linked_list.hpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list.hpp.html">linked_list.hpp</a>
 </li>
 
 
@@ -629,7 +699,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/linked_list/linked_list.cpp.html">linked_list.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list.cpp.html">linked_list.cpp</a>
 </li>
 
 
@@ -639,7 +709,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/linked_list/linked_list_hpp_spec/">linked_list_hpp_spec.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list_hpp_spec/">linked_list_hpp_spec.v</a>
 </li>
 
 
@@ -649,7 +719,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/linked_list/linked_list_cpp_proof/">linked_list_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list_cpp_proof/">linked_list_cpp_proof.v</a>
 </li>
 
 
@@ -669,18 +739,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#loops-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../demo/loops/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/loops/README/">
     Loops
   </a>
   <div class="collapse " id="loops-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/loops/main.cpp.html">main.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/loops/main.cpp.html">main.cpp</a>
 </li>
 
 
@@ -690,7 +765,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../demo/loops/main_cpp_proof/">main_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/loops/main_cpp_proof/">main_cpp_proof.v</a>
 </li>
 
 
@@ -714,7 +789,7 @@
         
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../further-reading/">External Resources</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../further-reading/">External Resources</a>
 </li>
 
 
@@ -724,7 +799,7 @@
         
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../contributing/">Feedback</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../contributing/">Feedback</a>
 </li>
 
 
@@ -737,18 +812,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#reference-docs-collapse" aria-expanded="true">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../">
+  <a class="nav-link px-0" style="display: inline" href="../">
     Reference Docs
   </a>
   <div class="collapse show" id="reference-docs-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="./" aria-current="&quot;page&quot;">DSL for <code>CancelX</code> hints</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="./" aria-current="&quot;page&quot;">DSL for defining hints</a>
 </li>
 
 
@@ -758,7 +838,187 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../coq-bluerock-auto-cpp/theories/auto/cpp/elpi/derive/bi/">Derive instances for BI predicates</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.core.hints.orient/">Syntax for defining hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.Arith/">Tactics for arithmetics</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.auto_frac.hints/">Automatic Fractional Splitting</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.breakpoints/">Using breakpoints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.cpp_proof/">The <code>verify</code> notation</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.delayed_case_tactics/">Join points</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.elpi.derive.bi/">Derive instances for BI predicates</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.hints.fractional/">Common UNSAFE hints for <code>primR</code></a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.specs.inline/">Inlining during verification</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.cpp_class/">The <code>cpp.class</code> command</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.cpp_enum/">The <code>cpp.enum</code> command</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.cpp_spec/">The <code>cpp.spec</code> command</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.bwd/">Derive <code>Bwd</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.cancel/">Derive <code>Cancel</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.eager_unfold/">Derive Eager unfolding hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.equiv/">Derive equivalences for predicates</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.fwd/">Derive <code>Fwd</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.hint_opaque/">Derive <code>Hint Opaque</code> annotations</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.lazy_unfold/">Derive Lazy unfolding hints</a>
 </li>
 
 
@@ -789,75 +1049,88 @@
       </aside>
       <main class="bd-main order-1">
         
-<h1>DSL for `CancelX` hints</h1>
-<p>This file defines a DSL to simplify to definition and proof of hints. The same language is usable with [Bwd], [Fwd]
-and [CancelX] hints. Fwd hints are still special since they're run at a different phase.</p>
-<h2>[CancelX] Hints</h2>
-<p>The following defines a [CancelX] hint:</p>
+<h1>DSL for defining hints</h1>
+
+
+<div class="alert alert-info" role="alert">
+  Available from <code>bluerock.auto.core.hints.cancelx_notation</code>.
+</div>
+
+
+<p>This file defines a DSL to simplify to definition and proof of hints.
+The same language is usable with <code>Bwd</code>, <code>Fwd</code> and <code>CancelX</code> hints.
+<code>Fwd</code> hints are still special since they're run at a different phase.</p>
+<h2><code>CancelX</code> Hints</h2>
+<p>The following syntax defines a <code>CancelX</code> hint:</p>
 <pre class="language-coq"><code class="language-coq"><span class="token attribute attr-name"><span class="token punctuation">#[</span>program<span class="token punctuation">]</span></span>
 <span class="token keyword">Definition</span> my_cancelx_C <span class="token operator">:=</span>
   \cancelx
-  \masks m <span class="token operator">=></span> f       <span class="token comment">(* [m : MatchingMode] and [f : FUpdCfg]; see classes/cancelx.v *)</span>
+  \masks m <span class="token operator">=></span> f         <span class="token comment">(* [m : MatchingMode] and [f : FUpdCfg]; see classes/cancelx.v *)</span>
   \<span class="token keyword">with</span> a
-  \guard isGood a     <span class="token comment">(* this is like \require *)</span>
-  \guard_with b       <span class="token comment">(* inserts [guard_not_provable (guard_with b)] and introduces [guard_with b] *)</span>
+  \guard isGood a       <span class="token comment">(* this is like \require *)</span>
+  \guard_with b         <span class="token comment">(* inserts [guard_not_provable (guard_with b)] and introduces [guard_with b] *)</span>
   \<span class="token keyword">with</span> b
   \<span class="token keyword">using</span> P a b          <span class="token comment">(* match and _use_ [P a b]; see [base.Use] documentation *)</span>
-  \consuming P<span class="token operator">'</span> a b     <span class="token comment">(* match and always consume [P a b]; see [base.Drop] documentation *)</span>
+  \consuming PC a b     <span class="token comment">(* match and always consume [PC a b]; see [base.Drop] documentation *)</span>
   \preserving PP a b    <span class="token comment">(* match and always preserve [PP a b]; like \prepost PP; see [base.Preserve] documentation *)</span>
   \intro c              <span class="token comment">(* c is only visible in \deduce and \through *)</span>
-  \deduce P<span class="token operator">'</span> a b c
+  \deduce P<span class="token operator">'</span> a b c      <span class="token comment">(* remaining resource *)</span>
   \bound x              <span class="token comment">(* x is only visible in \proving, \through and \frame *)</span>
+  \bound_existential z  <span class="token comment">(* like \bound except that [z] will not match arbitrary terms, only existentially quantified variables *)</span>
+  \instantiate z <span class="token operator">:=</span> foo <span class="token comment">(* applying this hint causes the existentially quantified variable [z] to be instantiated with [foo] *)</span>
   \bound_guard good_instance x <span class="token comment">(* like \bound but meant for discriminating between matches *)</span>
-  \proving Q a b x      <span class="token comment">(* final goal to match *)</span>
+  \proving Q a b x z    <span class="token comment">(* final goal to match *)</span>
   \goal_trigger QQ a b x
   \whole_conclusion     <span class="token comment">(* only fire if the hint matches all conjuncts of the conclusion *)</span>
   \exist y              <span class="token comment">(* y is only visible in \through *)</span>
-  \through Q<span class="token operator">'</span> a b c x y   <span class="token comment">(* new goal *)</span>
-  \frame L a b x        <span class="token comment">(* bi-abduction frame; once Q' ** QQ are dischared, L can become a new assumption *)</span>
+  \through Q<span class="token operator">'</span> a b c x y <span class="token comment">(* new goal *)</span>
+  \framed_var w         <span class="token comment">(* bind [w] useable only in \frame clauses *)</span>
+  \frame L a b x w      <span class="token comment">(* bi-abduction frame; once Q' ** QQ are dischared, L can become a new assumption *)</span>
   \<span class="token keyword">end</span><span class="token punctuation">.</span>
 <span class="token keyword">Next</span> <span class="token keyword">Obligation</span><span class="token punctuation">.</span> <span class="token comment">(* Proof of the hint *)</span> <span class="token keyword">Qed</span><span class="token punctuation">.</span></code></pre>
 <p>The resulting hint statement is equivalent to:</p>
-<pre class="language-coq"><code class="language-coq"><span class="token keyword">forall</span> a<span class="token punctuation">,</span> isGood a <span class="token operator">-></span>
-<span class="token keyword">forall</span> b<span class="token punctuation">,</span>
-  P a b <span class="token operator">**</span> PP a b
-<span class="token operator">|-</span><span class="token operator">-</span> <span class="token keyword">exists</span> c<span class="token punctuation">,</span>
-      P<span class="token operator">'</span> a b c <span class="token operator">**</span> PP a b <span class="token operator">**</span>
-      <span class="token punctuation">(</span><span class="token keyword">forall</span> x <span class="token punctuation">(</span><span class="token keyword">_</span> <span class="token punctuation">:</span> good_instance x<span class="token punctuation">)</span><span class="token punctuation">,</span>
-          <span class="token punctuation">(</span><span class="token keyword">exists</span> y<span class="token punctuation">,</span> Q<span class="token operator">'</span> a b c x y <span class="token operator">**</span> QQ a b x<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">*</span>
-      Q a b x <span class="token operator">**</span> QQ a b x <span class="token operator">**</span> L a b x<span class="token punctuation">)</span></code></pre>
+<pre class="language-coq"><code class="language-coq">∀ a<span class="token punctuation">,</span> isGood a <span class="token operator">-></span>
+∀ b<span class="token punctuation">,</span>
+P a b <span class="token operator">**</span> PC a b <span class="token operator">**</span> PP a b
+<span class="token operator">|-</span><span class="token operator">-</span>
+  ∃ c<span class="token punctuation">,</span>
+  P<span class="token operator">'</span> a b c <span class="token operator">**</span> PP a b <span class="token operator">**</span>
+  <span class="token punctuation">(</span>∀ x z <span class="token punctuation">(</span><span class="token keyword">_</span> <span class="token punctuation">:</span> good_instance x<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span>∃ y<span class="token punctuation">,</span> <span class="token punctuation">{</span>instantiate z <span class="token operator">:=</span> foo<span class="token punctuation">}</span> <span class="token operator">**</span> Q<span class="token operator">'</span> a b c x y <span class="token operator">**</span> QQ a b x<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">*</span>
+    Q a b x <span class="token operator">**</span> QQ a b x <span class="token operator">**</span> <span class="token punctuation">(</span>∃ w<span class="token punctuation">,</span> L a b x w<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Note that the variables' visibility follow the rules indicated in comments and not the visitibilty rules of the
-quantifiers in the above formula. Case in point, even though [Q] and [QQ] appear under [exists c] (the intro-ed variable),
-they cannot refer to [c].</p>
-<h2>[Bwd] Hints</h2>
-<p>The following defines a [Bwd] hint:</p>
+quantifiers in the above formula.
+Case in point, even though <code>Q</code> and <code>QQ</code> appear under <code>∃ c</code> (the intro-ed variable),
+they cannot refer to <code>c</code>.</p>
+<h2><code>Bwd</code> Hints</h2>
+<p>The following syntax defines a <code>Bwd</code> hint:</p>
 <pre class="language-coq"><code class="language-coq"><span class="token attribute attr-name"><span class="token punctuation">#[</span>program<span class="token punctuation">]</span></span>
-  <span class="token keyword">Definition</span> my_bwd_hint_C <span class="token operator">:=</span>
-    \bwd
-    \<span class="token keyword">with</span> a
-    \bound b   <span class="token comment">(* in a bwd hint, \bound is the same as \with *)</span>
-    \proving Q a b
-    \goal_trigger QQ a b
-    \intro c
-    \through Q<span class="token operator">'</span> a b c
-    \<span class="token keyword">end</span> <span class="token punctuation">.</span>
+<span class="token keyword">Definition</span> my_bwd_hint_C <span class="token operator">:=</span>
+  \bwd
+  \<span class="token keyword">with</span> a
+  \bound b   <span class="token comment">(* in a bwd hint, \bound is the same as \with *)</span>
+  \proving Q a b
+  \goal_trigger QQ a b
+  \intro c
+  \through Q<span class="token operator">'</span> a b c
+  \<span class="token keyword">end</span> <span class="token punctuation">.</span>
 <span class="token keyword">Next</span> <span class="token keyword">Obligation</span><span class="token punctuation">.</span> <span class="token comment">(* Proof of the hint *)</span> <span class="token keyword">Qed</span><span class="token punctuation">.</span></code></pre>
 <p>The resulting hint statement is equivalent to:</p>
-<pre class="language-coq"><code class="language-coq"><span class="token keyword">forall</span> a b<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">exists</span> c<span class="token punctuation">,</span> Q<span class="token operator">'</span> a b c <span class="token operator">**</span> QQ a b<span class="token punctuation">)</span> <span class="token operator">|-</span><span class="token operator">-</span> Q a b <span class="token operator">**</span> QQ a b</code></pre>
-<h1>[Fwd] Hints</h1>
-<p>The following defines a [Fwd] hint:</p>
+<pre class="language-coq"><code class="language-coq">∀ a b<span class="token punctuation">,</span> <span class="token punctuation">(</span>∃ c<span class="token punctuation">,</span> Q<span class="token operator">'</span> a b c <span class="token operator">**</span> QQ a b<span class="token punctuation">)</span> <span class="token operator">|-</span><span class="token operator">-</span> Q a b <span class="token operator">**</span> QQ a b</code></pre>
+<h1><code>Fwd</code> Hints</h1>
+<p>The following syntax defines a <code>Fwd</code> hint:</p>
 <pre class="language-coq"><code class="language-coq"><span class="token attribute attr-name"><span class="token punctuation">#[</span>program<span class="token punctuation">]</span></span>
-  <span class="token keyword">Definition</span> my_fwd_hint_C <span class="token operator">:=</span>
-    \fwd
-    \<span class="token keyword">with</span> a
-    \consuming P a
-    \<span class="token keyword">using</span> PP a
-    \intro b
-    \deduce P<span class="token operator">'</span> a b
-    \<span class="token keyword">end</span> <span class="token punctuation">.</span>
+<span class="token keyword">Definition</span> my_fwd_hint_C <span class="token operator">:=</span>
+  \fwd
+  \<span class="token keyword">with</span> a
+  \consuming P a
+  \<span class="token keyword">using</span> PP a
+  \intro b
+  \deduce P<span class="token operator">'</span> a b
+  \<span class="token keyword">end</span> <span class="token punctuation">.</span>
 <span class="token keyword">Next</span> <span class="token keyword">Obligation</span><span class="token punctuation">.</span> <span class="token comment">(* Proof of the hint *)</span> <span class="token keyword">Qed</span><span class="token punctuation">.</span></code></pre>
 <p>The resulting hint statement is equivalent to:</p>
-<pre class="language-coq"><code class="language-coq">  <span class="token keyword">forall</span> a<span class="token punctuation">,</span> P a <span class="token operator">**</span> PP a <span class="token operator">|-</span><span class="token operator">-</span> <span class="token keyword">exists</span> b<span class="token punctuation">,</span> P<span class="token operator">'</span> a b <span class="token operator">**</span> PP a</code></pre>
+<pre class="language-coq"><code class="language-coq">∀ a<span class="token punctuation">,</span> P a <span class="token operator">**</span> PP a <span class="token operator">|-</span><span class="token operator">-</span> ∃ b<span class="token punctuation">,</span> P<span class="token operator">'</span> a b <span class="token operator">**</span> PP a</code></pre>
 <h2>Binders</h2>
 <p>Each keyword that declares a predicate can additionally bind one or more variable with an appropriate binder. Here is
 how to desugar those variable declarations:</p>
@@ -865,40 +1138,47 @@ how to desugar those variable declarations:</p>
   <span class="token operator">~</span><span class="token operator">></span>
     \<span class="token keyword">with</span> a
     \guard isGood a
-    \consuming<span class="token punctuation">{</span>a<span class="token punctuation">}</span> P a
 
+
+    \consuming<span class="token punctuation">{</span>a<span class="token punctuation">}</span> P a
   <span class="token operator">~</span><span class="token operator">></span>
     \<span class="token keyword">with</span> a
     \consuming P a
-    \<span class="token keyword">using</span><span class="token punctuation">{</span>a<span class="token punctuation">}</span> PP a
 
+
+    \<span class="token keyword">using</span><span class="token punctuation">{</span>a<span class="token punctuation">}</span> PP a
   <span class="token operator">~</span><span class="token operator">></span>
     \<span class="token keyword">with</span> a
     \<span class="token keyword">using</span> PP a
-    \deduce<span class="token punctuation">{</span>b<span class="token punctuation">}</span> P<span class="token operator">'</span> b
 
+
+    \deduce<span class="token punctuation">{</span>b<span class="token punctuation">}</span> P<span class="token operator">'</span> b
   <span class="token operator">~</span><span class="token operator">></span>
     \intro b
     \deduce P<span class="token operator">'</span> b
-    \proving<span class="token punctuation">{</span>x<span class="token punctuation">}</span> Q x
 
+
+    \proving<span class="token punctuation">{</span>x<span class="token punctuation">}</span> Q x
   <span class="token operator">~</span><span class="token operator">></span>
     \bound x
     \proving Q x
-    \goal_trigger<span class="token punctuation">{</span>x<span class="token punctuation">}</span> QQ x
 
+
+    \goal_trigger<span class="token punctuation">{</span>x<span class="token punctuation">}</span> QQ x
   <span class="token operator">~</span><span class="token operator">></span>
     \bound x
     \goal_trigger QQ x
-    \through<span class="token punctuation">{</span>y<span class="token punctuation">}</span> Q<span class="token operator">'</span> y
 
+
+    \through<span class="token punctuation">{</span>y<span class="token punctuation">}</span> Q<span class="token operator">'</span> y
   <span class="token operator">~</span><span class="token operator">></span>
     \exist y
     \through Q<span class="token operator">'</span> y
-    \frame<span class="token punctuation">{</span>a<span class="token punctuation">}</span> P a
 
+
+    \frame<span class="token punctuation">{</span>a<span class="token punctuation">}</span> P a
   <span class="token operator">~</span><span class="token operator">></span>
-    \bound a
+    \framed_var a
     \frame P a</code></pre>
 
 
@@ -912,20 +1192,21 @@ how to desugar those variable declarations:</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../../../../../node_modules/lunr/lunr.min.js"></script>
+    <script src="../../node_modules/lunr/lunr.min.js"></script>
     <script>
         (async function() {
             const searchInput = document.getElementById('searchInput');
+            const searchGroup = document.getElementById('searchGroup');
             const searchResults = document.createElement('div');
             searchResults.id = 'searchResults';
-            searchResults.classList.add('list-group', 'mt-2');
-            document.body.appendChild(searchResults);
+            searchResults.classList.add('list-group', 'mt-0');
+            searchGroup.appendChild(searchResults);
 
             let idx;
             let docs;
 
             try {
-                const response = await fetch('/search.json');
+                const response = await fetch('/auto-docs/search.json');
                 docs = await response.json();
 
                 idx = lunr(function () {
@@ -952,7 +1233,7 @@ how to desugar those variable declarations:</p>
                         const doc = docs.find(d => d.url === result.ref);
                         if (doc) {
                             const a = document.createElement('a');
-                            a.href = doc.url;
+                            a.href = '/auto-docs' + doc.url;
                             a.classList.add('list-group-item', 'list-group-item-action');
                             a.textContent = doc.title;
                             searchResults.appendChild(a);

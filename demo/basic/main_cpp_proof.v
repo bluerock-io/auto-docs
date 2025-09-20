@@ -39,7 +39,7 @@ Import wp_path.WpPrimRSep.
 #[local] Open Scope Z_scope.
 
 Section with_cpp.
-  Context `{Σ : cpp_logic} `{MOD : module ⊧ σ}.
+  Context `{Σ : cpp_logic} `{MOD : source ⊧ σ}.
 
   cpp.spec "add(int, int)" as add_spec with
      (\arg{x} "x" (Vint x)
@@ -47,7 +47,7 @@ Section with_cpp.
       \require valid<"int"> (x + y)
       \post[Vint (x + y)] emp).
 
-  Lemma add_ok : verify[main_cpp.module] add_spec.
+  Lemma add_ok : verify[main_cpp.source] add_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "doubled(int)" as doubled_spec with
@@ -55,7 +55,7 @@ Section with_cpp.
        \require valid<"int"> (2 * n)
        \post[Vint (2 * n)] emp).
 
-  Lemma doubled_ok : verify[main_cpp.module] doubled_spec.
+  Lemma doubled_ok : verify[main_cpp.source] doubled_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "quadruple(int)" as quadruple_spec with
@@ -63,7 +63,7 @@ Section with_cpp.
        \require valid<"int"> (4 * n)
        \post[Vint (4 * n)] emp).
 
-  Lemma quadruple_ok : verify[main_cpp.module] quadruple_spec.
+  Lemma quadruple_ok : verify[main_cpp.source] quadruple_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "abs(int)" as abs_spec with
@@ -72,7 +72,7 @@ Section with_cpp.
        \post[Vint $ Z.abs n] emp).
 
 
-  Lemma abs_ok : verify[main_cpp.module] abs_spec.
+  Lemma abs_ok : verify[main_cpp.source] abs_spec.
   Proof. verify_spec; go. Qed.
 
   (*| ### Pointers and Simple Ownership |*)
@@ -82,7 +82,7 @@ Section with_cpp.
        \prepost{q v} p |-> intR q v
        \post[Vint v] emp).
 
-  Lemma read_ok : verify[main_cpp.module] read_spec.
+  Lemma read_ok : verify[main_cpp.source] read_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "quadruple_mem(int*)" as quadruple_mem_spec with
@@ -91,7 +91,7 @@ Section with_cpp.
       \require valid<"int"> (4 * v)
       \post[Vint $ 4 * v] emp).
 
-  Lemma quadruple_mem_ok : verify[main_cpp.module] quadruple_mem_spec.
+  Lemma quadruple_mem_ok : verify[main_cpp.source] quadruple_mem_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "abs_mem(int*)" as abs_mem_spec with
@@ -100,7 +100,7 @@ Section with_cpp.
       \require valid<"int"> (Z.abs v)
       \post[Vint $ Z.abs v] emp).
 
-  Lemma abs_mem_ok : verify[main_cpp.module] abs_mem_spec.
+  Lemma abs_mem_ok : verify[main_cpp.source] abs_mem_spec.
   Proof. verify_spec; go. Qed.
 
   (*| ### Writing to Memory |*)
@@ -111,7 +111,7 @@ Section with_cpp.
        \require valid<"int"> (v + 1)
        \post p |-> intR 1$m (1 + v)).
 
-  Lemma incr_ok : verify[main_cpp.module] incr_spec.
+  Lemma incr_ok : verify[main_cpp.source] incr_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "zero(int*)" as zero_spec with
@@ -119,7 +119,7 @@ Section with_cpp.
        \pre p |-> anyR Tint 1$m
        \post p |-> intR 1$m 0).
 
-  Lemma zero_ok : verify[main_cpp.module] zero_spec.
+  Lemma zero_ok : verify[main_cpp.source] zero_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "inplace_double(int*)" as inplace_double_spec with
@@ -128,7 +128,7 @@ Section with_cpp.
        \require valid<"int"> (2 * v)
        \post p |-> intR 1$m (2 * v)).
 
-  Lemma inplace_double_ok : verify[main_cpp.module] inplace_double_spec.
+  Lemma inplace_double_ok : verify[main_cpp.source] inplace_double_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "add_mem(unsigned int*, unsigned int*)" as add_mem_spec with (
@@ -140,7 +140,7 @@ Section with_cpp.
     \post[Vint (m + n)] emp
   ).
 
-  Lemma add_mem_ok : verify[main_cpp.module] add_mem_spec.
+  Lemma add_mem_ok : verify[main_cpp.source] add_mem_spec.
   Proof. verify_spec; go. Qed.
 
   cpp.spec "swap(unsigned int*, unsigned int*)" as swap_spec with (
@@ -151,7 +151,7 @@ Section with_cpp.
     \post p |-> uintR 1$m n ** q |-> uintR 1$m m
   ).
 
-  Lemma swap_ok : verify[main_cpp.module] swap_spec.
+  Lemma swap_ok : verify[main_cpp.source] swap_spec.
   Proof. verify_spec; go. Qed.
 End with_cpp.
 
@@ -168,25 +168,25 @@ Module manually.
   #[only(lazy_unfold)] derive pointR. (* boiler-plate to derive some hints for field access *)
 
   Section with_cpp.
-    Context `{Σ : cpp_logic} `{MOD : module ⊧ σ}.
+    Context `{Σ : cpp_logic} `{MOD : source ⊧ σ}.
 
     cpp.spec "transpose(point*)" as transpose_spec with
         (\arg{p} "p" (Vptr p)
          \pre{m} p |-> pointR 1$m m
          \post p |-> pointR 1$m (m.2, m.1)).
 
-    Lemma transpose_ok : verify[main_cpp.module] transpose_spec.
+    Lemma transpose_ok : verify[main_cpp.source] transpose_spec.
     Proof using MOD. verify_spec; go. Qed.
   End with_cpp.
 End manually.
 
 Module data_classes.
   Module point.
-    cpp.class "point" prefix "" from module dataclass.
+    cpp.class "point" prefix "" from source dataclass.
   End point.
 
   Section with_cpp.
-    Context `{Σ : cpp_logic} `{MOD : module ⊧ σ}.
+    Context `{Σ : cpp_logic} `{MOD : source ⊧ σ}.
 
     cpp.spec "transpose(point*)" as transpose_spec with
         (\arg{p} "p" (Vptr p)
@@ -194,7 +194,7 @@ Module data_classes.
          \post p |-> point.R 1$m
          {| point.x := m.(point.y) ; point.y := m.(point.x) |}).
 
-    Lemma transpose_ok : verify[main_cpp.module] transpose_spec.
+    Lemma transpose_ok : verify[main_cpp.source] transpose_spec.
     Proof using MOD. verify_spec; go. Qed.
   End with_cpp.
 End data_classes.

@@ -33,7 +33,7 @@ the `inline` keyword **does not** affect the verification.
 |*)
 
 Section with_Σ.
-  Context `{Σ:cpp_logic} `{MOD : inline_hpp.module ⊧ σ}.
+  Context `{Σ:cpp_logic} `{MOD : inline_hpp.source ⊧ σ}.
 
   Definition CR : Rep :=
     structR "C" 1$m.
@@ -43,11 +43,11 @@ Section with_Σ.
 End with_Σ.
 
 Section with_Σ.
-  Context `{Σ:cpp_logic, σ : genv} `{MOD : inline_hpp.module ⊧ σ}.
+  Context `{Σ:cpp_logic, σ : genv} `{MOD : inline_hpp.source ⊧ σ}.
 
   cpp.spec "C::inline_I()" inline.
 
-  cpp.spec "C::inline_X(int&)" as inline_X from (inline_hpp.module) inline.
+  cpp.spec "C::inline_X(int&)" as inline_X from (inline_hpp.source) inline.
   cpp.spec "inline_O()" inline.
   cpp.spec "inline_X(int&)" inline.
   cpp.spec "inline_L(int&)" inline.
@@ -66,7 +66,7 @@ Section with_Σ.
      \prepost p |-> CR
      \post emp).
 
-  Lemma test_ok : denoteModule inline_hpp.module |-- test_spec.
+  Lemma test_ok : denoteModule inline_hpp.source |-- test_spec.
   Proof using MOD.
     verify_spec. go with pick_frac.
   Qed.

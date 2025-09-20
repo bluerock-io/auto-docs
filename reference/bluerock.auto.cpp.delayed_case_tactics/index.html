@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Derive instances for BI predicates - BlueRock FM Docs</title>
+  <title>Join points - BlueRock FM Docs</title>
   
-  <link rel="icon" type="image/x-icon" href="../../../../../../../../assets/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../../../../../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
   <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light navbar-light">
     <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
-      <a class="navbar-brand" style="font-size: 20pt; font-weight: bolder" href="../../../../../../../../">
-       <img src="../../../../../../../../assets/bluerock-cube.svg" style="height: 25pt">
+      <a class="navbar-brand" style="font-size: 20pt; font-weight: bolder" href="../../">
+       <img src="../../assets/bluerock-cube.svg" style="height: 25pt">
        BlueRock FM Docs
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <div class="input-group">
+            <div class="input-group" id="searchGroup">
               <span class="input-group-text bg-transparent border-0"><i class="bi bi-search"></i></span>
               <input type="search" id="searchInput" class="form-control bg-transparent border-0 border-bottom text-black" placeholder="Search..." aria-label="Search">
             </div>
@@ -49,7 +49,7 @@
         
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../">Home</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../">Home</a>
 </li>
 
 
@@ -62,18 +62,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#quick-start-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../quick-start/">
+  <a class="nav-link px-0" style="display: inline" href="../../quick-start/">
     Quick Start
   </a>
   <div class="collapse " id="quick-start-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../setup/">Setup</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../setup/">Setup</a>
 </li>
 
 
@@ -83,7 +88,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/simple/test/">Very First Verification</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/simple/test/">Very First Verification</a>
 </li>
 
 
@@ -93,7 +98,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/state_basics/main/">Basics about Program State</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/state_basics/main/">Basics about Program State</a>
 </li>
 
 
@@ -103,7 +108,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/primitive_reps/main/">Primitive Data</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/primitive_reps/main/">Primitive Data</a>
 </li>
 
 
@@ -113,7 +118,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/debugging/main/">Exploring Programs in Logic</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/debugging/main/">Exploring Programs in Logic</a>
 </li>
 
 
@@ -133,12 +138,17 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#learn-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../learn/">
+  <a class="nav-link px-0" style="display: inline" href="../../learn/">
     Learn
   </a>
   <div class="collapse " id="learn-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
@@ -147,18 +157,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#functions-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../docs/functions/">
+  <a class="nav-link px-0" style="display: inline" href="../../docs/functions/">
     Functions
   </a>
   <div class="collapse " id="functions-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/functions/specification/">Function Specifications</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/functions/specification/">Function Specifications</a>
 </li>
 
 
@@ -168,7 +183,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/functions/verification/">Verifying Some Examples</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/functions/verification/">Verifying Some Examples</a>
 </li>
 
 
@@ -188,18 +203,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#control-flow-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../docs/control-flow/">
+  <a class="nav-link px-0" style="display: inline" href="../../docs/control-flow/">
     Control Flow
   </a>
   <div class="collapse " id="control-flow-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/control_flow/if/"><code>if</code> Statements</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/control_flow/if/"><code>if</code> Statements</a>
 </li>
 
 
@@ -209,7 +229,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/control_flow/loop/">Loop Invariants</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/control_flow/loop/">Loop Invariants</a>
 </li>
 
 
@@ -229,18 +249,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#classes-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../docs/class_reps/classes/">
+  <a class="nav-link px-0" style="display: inline" href="../../docs/class_reps/classes/">
     Classes
   </a>
   <div class="collapse " id="classes-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/class_reps/main/">Class Representation Predicates</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/class_reps/main/">Class Representation Predicates</a>
 </li>
 
 
@@ -250,7 +275,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/class_reps/alt/">Class Representation Predicates, alternative</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/class_reps/alt/">Class Representation Predicates, alternative</a>
 </li>
 
 
@@ -260,7 +285,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/rep_hints/main/">Hints about Reps</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/rep_hints/main/">Hints about Reps</a>
 </li>
 
 
@@ -270,7 +295,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/fractional-sharing/intro/">Sharing with Fractional Permissions</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/fractional-sharing/intro/">Sharing with Fractional Permissions</a>
 </li>
 
 
@@ -297,18 +322,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#troubleshooting-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../troubleshooting/">
+  <a class="nav-link px-0" style="display: inline" href="../../troubleshooting/">
     Troubleshooting
   </a>
   <div class="collapse " id="troubleshooting-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../docs/common_errors/missing_type_instances/">Dealing with Missing Type Instances</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../docs/common_errors/missing_type_instances/">Dealing with Missing Type Instances</a>
 </li>
 
 
@@ -328,18 +358,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#scaffold-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../scaffold/">
+  <a class="nav-link px-0" style="display: inline" href="../../scaffold/">
     Scaffold
   </a>
   <div class="collapse " id="scaffold-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../scaffold/getting-started/">Getting Started</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../scaffold/getting-started/">Getting Started</a>
 </li>
 
 
@@ -349,7 +384,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../scaffold/default-specs/">Using Default Specifications</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../scaffold/default-specs/">Using Default Specifications</a>
 </li>
 
 
@@ -359,7 +394,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../scaffold/by_hand/">Providing a Specification by Hand</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../scaffold/by_hand/">Providing a Specification by Hand</a>
 </li>
 
 
@@ -379,12 +414,17 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#demos-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/">
     Demos
   </a>
   <div class="collapse " id="demos-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
@@ -393,18 +433,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#point-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/aggregate01/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/aggregate01/README/">
     Point
   </a>
   <div class="collapse " id="point-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/aggregate01/Point.hpp.html">Point.hpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/aggregate01/Point.hpp.html">Point.hpp</a>
 </li>
 
 
@@ -414,7 +459,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/aggregate01/Point_hpp_spec/">Point_hpp_spec.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/aggregate01/Point_hpp_spec/">Point_hpp_spec.v</a>
 </li>
 
 
@@ -424,7 +469,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/aggregate01/Point_hpp_proof/">Point_hpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/aggregate01/Point_hpp_proof/">Point_hpp_proof.v</a>
 </li>
 
 
@@ -444,18 +489,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#basics-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/basic/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/basic/README/">
     Basics
   </a>
   <div class="collapse " id="basics-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/basic/main.cpp.html">main.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/basic/main.cpp.html">main.cpp</a>
 </li>
 
 
@@ -465,7 +515,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/basic/main_cpp_proof/">main_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/basic/main_cpp_proof/">main_cpp_proof.v</a>
 </li>
 
 
@@ -485,18 +535,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#dataclass-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/data_class/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/data_class/README/">
     Dataclass
   </a>
   <div class="collapse " id="dataclass-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/data_class/main.cpp.html">main.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/data_class/main.cpp.html">main.cpp</a>
 </li>
 
 
@@ -506,7 +561,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/data_class/main_proof/">main_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/data_class/main_proof/">main_proof.v</a>
 </li>
 
 
@@ -526,18 +581,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#forward-list-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/forward_list_v1/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/forward_list_v1/README/">
     Forward List
   </a>
   <div class="collapse " id="forward-list-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/forward_list_v1/test.cpp.html">test.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/forward_list_v1/test.cpp.html">test.cpp</a>
 </li>
 
 
@@ -547,7 +607,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/forward_list_v1/test_cpp_proof/">test_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/forward_list_v1/test_cpp_proof/">test_cpp_proof.v</a>
 </li>
 
 
@@ -567,18 +627,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#inlining-specifications-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/inline/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/inline/README/">
     Inlining Specifications
   </a>
   <div class="collapse " id="inlining-specifications-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/inline/inline.hpp.html">inline.hpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/inline/inline.hpp.html">inline.hpp</a>
 </li>
 
 
@@ -588,7 +653,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/inline/inline_hpp_spec/">inline_hpp_spec.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/inline/inline_hpp_spec/">inline_hpp_spec.v</a>
 </li>
 
 
@@ -608,18 +673,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#singly-linked-list-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/linked_list/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/linked_list/README/">
     Singly-linked List
   </a>
   <div class="collapse " id="singly-linked-list-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/linked_list/linked_list.hpp.html">linked_list.hpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list.hpp.html">linked_list.hpp</a>
 </li>
 
 
@@ -629,7 +699,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/linked_list/linked_list.cpp.html">linked_list.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list.cpp.html">linked_list.cpp</a>
 </li>
 
 
@@ -639,7 +709,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/linked_list/linked_list_hpp_spec/">linked_list_hpp_spec.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list_hpp_spec/">linked_list_hpp_spec.v</a>
 </li>
 
 
@@ -649,7 +719,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/linked_list/linked_list_cpp_proof/">linked_list_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/linked_list/linked_list_cpp_proof/">linked_list_cpp_proof.v</a>
 </li>
 
 
@@ -669,18 +739,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#loops-collapse">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../../demo/loops/README/">
+  <a class="nav-link px-0" style="display: inline" href="../../demo/loops/README/">
     Loops
   </a>
   <div class="collapse " id="loops-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/loops/main.cpp.html">main.cpp</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/loops/main.cpp.html">main.cpp</a>
 </li>
 
 
@@ -690,7 +765,7 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../demo/loops/main_cpp_proof/">main_cpp_proof.v</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../demo/loops/main_cpp_proof/">main_cpp_proof.v</a>
 </li>
 
 
@@ -714,7 +789,7 @@
         
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../further-reading/">External Resources</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../further-reading/">External Resources</a>
 </li>
 
 
@@ -724,7 +799,7 @@
         
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../../contributing/">Feedback</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../../contributing/">Feedback</a>
 </li>
 
 
@@ -737,18 +812,23 @@
   
   <button class="btn sidebar-toggle align-items-center rounded px-1" data-bs-toggle="collapse" data-bs-target="#reference-docs-collapse" aria-expanded="true">
   </button>
-  <a class="nav-link px-0" style="display: inline" href="../../../../../../../">
+  <a class="nav-link px-0" style="display: inline" href="../">
     Reference Docs
   </a>
   <div class="collapse show" id="reference-docs-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       
+
+      
+        
+      
+
       
         
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="../../../../../../../coq-bluerock-auto-core/theories/hints/cancelx_notation/">DSL for <code>CancelX</code> hints</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.core.hints.cancelx_notation/">DSL for defining hints</a>
 </li>
 
 
@@ -758,7 +838,187 @@
           
 
 <li class="mb-1">
-  <a class="nav-link" style="margin-left: 1.5rem" href="./" aria-current="&quot;page&quot;">Derive instances for BI predicates</a>
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.core.hints.orient/">Syntax for defining hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.Arith/">Tactics for arithmetics</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.auto_frac.hints/">Automatic Fractional Splitting</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.breakpoints/">Using breakpoints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.cpp_proof/">The <code>verify</code> notation</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="./" aria-current="&quot;page&quot;">Join points</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.elpi.derive.bi/">Derive instances for BI predicates</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.hints.fractional/">Common UNSAFE hints for <code>primR</code></a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.cpp.specs.inline/">Inlining during verification</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.cpp_class/">The <code>cpp.class</code> command</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.cpp_enum/">The <code>cpp.enum</code> command</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.cpp_spec/">The <code>cpp.spec</code> command</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.bwd/">Derive <code>Bwd</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.cancel/">Derive <code>Cancel</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.eager_unfold/">Derive Eager unfolding hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.equiv/">Derive equivalences for predicates</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.fwd/">Derive <code>Fwd</code> hints</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.hint_opaque/">Derive <code>Hint Opaque</code> annotations</a>
+</li>
+
+
+        
+      
+        
+          
+
+<li class="mb-1">
+  <a class="nav-link" style="margin-left: 1.5rem" href="../bluerock.auto.elpi.derive.lazy_unfold/">Derive Lazy unfolding hints</a>
 </li>
 
 
@@ -789,36 +1049,46 @@
       </aside>
       <main class="bd-main order-1">
         
-<h1>Derive instances for BI predicates</h1>
-<p>This supports generating, mainly for <code>Rep</code> and <code>mpred</code>, <code>#[global]</code> instances of:</p>
+<h1>Join points</h1>
+
+
+<div class="alert alert-info" role="alert">
+  Available from <code>bluerock.auto.cpp.delayed_case_tactics</code>.
+</div>
+
+
+<p>This file provides two tactics <code>wp_if</code> and <code>wp_switch</code>,  with variants,
+for dealing with join points produced by <code>if</code> and <code>switch</code> statements.</p>
 <ul>
-<li><code>Knowledge</code></li>
-<li><code>Timeless</code></li>
-<li><code>ExclusiveToken0</code></li>
-<li><code>Typed cls _</code>/ <code>Observe (type_ptrR (Tanemd cls)) _</code></li>
-<li><code>Fractional</code>, <code>FracValid0</code>, <code>AsFractional0</code></li>
-<li><code>CFractional</code>, <code>CFracValid0</code>, <code>AsCFractional0</code></li>
-<li><code>WeaklyObjective</code></li>
+<li>
+<p><code>wp_if</code> -- advance past a <code>branch.stmt</code> performing an immediate case split.
+This should only be used if the continuation is &quot;simple&quot;.</p>
+</li>
+<li>
+<p><code>wp_if wpp</code> -- <code>wpp</code> is a <code>region -&gt; WithPrePost</code> (specify with function
+spec syntax) that describes the branches as a function with the given
+specification.  Unlike a function call, the branches get access to, but
+must preserve the frame.</p>
+</li>
+<li>
+<p><code>wpe_if wpp</code> -- similar to <code>wp_if wpp</code> but applies to conditional expressions.</p>
+</li>
+<li>
+<p><code>wpe_if PQ wpp</code> -- similar to <code>wpe_if wpp</code> but <code>PQ</code>, a <code>region -&gt; mpred</code>,
+specifies a postcondition to be proved after freeing the temporaries of the
+enclosing expression.</p>
+</li>
+<li>
+<p><code>wp_switch</code> -- same as <code>wp_if</code> but for <code>branch.cases</code></p>
+</li>
+<li>
+<p><code>wp_switch wpp</code> -- same as <code>wp_if wpp</code> but for <code>branch.cases</code></p>
+</li>
+<li>
+<p><code>wp_switch P</code> -- where <code>P</code> is a <code>region -&gt; mpred</code> states that <code>P</code> is the
+(big-footprint) specification of the join point.</p>
+</li>
 </ul>
-<p><code>cfracsplittable</code> derivation generates instances of <code>Timeless</code>, <code>CFractional</code>,
-<code>AsCFractional0</code> and <code>CFracValid0</code>, and <em>not</em> <code>CFracSplittable_0</code>.
-This is also the same for <code>fracsplittable</code>.</p>
-<p>Locked predicates using <code>mlock</code> and <code>br.lock</code> are supported as well as <code>Parameter</code>s.</p>
-<h2>Usages:</h2>
-<pre class="language-coq"><code class="language-coq"><span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>knowledge<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span>
-<span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>timeless<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span>
-<span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>exclusive<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span>
-<span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>type_ptr<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span>
-<span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>timeless<span class="token punctuation">,</span>knowledge<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span>
-<span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>cfracsplittable<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span>
-<span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>fracsplittable<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span>
-<span class="token attribute attr-name"><span class="token punctuation">#[</span>only<span class="token punctuation">(</span>wobjective<span class="token punctuation">)</span><span class="token punctuation">]</span></span> derive Pred<span class="token punctuation">.</span></code></pre>
-<h2>Example generation:</h2>
-<pre class="language-coq"><code class="language-coq">Pred_knowledge <span class="token punctuation">:</span> ∀ <span class="token punctuation">`(</span>Σ <span class="token punctuation">:</span> cpp_logic<span class="token punctuation">)</span> <span class="token punctuation">(</span>x1 <span class="token punctuation">:</span> A1<span class="token punctuation">)</span> ⋯ <span class="token punctuation">(</span>xn <span class="token punctuation">:</span> AN<span class="token punctuation">)</span><span class="token punctuation">,</span> Knowledge <span class="token punctuation">(</span>Pred x1 ⋯ xn<span class="token punctuation">)</span><span class="token punctuation">.</span></code></pre>
-<p><code>Knowledge</code> is solved by <code>solve_knowledge</code>,
-<code>Timeless</code> and <code>Typed</code> is solved by <code>solve_TC</code>
-(the C++ type in <code>Typed</code> is an evar that should be solved by typeclass search).
-<code>ExclusiveToken0</code> is solved by <code>solve_exclusive</code>.</p>
 
 
       </main>
@@ -831,20 +1101,21 @@ This is also the same for <code>fracsplittable</code>.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../../../../../../../../node_modules/lunr/lunr.min.js"></script>
+    <script src="../../node_modules/lunr/lunr.min.js"></script>
     <script>
         (async function() {
             const searchInput = document.getElementById('searchInput');
+            const searchGroup = document.getElementById('searchGroup');
             const searchResults = document.createElement('div');
             searchResults.id = 'searchResults';
-            searchResults.classList.add('list-group', 'mt-2');
-            document.body.appendChild(searchResults);
+            searchResults.classList.add('list-group', 'mt-0');
+            searchGroup.appendChild(searchResults);
 
             let idx;
             let docs;
 
             try {
-                const response = await fetch('/search.json');
+                const response = await fetch('/auto-docs/search.json');
                 docs = await response.json();
 
                 idx = lunr(function () {
@@ -871,7 +1142,7 @@ This is also the same for <code>fracsplittable</code>.</p>
                         const doc = docs.find(d => d.url === result.ref);
                         if (doc) {
                             const a = document.createElement('a');
-                            a.href = doc.url;
+                            a.href = '/auto-docs' + doc.url;
                             a.classList.add('list-group-item', 'list-group-item-action');
                             a.textContent = doc.title;
                             searchResults.appendChild(a);

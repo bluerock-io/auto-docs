@@ -15,7 +15,7 @@ Record Model_Point : Type :=
   }.
 
 Section with_Σ.
-  Context `{Σ:cpp_logic} `{Point_hpp.module ⊧ σ}.
+  Context `{Σ:cpp_logic} `{Point_hpp.source ⊧ σ}.
 
   Definition PointR (q : cQp.t) (m : Model_Point) : Rep :=
     _field "Point::x" |-> intR q m.(point_x) **

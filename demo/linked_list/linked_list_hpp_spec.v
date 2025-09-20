@@ -13,7 +13,7 @@ Require Import bluerock.cpp.demo.linked_list.linked_list_hpp.
 |*)
 NES.Begin linked_list.
 Section reps.
-  Context `{Σ : cpp_logic} `{MOD: linked_list_hpp.module ⊧ σ}.
+  Context `{Σ : cpp_logic} `{MOD: linked_list_hpp.source ⊧ σ}.
 
   Definition nodeR (q : cQp.t) (data : N) (next : ptr) : Rep :=
     _field "node::_data" |-> uintR q data **
@@ -40,14 +40,14 @@ End reps.
 |*)
 NES.Begin node.
 
-  cpp.spec "node::node(unsigned int)" from linked_list_hpp.module
+  cpp.spec "node::node(unsigned int)" from linked_list_hpp.source
       as ctor_null_spec with (
     \this this
     \arg{data} "data" (Vn data)
     \post this |-> nodeR 1$m data nullptr
   ).
 
-  cpp.spec "node::node(unsigned int, node* )" from linked_list_hpp.module
+  cpp.spec "node::node(unsigned int, node* )" from linked_list_hpp.source
       as ctor_next_spec with (
     \this this
     \arg{data} "data" (Vn data)
@@ -55,20 +55,20 @@ NES.Begin node.
     \post this |-> nodeR 1$m data next
   ).
 
-  cpp.spec "node::~node()" from linked_list_hpp.module as dtor_spec with (
+  cpp.spec "node::~node()" from linked_list_hpp.source as dtor_spec with (
     \this this
     \pre{data next} this |-> nodeR 1$m data next
     \post emp
   ).
 
-  cpp.spec "node::get_data()" from linked_list_hpp.module
+  cpp.spec "node::get_data()" from linked_list_hpp.source
       as get_data_spec with (
     \this this
     \prepost{q data next} this |-> nodeR q data next
     \post[Vn data] emp
   ).
 
-  cpp.spec "node::set_data(unsigned int)" from linked_list_hpp.module
+  cpp.spec "node::set_data(unsigned int)" from linked_list_hpp.source
       as set_data_spec with (
     \this this
     \arg{data} "data" (Vn data)
@@ -81,7 +81,7 @@ NES.End node.
 (*|
 ## Specifying List
 |*)
-cpp.spec "linked_list::linked_list(node*)" from linked_list_hpp.module
+cpp.spec "linked_list::linked_list(node*)" from linked_list_hpp.source
     as ctor_spec with (
   \this this
   \arg{root} "root" (Vptr root)
@@ -90,14 +90,14 @@ cpp.spec "linked_list::linked_list(node*)" from linked_list_hpp.module
 ).
 
 (*| The destructor does not handle deallocation of the nodes. |*)
-cpp.spec "linked_list::~linked_list()" from linked_list_hpp.module
+cpp.spec "linked_list::~linked_list()" from linked_list_hpp.source
     as dtor_spec with (
   \this this
   \pre this |-> R 1$m []
   \post emp
 ).
 
-cpp.spec "linked_list::length() const" from linked_list_hpp.module
+cpp.spec "linked_list::length() const" from linked_list_hpp.source
     as length_spec with (
   \this this
   \prepost{ls q} this |-> R q ls
@@ -105,7 +105,7 @@ cpp.spec "linked_list::length() const" from linked_list_hpp.module
 ).
 
 
-cpp.spec "linked_list::reverse()" from linked_list_hpp.module
+cpp.spec "linked_list::reverse()" from linked_list_hpp.source
     as reverse_spec with (
   \this this
   \pre{ls} this |-> R 1$m ls
@@ -113,7 +113,7 @@ cpp.spec "linked_list::reverse()" from linked_list_hpp.module
 ).
 
 
-cpp.spec "linked_list::push(node*)" from linked_list_hpp.module
+cpp.spec "linked_list::push(node*)" from linked_list_hpp.source
     as push_spec with (
   \this this
   \arg{node} "node" (Vptr node)
@@ -122,14 +122,14 @@ cpp.spec "linked_list::push(node*)" from linked_list_hpp.module
   \post this |-> R 1$m (n :: ls)
 ).
 
-cpp.spec "linked_list::pop()" from linked_list_hpp.module
+cpp.spec "linked_list::pop()" from linked_list_hpp.source
     as pop_spec with (
   \this this
   \pre{ls n } this |-> R 1$m (n :: ls)
   \post{node}[Vptr node] node |-> nodeR 1$m n nullptr ** this |-> R 1$m ls
 ).
 
-cpp.spec "linked_list::append(linked_list*)" from linked_list_hpp.module
+cpp.spec "linked_list::append(linked_list*)" from linked_list_hpp.source
     as append_spec with (
   \this this
   \arg{that} "l" (Vptr that)
@@ -157,7 +157,7 @@ Fixpoint merge (l1 l2 : list N) : list N :=
       end
   in merge' l2.
 
-cpp.spec "linked_list::merge(linked_list*)" from linked_list_hpp.module
+cpp.spec "linked_list::merge(linked_list*)" from linked_list_hpp.source
     as merge_spec with (
   \this this
   \arg{that} "l" (Vptr that)

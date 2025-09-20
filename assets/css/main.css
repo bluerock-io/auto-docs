@@ -56,8 +56,8 @@ a[href]:not(:where(
 }
 #searchResults {
     position: absolute;
-    top: 56px; /* Height of navbar */
-    right: 15px; /* Adjust as needed */
+    top: 40px; /* Height of navbar */
+    right: 5px; /* Adjust as needed */
     width: 300px; /* Adjust as needed */
     z-index: 1050; /* Above navbar */
 }

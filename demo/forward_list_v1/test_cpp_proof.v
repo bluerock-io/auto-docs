@@ -4,50 +4,30 @@
  * See the LICENSE-BedRock file in the repository root for details.
  *)
 (*|
-This demonstrates a _simple_ way of specifying `forward_list` and its iterators - this
-is easy to write and automate, but for iterators this only (attempts to)
-ensure memory safety, as we do not track the element being pointed.
+This demonstrates a _simple_ way of specifying `forward_list` and its iterators.
+Rather than precisely tracking the index that the iterator is in, we instead
+simply track whether the iterator references an actual node or a past-the-end node.
+This ensures memory safety.
 
-:::warn
-XXX: the iterator specs are unsound, because list mutations that remove a
-node will invalidate iterators to that node. How to fix this is unclear.
-:::
-
-We will provide elsewhere sound specs that support functional correctness
-_and_ good automation, but these are significantly more complicated.
+The specifications of the standard library will support functional correctness reasoning.
 |*)
-Require Import bluerock.auto.cpp.spec.
-Require Import bluerock.auto.cpp.proof.
+Require Import bluerock.auto.cpp.prelude.spec.
+Require Import bluerock.auto.cpp.prelude.proof.
 Require Import bluerock.cpp.demo.forward_list_v1.test_cpp.
 
 Implicit Type (p : ptr).
 
-(** TO UPSTREAM BEGIN *)
-
-Import linearity.
-
-#[program] Definition wand_CX {PROP : bi} {A : Type} (Q : A -> PROP) (x : A) (P : PROP) :=
-  \cancelx
-  \using P
-  \using P -* Q x
-  \bound y
-  \proving Q y
-  \through [| y = x |]
-  \end.
-Next Obligation. work. Qed.
-
+(* BEGIN: Upstream *)
 Section with_Σ.
   Context `{Σ : cpp_logic}.
-  Definition wand_p_CX {A : Type} p (Q : A -> Rep) := wand_CX (λ y, p |-> Q y).
+  Definition wand_p_CX {A : Type} p (Q : A -> Rep) := wand.wand_CX (λ y, p |-> Q y).
 End with_Σ.
+Create HintDb wand_db discriminated.
 #[local] Hint Resolve wand_p_CX : wand_db.
-
-Import auto_frac auto_pick_frac.
 
 Ltac merge_wand := wname [bi_wand] "W"; iDestruct ("W" with "[$]") as "?".
 Ltac admit_spec spec := iAssert spec as "#?"; first admit.
-
-(* TO upstream END *)
+(* END: Upstream *)
 
 NES.Begin std.forward_list.
 
@@ -66,6 +46,7 @@ NES.Begin std.forward_list.
 
   (*| Representation predicate for `forward_list<int>::iterator`.
 
+      `own` is a snapshot of the list model at the time that the iterator was created.
      `b = true` means that this iterator is not at the end.
   |*)
   br.lock Definition itR `{Σ : cpp_logic, σ : genv}
@@ -75,7 +56,7 @@ NES.Begin std.forward_list.
 
   Section with_Σ.
     Context `{Σ : cpp_logic, σ : genv}.
-    Context `{MOD : test_cpp.module ⊧ σ}.
+    Context `{MOD : test_cpp.source ⊧ σ}.
 
     #[global] Instance R_learn
       : Cbn (Learn (any ==> learn_eq ==> learn_hints.fin) R) := ltac:(solve_learnable).
@@ -83,18 +64,18 @@ NES.Begin std.forward_list.
     #[global] Instance itR_learn
       : Cbn (Learn (learn_eq ==> any ==> learn_eq ==> learn_hints.fin) itR) := ltac:(solve_learnable).
 
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::forward_list()"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::forward_list()"
         as ctor_spec with
      (\this this
       \post this |-> R 1$m []).
 
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::~forward_list()"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::~forward_list()"
       as dtor_spec with
      (\this this
       \pre{xs} this |-> R 1$m xs
       \post emp).
 
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::push_front(int&&)"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::push_front(int&&)"
       as push_front_move_spec with
      (\this this
       \pre{ns} this |-> R 1$m ns
@@ -102,13 +83,13 @@ NES.Begin std.forward_list.
       \prepost{q n} p |-> intR q n
       \post this |-> R 1$m (n :: ns)).
 
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::pop_front()"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::pop_front()"
       as pop_front_move_spec with
      (\this this
       \pre{n ns} this |-> R 1$m (n :: ns)
       \post this |-> R 1$m ns).
 
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::empty() const"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::empty() const"
       as empty_spec with
      (\this this
       \prepost{ns} this |-> R 1$m ns
@@ -121,7 +102,7 @@ NES.Begin std.forward_list.
        Stronger specifications exist, but they require finer-grained tracking
        of the values.
     |*)
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::front()"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::front()"
       as front_spec with
       (\this this
       \pre{n ns} this |-> R 1 (n :: ns)
@@ -129,30 +110,37 @@ NES.Begin std.forward_list.
         p |-> intR 1$m n **
         (p |-> intR 1$m n -* this |-> R 1 (n :: ns))).
 
-
     (*| ## Iterators
 
         Creating an iterator consumes part of the underlying list.
         This is necessary to prevent concurrent modifications to the list.
     |*)
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::begin()"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::begin()"
         as begin_spec with (
       \this this
       \pre{q ns} this |-> R q ns
       \post{p}[Vptr p] p |-> itR (Some (this, q, ns)) 1$m (bool_decide (ns <> nil))
       (* ^^ Return a past-the-end iterator for empty lists. *)
-      (* TODO AUTO this type error produces a raw [False] *)
-      (* \post emp *)
     ).
 
-    cpp.spec "std::__1::forward_list<int, std::__1::allocator<int>>::end()"
+    cpp.spec "std::forward_list<int, std::allocator<int>>::end()"
         as end_spec with (
       \this this
       \pre{q ns} this |-> R q ns
       \post{p}[Vptr p] p |-> itR (Some (this, q, ns)) 1$m false
     ).
 
-    cpp.spec "std::__1::operator!=(const std::__1::__forward_list_iterator<std::__1::__forward_list_node<int, void*>*>&, const std::__1::__forward_list_iterator<std::__1::__forward_list_node<int, void*>*>&)"
+    cpp.spec "std::operator==(const std::__forward_list_iterator<std::__forward_list_node<int, void*>*>&, const std::__forward_list_iterator<std::__forward_list_node<int, void*>*>&)"
+      as it_eq_spec with (
+          \arg{r1} "" (Vref r1)
+            \arg{r2} "" (Vref r2)
+            \prepost{m1 q1 b1} r1 |-> itR m1 q1 b1
+            \prepost{m2 q2 b2} r2 |-> itR m2 q2 b2
+            \post{b}[Vbool b] [| if b then b1 = b2
+                                 else b1 = true \/ b2 = true |]
+        ).
+
+    cpp.spec "std::operator!=(const std::__forward_list_iterator<std::__forward_list_node<int, void*>*>&, const std::__forward_list_iterator<std::__forward_list_node<int, void*>*>&)"
         as it_ne_spec with (
       \arg{r1} "" (Vref r1)
       \arg{r2} "" (Vref r2)
@@ -162,7 +150,7 @@ NES.Begin std.forward_list.
                            else b1 = true \/ b2 = true |]
     ).
 
-    cpp.spec (dtor "std::__1::__forward_list_iterator<std::__1::__forward_list_node<int, void*>*>")
+    cpp.spec "std::__forward_list_iterator<std::__forward_list_node<int, void*>*>::~__forward_list_iterator()"
         as it_dtor_spec with (
       \this this
       \pre{m b} this |-> itR m 1$m b
@@ -172,11 +160,11 @@ NES.Begin std.forward_list.
             end
     ).
 
-    cpp.spec "std::__1::__forward_list_iterator<std::__1::__forward_list_node<int, void*>*>::operator++()"
+    cpp.spec "std::__forward_list_iterator<std::__forward_list_node<int, void*>*>::operator++()"
       as it_op_pre_plusplus
       with (
         \this this
-        \pre{m b} this |-> itR m 1$m b
+        \pre{m} this |-> itR m 1$m true
         \post{b'}[Vptr this] this |-> itR m 1$m b'
     ).
 
@@ -184,7 +172,7 @@ NES.Begin std.forward_list.
        ownership in order to check out the current value.
        See the comment there for more information.
     |*)
-    cpp.spec "std::__1::__forward_list_iterator<std::__1::__forward_list_node<int, void*>*>::operator*() const"
+    cpp.spec "std::__forward_list_iterator<std::__forward_list_node<int, void*>*>::operator*() const"
         as it_op_star_spec with (
       \this this
       \let{lp q ls} m := Some (lp, q, ls)
@@ -193,8 +181,6 @@ NES.Begin std.forward_list.
         p |-> intR q i **
         (p |-> intR q i -* this |-> itR m 1$m true)
       (* TODO AUTO: this type error produces a raw [False] *)
-      (* \post emp *)
-      (* \post{i}[Vint i] emp *)
     ).
 
   End with_Σ.
@@ -207,13 +193,15 @@ Section with_Σ.
   NES.Open std.forward_list.
 
   Section with_MOD.
-    Context `{MOD : test_cpp.module ⊧ σ}.
+    Context `{MOD : test_cpp.source ⊧ σ}.
 
     cpp.spec "test(bool)" as test_spec with (
       \arg "b" (Vbool true)
       \post emp
     ).
 
+    (* TODO: aliases do not work under <<template>> because we do not have access to the
+       template AST. *)
     cpp.spec "TestBasic<template std::__1::forward_list>()" as test_basic with (
       \post emp
     ).
@@ -229,14 +217,12 @@ Section with_Σ.
 
   Section iterators.
 
-    Lemma test_iterators_ok :
-      verify[module] test_iterators.
+    Lemma test_iterators_ok : verify[source] test_iterators.
     Proof.
       verify_spec. go.
       progress name_locals.
 
-      wp_for
-        (fun ρ =>
+      wp_for (fun ρ =>
           \pre{b} __begin0_addr |-> itR ?[m] 1$m b
           \pre{n} acc_addr |-> uintR 1$m n
           \post* ∃ n', acc_addr |-> uintR 1$m n'
@@ -246,17 +232,15 @@ Section with_Σ.
       go.
       simplify_eq/=.
       destruct_or!; try by exfalso.
-      ego with #wand_db.
+      ego.
     Qed.
 
   End iterators.
 
   Section basic.
-    Lemma test_basic_ok :
-      verify[module] test_basic.
+    Lemma test_basic_ok : verify[source] test_basic.
     Proof.
-      verify_spec.
-
+      verify_spec. go.
       go with #wand_db.
     Qed.
   End basic.

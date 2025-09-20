@@ -11,7 +11,7 @@ Require Import bluerock.cpp.demo.loops.main_cpp.
 Import auto_frac.
 
 Section with_cpp.
-  Context `{Σ : cpp_logic} `{MOD : main_cpp.module ⊧ σ}.
+  Context `{Σ : cpp_logic} `{MOD : main_cpp.source ⊧ σ}.
 
   (*| These hints automatically break apart conditionals that would otherwise split
      the goal.
@@ -28,7 +28,7 @@ Section with_cpp.
   cpp.spec "while_loop()" as while_loop with
       (\post[Vint 10] emp).
 
-  Lemma while_loop_ok_inv : verify[main_cpp.module] "while_loop()".
+  Lemma while_loop_ok_inv : verify[main_cpp.source] "while_loop()".
   Proof using MOD.
     verify_spec'; go.
     (*| Specify a loop invariant which holds immediately *before* the
@@ -45,7 +45,7 @@ Section with_cpp.
     go with pick_frac.
   Qed.
 
-  Lemma while_loop_ok_prepost : verify[main_cpp.module] "while_loop()".
+  Lemma while_loop_ok_prepost : verify[main_cpp.source] "while_loop()".
   Proof using MOD.
     verify_spec'; go.
     (*| Specify a loop invariant which holds immediately *before* the
@@ -64,7 +64,7 @@ Section with_cpp.
   cpp.spec "while_decl_loop()" as while_decl_loop with
       (\post[Vint 10] emp).
 
-  Lemma while_decl_loop_ok_inv : verify[main_cpp.module] "while_decl_loop()".
+  Lemma while_decl_loop_ok_inv : verify[main_cpp.source] "while_decl_loop()".
   Proof using MOD.
     verify_spec'; go.
     (*| Specify a loop invariant which holds immediately *before* the
@@ -77,7 +77,7 @@ Section with_cpp.
     go with pick_frac.
   Qed.
 
-  Lemma while_decl_loop_ok_prepost : verify[main_cpp.module] "while_loop()".
+  Lemma while_decl_loop_ok_prepost : verify[main_cpp.source] "while_loop()".
   Proof using MOD.
     verify_spec'; go.
     (*| Specify a loop invariant which holds immediately *before* the
@@ -97,7 +97,7 @@ Section with_cpp.
   cpp.spec "do_while_loop()" as do_while_loop with
      (\post[Vint 10] emp).
 
-  Lemma do_while_loop_ok_inv : verify[main_cpp.module] "do_while_loop()".
+  Lemma do_while_loop_ok_inv : verify[main_cpp.source] "do_while_loop()".
   Proof using MOD.
     verify_spec'; go.
     (*| Specify a loop invariant which holds immediately *before* the
@@ -108,7 +108,7 @@ Section with_cpp.
   Qed.
 
 
-  Lemma do_while_loop_ok_prepost : verify[main_cpp.module] "do_while_loop()".
+  Lemma do_while_loop_ok_prepost : verify[main_cpp.source] "do_while_loop()".
   Proof using MOD.
     verify_spec'; go.
     (*| Specify a loop invariant which holds immediately *before* the
@@ -128,7 +128,7 @@ Section with_cpp.
   cpp.spec "for_loop()" as for_loop with
      (\post[Vint 10] emp).
 
-  Lemma for_loop_ok_inv : verify[main_cpp.module] "for_loop()".
+  Lemma for_loop_ok_inv : verify[main_cpp.source] "for_loop()".
   Proof using MOD.
     verify_spec'; go.
     (*| Specify a loop invariant which holds immediately *before* the

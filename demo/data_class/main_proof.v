@@ -20,7 +20,7 @@ Import auto_frac.
 Module two_ints.
   cpp.class "two_ints"
     prefix ""
-    from main_cpp.module
+    from main_cpp.source
     dataclass
     { copyable
     ; movable
@@ -36,7 +36,7 @@ Section with_cpp.
 
   #[local] Open Scope Z_scope.
 
-  cpp.spec "add(const two_ints&, const two_ints&)" as add_spec from (main_cpp.module)
+  cpp.spec "add(const two_ints&, const two_ints&)" as add_spec from (main_cpp.source)
     with
     (\arg{ap} "a" (Vref ap)
     \arg{bp} "b" (Vref bp)
@@ -49,15 +49,15 @@ Section with_cpp.
     \post{r}[Vref r]
       r |-> two_ints.R 1$m {| two_ints.x := x2 ; two_ints.y := y2 |}).
 
-  Lemma add_ok : verify[main_cpp.module] add_spec.
+  Lemma add_ok : verify[main_cpp.source] add_spec.
   Proof.
     verify_spec; go with pick_frac.
   Qed.
 
-  cpp.spec "test()" as test_spec from (main_cpp.module) with
+  cpp.spec "test()" as test_spec from (main_cpp.source) with
     (\post emp).
 
-  Lemma test_ok : verify[main_cpp.module] test_spec.
+  Lemma test_ok : verify[main_cpp.source] test_spec.
   Proof.
     verify_spec; go with pick_frac.
   Qed.
