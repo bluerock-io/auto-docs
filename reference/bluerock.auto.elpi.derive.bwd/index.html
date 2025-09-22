@@ -1090,7 +1090,7 @@ for <code>Lem</code> being an equivalence)</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../../node_modules/lunr/lunr.min.js"></script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
     <script>
         (async function() {
             const searchInput = document.getElementById('searchInput');
@@ -1104,7 +1104,7 @@ for <code>Lem</code> being an equivalence)</p>
             let docs;
 
             try {
-                const response = await fetch('/auto-docs/search.json');
+                const response = await fetch("/auto-docs/search-index.json");
                 docs = await response.json();
 
                 idx = lunr(function () {
